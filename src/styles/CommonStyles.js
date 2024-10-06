@@ -29,3 +29,12 @@ export const subTitle = css({
 export const spacing = {
   md: "10rem",
 };
+
+export const buttonStyles = (color, backgroundColor) => {
+  return css({
+    color,
+    backgroundColor,
+    height: "50px",
+    width: "160px",
+  });
+};

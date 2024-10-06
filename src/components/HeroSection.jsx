@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 import { colors, overline, spacing } from "../styles/CommonStyles";
-import headphone from "../assets/images/home/desktop/image-hero.jpg";
 
 import NavBar from "./NavBar";
 
@@ -21,7 +20,7 @@ export default function HeroSection() {
           </p>
         </div>
         <div css={heroStyles.imgContainer}>
-          <img alt="headphone" src={headphone} css={heroStyles.img} />
+          <img alt="headphone" src="images/home/desktop/image-hero.jpg" css={heroStyles.img} />
         </div>
       </div>
     </>

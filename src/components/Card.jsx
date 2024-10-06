@@ -19,7 +19,7 @@ const cardStyles = {
     display: "flex",
     background: colors.grey,
     height: "13.5rem",
-    width: "21.2rem",
+    width: "18.5rem",
     borderRadius: "9px",
   }),
   text: css({
@@ -30,7 +30,7 @@ const cardStyles = {
   img: css({
     position: "absolute",
     top: "-80px",
-    left: "calc(21.2rem/2 - 115px)",
+    left: "calc(18.5rem/2 - 115px)",
     height: "220px",
     width: "230px",
   }),

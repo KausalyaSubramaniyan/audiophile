@@ -5,15 +5,17 @@
   font-weight: 200 800;
 }
 
-
 body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+p {
   font-family: Manrope;
   font-weight: 500;
   font-size: 15px;
   line-height: 25px;
-  margin: 0;
-  padding: 0;
-  position: relative;
 }
 
 h1 {
