@@ -2,27 +2,35 @@ import { css } from "@emotion/react";
 import { colors, overline, spacing } from "../styles/CommonStyles";
 import headphone from "../assets/images/home/desktop/image-hero.jpg";
 
+import NavBar from "./NavBar";
+
 export default function HeroSection() {
   return (
-    <div css={heroStyles.container}>
-      <div css={heroStyles.description}>
-        <p css={overline}>NEW PRODUCT</p>
-        <h1>XX99 MARK II HEADPHONES</h1>
-        <p>
-          Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast.
-        </p>
+    <>
+      <NavBar />
+      <div css={heroStyles.lineContainer}>
+        <hr css={heroStyles.line}></hr>
       </div>
-      <div>
-        <img alt="headphone" src={headphone} css={heroStyles.img} />
+      <div css={heroStyles.heroContainer}>
+        <div css={heroStyles.description}>
+          <p css={overline}>NEW PRODUCT</p>
+          <h1>XX99 MARK II HEADPHONES</h1>
+          <p>
+            Experience natural, lifelike audio and exceptional build quality
+            made for the passionate music enthusiast.
+          </p>
+        </div>
+        <div css={heroStyles.imgContainer}>
+          <img alt="headphone" src={headphone} css={heroStyles.img} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
 const heroStyles = {
-  container: css({
-    backgroundColor: colors.black,
+  heroContainer: css({
+    backgroundColor: colors.lightBlack,
     color: colors.white,
     height: "30rem",
     display: "flex",
@@ -30,15 +38,33 @@ const heroStyles = {
     alignItems: "center",
   }),
   img: css({
-    height: "80%",
-    width: "80%",
+    height: "118%",
+    width: "110%",
     objectFit: "cover",
     objectPosition: "90% 100%",
+    position: "absolute",
+    top: "-5.5rem",
+    left: "0",
+    zIndex: "0",
+    mixBlendMode: "lighten",
+  }),
+  imgContainer: css({
+    position: "relative",
+    width: "55%",
+    height: "inherit",
+    margin: "4rem 1rem",
   }),
   description: css({
     width: "45%",
     p: {
-      width: "95%",
+      width: "75%",
     },
   }),
+  line: {
+    margin: `0rem ${spacing.md}`,
+    opacity: "25%",
+  },
+  lineContainer: {
+    background: colors.lightBlack,
+  },
 };

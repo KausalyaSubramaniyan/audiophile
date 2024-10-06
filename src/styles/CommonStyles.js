@@ -5,6 +5,7 @@ export const colors = {
   lightOrange: "#FBAF85",
   white: "#FFFFFF",
   black: "#000000",
+  lightBlack: "#0E0E0E",
   grey: "#F1F1F1",
   lightGrey: "#FAFAFA",
 };
@@ -26,5 +27,5 @@ export const subTitle = css({
 });
 
 export const spacing = {
-  md: "9rem",
+  md: "10rem",
 };
