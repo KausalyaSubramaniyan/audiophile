@@ -4,11 +4,10 @@ import Footer from "./Footer";
 import SideBySideLayout from "./SideBySideLayout";
 import SideBySideLayoutTextContent from "./SideBySideLayoutTextContent";
 
-export default function Layout({ heroSection, content, product = "" }) {
-  const HeroSection = heroSection;
+export default function Layout({ heroSection, content}) {
   return (
     <>
-      <HeroSection product={product} />
+      {heroSection}
       <div css={layoutStyles.layout}>
         {content}
         <SideBySideLayout

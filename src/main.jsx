@@ -1,10 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import "./index.css";
-import Headphones from "./pages/Headphones.jsx";
+import Product from "./pages/Product.jsx";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +12,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/headphones",
-    element: <Headphones />,
+    element: <Product id="headphones" name="HEADPHONES" />,
+  },
+  {
+    path: "/speakers",
+    element: <Product id="speakers" name="SPEAKERS" />,
+  },
+  {
+    path: "/earphones",
+    element: <Product id="earphones" name="EARPHONES" />,
   },
 ]);
 

@@ -1,38 +1,34 @@
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout";
-import ProductHeroSection from "../components/ProductHeroSection";
+import { productData } from "../data/constants";
 
-import response from "../data/heaphones.json";
+import Layout from "../components/Layout";
+import ProductCards from "../components/ProductCards";
+import ProductHeroSection from "../components/ProductHeroSection";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
 import { colors } from "../styles/CommonStyles";
 
-export default function Headphones() {
-  const [heaphones, setHeadphones] = useState([]);
+export default function Product({ name }) {
+  const [products, setProducts] = useState([]);
 
-  const getHeadphones = () => {
-    return response;
+  const getProducts = () => {
+    setProducts(productData(name));
   };
 
   useEffect(() => {
-    setHeadphones(getHeadphones());
-  }, []);
+    getProducts();
+  }, [window.location.pathname]);
 
   const getContent = () => {
-    if (heaphones.length === 0) {
-      // TODO - Replace with loader
-      return <div></div>;
-    }
-
-    return response.map((heaphone) => (
+    return products.map((product) => (
       <SideBySideLayout
-        isImgLeft={heaphone.id % 2 === 0 ? false : true}
-        id={heaphone.id}
+        isImgLeft={product.id % 2 === 0 ? false : true}
+        key={product.id}
         content={
           <SideBySideLayoutTextContent
-            tag={heaphone.tag}
-            title={<h2>{heaphone.title}</h2>}
-            description={heaphone.description}
+            tag={product.tag}
+            title={<h2>{product.title}</h2>}
+            description={product.description}
             buttonInfo={{
               text: "SEE PRODUCT",
               color: colors.white,
@@ -40,7 +36,7 @@ export default function Headphones() {
             }}
           />
         }
-        imgurl={heaphone.imgUrl}
+        imgurl={product.imgUrl}
         imgDimension={{ height: "560px", width: "538px" }}
       />
     ));
@@ -49,9 +45,13 @@ export default function Headphones() {
   return (
     <>
       <Layout
-        heroSection={ProductHeroSection}
-        content={getContent()}
-        product="HEADPHONES"
+        heroSection={<ProductHeroSection product={name} />}
+        content={
+          <>
+            {getContent()}
+            <ProductCards />
+          </>
+        }
       />
     </>
   );
