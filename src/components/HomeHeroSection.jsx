@@ -3,7 +3,7 @@ import { colors, overline, spacing } from "../styles/CommonStyles";
 
 import NavBar from "./NavBar";
 
-export default function HeroSection() {
+export default function HomeHeroSection() {
   return (
     <>
       <NavBar />

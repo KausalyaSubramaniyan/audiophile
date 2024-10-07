@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import Card from "../components/Card";
-import HeroSection from "../components/HeroSection";
+import HomeHeroSection from "../components/HomeHeroSection";
 import Layout from "../components/Layout";
-import { colors, buttonStyles } from "../styles/CommonStyles";
+import { colors, buttonStyles, spacer } from "../styles/CommonStyles";
 
 function ProductCards() {
   return (
@@ -75,7 +75,7 @@ function ProductHighlights() {
   return (
     <>
       <SpeakerHighlight />
-      <div css={homeStyles.spacer}></div>
+      <div css={spacer("25px")}></div>
       <EarphoneHighlight />
     </>
   );
@@ -92,15 +92,12 @@ export default function Home() {
   };
   return (
     <>
-      <Layout heroSection={HeroSection} content={getContent} />
+      <Layout heroSection={HomeHeroSection} content={getContent()} />
     </>
   );
 }
 
 const homeStyles = {
-  spacer: css({
-    marginTop: "45px",
-  }),
   cardContainer: css({
     margin: "12rem 0rem 9rem 0rem",
     display: "flex",
@@ -156,7 +153,7 @@ const homeStyles = {
         borderRadius: "7px",
       }),
       text: css({
-        margin: "20% 0 0 20%"
+        margin: "20% 0 0 20%",
       }),
       img: css({
         width: "48.5%",

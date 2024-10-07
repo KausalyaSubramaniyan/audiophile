@@ -24,6 +24,7 @@ export const subTitle = css({
   fontSize: "13px",
   lineHeight: "25px",
   letterSpacing: "1px",
+  opacity: "50%"
 });
 
 export const spacing = {
@@ -36,5 +37,12 @@ export const buttonStyles = (color, backgroundColor) => {
     backgroundColor,
     height: "50px",
     width: "160px",
+    border: "none"
+  });
+};
+
+export const spacer = (space) => {
+  return css({
+    marginTop: space,
   });
 };
