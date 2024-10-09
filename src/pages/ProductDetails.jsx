@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, spacer, subTitle } from "../styles/CommonStyles";
+import { colors, spacer, subTitle, buttonStyles } from "../styles/CommonStyles";
 import { useEffect, useState } from "react";
 import { productDetailsData } from "../data/constants";
 import Recommendations from "../components/Recommendations";
@@ -16,6 +16,7 @@ export default function ProductDetails() {
   // TODO - Will lose state on page refresh
   const { product } = useLocation().state;
   const [productInfo, setProductInfo] = useState({});
+  const [quantity, setQuantity] = useState(1);
 
   const getProductInfo = () => {
     setProductInfo(productDetailsData(product.id));
@@ -50,6 +51,17 @@ export default function ProductDetails() {
     );
   };
 
+  const addToCart = () => {
+    const products = {
+      [productInfo.name]: {
+        amount: productInfo.amount,
+        currSymbol: productInfo.currencySymbol,
+        quantity,
+      },
+    };
+    localStorage.setItem("products", JSON.stringify(products));
+  };
+
   const getContent = () => {
     return (
       <>
@@ -59,12 +71,23 @@ export default function ProductDetails() {
           content={
             <SideBySideLayoutTextContent
               title={<h2>{product.title}</h2>}
-              product={product}
-              buttonInfo={{
-                text: "ADD TO CART",
-                color: colors.white,
-                bgColor: colors.orange,
-              }}
+              tag={product.tag}
+              description={product.description}
+              suffix={
+                <div css={detailsStyles.btnContainer}>
+                  <div css={detailsStyles.counter}>
+                    <button onClick={() => setQuantity(quantity - 1)}>-</button>
+                    <p>{quantity}</p>
+                    <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                  </div>
+                  <button
+                    css={buttonStyles(colors.white, colors.orange)}
+                    onClick={() => addToCart()}
+                  >
+                    ADD TO CART
+                  </button>
+                </div>
+              }
             />
           }
           imgurl={product.imgUrl}
@@ -76,7 +99,7 @@ export default function ProductDetails() {
               {getFeatures()}
               {getBox()}
             </div>
-            <div css={spacer("7rem")}/>
+            <div css={spacer("7rem")} />
             <Gallery imgs={productInfo.gallery} />
             <Recommendations products={productInfo.recommendations} />
           </div>
@@ -94,6 +117,27 @@ export default function ProductDetails() {
 }
 
 const detailsStyles = {
+  counter: css({
+    display: "flex",
+    width: "140px",
+    height: "50px",
+    background: colors.grey,
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginRight: "1rem",
+    button: {
+      border: "none",
+      color: colors.black,
+      opacity: "25%",
+      "&:hover": {
+        cursor: "pointer",
+      },
+    },
+  }),
+  btnContainer: css({
+    display: "flex",
+    width: "120%",
+  }),
   about: css({
     display: "flex",
     justifyContent: "space-between",
