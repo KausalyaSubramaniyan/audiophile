@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import SideBySideLayout from "./SideBySideLayout";
 import SideBySideLayoutTextContent from "./SideBySideLayoutTextContent";
 
-export default function Layout({ heroSection, content}) {
+export default function Layout({ heroSection, content }) {
   return (
     <>
       {heroSection}
@@ -14,17 +14,20 @@ export default function Layout({ heroSection, content}) {
           isImgLeft={false}
           content={
             <SideBySideLayoutTextContent
-              tag=""
+              product={{
+                tag: "",
+                description:
+                  "Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment.",
+              }}
               title={
                 <h2>
                   BRINGING YOU THE
                   <span css={layoutStyles.textHighlight}> BEST</span> AUDIO GEAR
                 </h2>
               }
-              description="Located at the heart of New York City, Audiophile is the premier store for high end headphones, earphones, speakers, and audio accessories. We have a large showroom and luxury demonstration rooms available for you to browse and experience a wide range of our products. Stop by our store to meet some of the fantastic people who make Audiophile the best place to buy your portable audio equipment."
             />
           }
-          imgurl="images/shared/desktop/image-best-gear.jpg"
+          imgurl="/images/shared/desktop/image-best-gear.jpg"
           imgDimension={{ height: "560px", width: "540px" }}
         />
       </div>

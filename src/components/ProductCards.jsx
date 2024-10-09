@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { css } from "@emotion/react";
 import Card from "./Card";
 import response from "../data/products.json";
-import { css } from "@emotion/react";
 
 export default function ProductCards() {
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ export default function ProductCards() {
 
   const getCards = () => {
     return products.map((product) => (
-      <Card imgUrl={product.imgUrl} productName={product.name} />
+      <Card key={product.id} imgUrl={product.imgUrl} productName={product.name} />
     ));
   };
 

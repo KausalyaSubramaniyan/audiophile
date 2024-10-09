@@ -21,5 +21,36 @@
       "item": "Travel Bag",
       "quantity": "1x"
     }
+  ],
+  "recommendations": [
+    {
+      "id": 5,
+      "title": "XX99 Mark I",
+      "imgUrl": "/images/product-xx99-mark-one-headphones/desktop/image-product.jpg"
+    },
+    {
+      "id": 6,
+      "title": "XX59",
+      "imgUrl": "/images/product-xx59-headphones/desktop/image-product.jpg"
+    },
+    {
+      "id": 7,
+      "title": "ZX9 SPEAKER",
+      "imgUrl": "/images/product-zx9-speaker/desktop/image-product.jpg"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 100,
+      "imgUrl": "/images/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg"
+    },
+    {
+      "id": 101,
+      "imgUrl": "/images/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg"
+    },
+    {
+      "id": 102,
+      "imgUrl": "/images/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg"
+    }
   ]
 }

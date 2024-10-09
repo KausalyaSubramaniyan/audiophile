@@ -23,15 +23,15 @@ export default function Footer() {
         </p>
         <ul css={[footerStyles.icons, footerStyles.nav]}>
           <ol>
-            <img alt="facebook" src="images/shared/desktop/icon-facebook.svg" />
+            <img alt="facebook" src="/images/shared/desktop/icon-facebook.svg" />
           </ol>
           <ol>
-            <img alt="twitter" src="images/shared/desktop/icon-twitter.svg" />
+            <img alt="twitter" src="/images/shared/desktop/icon-twitter.svg" />
           </ol>
           <ol>
             <img
               alt="instagram"
-              src="images/shared/desktop/icon-instagram.svg"
+              src="/images/shared/desktop/icon-instagram.svg"
             />
           </ol>
         </ul>

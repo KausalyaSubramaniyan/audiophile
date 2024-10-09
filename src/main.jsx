@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import "./index.css";
 import Product from "./pages/Product.jsx";
+import ProductDetails from "./pages/ProductDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -12,15 +13,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/headphones",
-    element: <Product id="headphones" name="HEADPHONES" />,
+    element: <Product key="headphones" name="HEADPHONES" />,
   },
   {
     path: "/speakers",
-    element: <Product id="speakers" name="SPEAKERS" />,
+    element: <Product key="speakers" name="SPEAKERS" />,
   },
   {
     path: "/earphones",
-    element: <Product id="earphones" name="EARPHONES" />,
+    element: <Product key="earphones" name="EARPHONES" />,
+  },
+  {
+    path: "/product/:productName/:id",
+    element: <ProductDetails />,
+    exact: false
   },
 ]);
 

@@ -17,9 +17,9 @@ export const productData = (product) => {
   }
 };
 
-export const productDetailsData = (product) => {
-  switch (product) {
-    case "XX99 Mark II Headphones":
+export const productDetailsData = (productId) => {
+  switch (productId) {
+    case 4:
       return markII;
   }
 };

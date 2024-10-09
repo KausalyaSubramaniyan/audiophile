@@ -19,6 +19,7 @@ export default function Product({ name }) {
     getProducts();
   }, [window.location.pathname]);
 
+  // TODO - See whether product should be sent instead of individual props
   const getContent = () => {
     return products.map((product) => (
       <SideBySideLayout
@@ -26,13 +27,13 @@ export default function Product({ name }) {
         key={product.id}
         content={
           <SideBySideLayoutTextContent
-            tag={product.tag}
             title={<h2>{product.title}</h2>}
-            description={product.description}
+            product={product}
             buttonInfo={{
               text: "SEE PRODUCT",
               color: colors.white,
               bgColor: colors.orange,
+              productUrl: `/product/${name.toLowerCase()}/${product.id}`,
             }}
           />
         }
