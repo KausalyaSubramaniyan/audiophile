@@ -52,12 +52,17 @@ export default function ProductDetails() {
   };
 
   const addToCart = () => {
-    const products = {
-      [productInfo.name]: {
-        amount: productInfo.amount,
-        currSymbol: productInfo.currencySymbol,
-        quantity,
-      },
+    let products = localStorage.getItem("products");
+    if (products) {
+      products = JSON.parse(products);
+    } else {
+      products = {};
+    }
+
+    products[productInfo.name] = {
+      amount: productInfo.amount,
+      currSymbol: productInfo.currencySymbol,
+      quantity,
     };
     localStorage.setItem("products", JSON.stringify(products));
   };
@@ -146,8 +151,14 @@ const detailsStyles = {
     display: "flex",
     width: "55%",
     flexDirection: "column",
-    p: subTitle,
   }),
+  featureText: css([
+    subTitle,
+    {
+      opacity: "100%",
+      whiteSpace: "pre-line",
+    },
+  ]),
   box: css({
     display: "flex",
     width: "35%",
