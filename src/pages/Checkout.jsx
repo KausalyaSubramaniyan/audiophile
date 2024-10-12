@@ -3,18 +3,17 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
-import {
-  colors,
-  subTitle,
-  spacing,
-  spacer,
-  buttonStyles,
-} from "../styles/CommonStyles";
+import { colors, subTitle, spacing, spacer } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
+import { useState } from "react";
+import Overlay from "../components/Overlay";
+import Confirmation from "../components/Confirmation";
 
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
+  const [isVisible, setIsVisible] = useState(false);
+
   const getForm = () => {
     return (
       <div css={styles.checkout}>
@@ -127,7 +126,12 @@ export default function Checkout() {
         <h6>SUMMARY</h6>
         <div css={spacer("3rem")}></div>
         {getItems()}
-        <Button size="stretch">CONTINUE & PAY</Button>
+        <Button size="stretch" onClick={() => setIsVisible(true)}>
+          CONTINUE & PAY
+        </Button>
+        <Overlay open={isVisible} onClick={() => setIsVisible(!isVisible)}>
+          <Confirmation />
+        </Overlay>
       </div>
     );
   };

@@ -44,14 +44,8 @@ const cartStyles = {
   container: css({
     width: "22rem",
     padding: "2rem",
-    borderRadius: "7px",
     maxHeight: "15rem",
-    position: "absolute",
-    top: "4%",
-    left: "58%",
-    backgroundColor: colors.white,
     color: colors.black,
-    zIndex: "4",
   }),
   top: css({
     display: "flex",
@@ -63,7 +57,6 @@ const cartStyles = {
       textDecoration: "underline",
     },
   }),
-
   counter: css({
     display: "flex",
     width: "110px",

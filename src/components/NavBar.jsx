@@ -6,6 +6,7 @@ import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Cart from "./Cart";
+import Overlay from "./Overlay";
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,8 +33,9 @@ export default function NavBar() {
       >
         <CartIcon />
       </button>
-      {isVisible && <div css={navBarStyles.overlay} onClick={() => setIsVisible(!isVisible)}/>}
-      {isVisible && <Cart />}
+      <Overlay open={isVisible} onClick={() => setIsVisible(!isVisible)} placement="top-right">
+        <Cart />
+      </Overlay>
     </div>
   );
 }
@@ -46,7 +48,7 @@ const navBarStyles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: `1rem ${spacing.md}`,
-    zIndex: "4"
+    zIndex: "4",
   }),
   nav: css([
     subTitle,
@@ -69,15 +71,5 @@ const navBarStyles = {
     "&:hover": {
       cursor: "pointer",
     },
-  }),
-  overlay: css({
-    position: "fixed",
-    width: "100%",
-    height: "100%",
-    top: "0",
-    left: "0",
-    zIndex: "3",
-    backgroundColor: colors.black,
-    opacity: "50%",
   }),
 };
