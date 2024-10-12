@@ -5,6 +5,7 @@ import Home from "./pages/Home.jsx";
 import "./index.css";
 import Product from "./pages/Product.jsx";
 import ProductDetails from "./pages/ProductDetails.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/product/:productName/:id",
     element: <ProductDetails />,
-    exact: false
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
   },
 ]);
 

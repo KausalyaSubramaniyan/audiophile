@@ -20,7 +20,11 @@ export default function HomeHeroSection() {
           </p>
         </div>
         <div css={heroStyles.imgContainer}>
-          <img alt="headphone" src="images/home/desktop/image-hero.jpg" css={heroStyles.img} />
+          <img
+            alt="headphone"
+            src="images/home/desktop/image-hero.jpg"
+            css={heroStyles.img}
+          />
         </div>
       </div>
     </>
