@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import Button from "../components/Button";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
@@ -126,9 +127,7 @@ export default function Checkout() {
         <h6>SUMMARY</h6>
         <div css={spacer("3rem")}></div>
         {getItems()}
-        <button css={buttonStyles(colors.white, colors.orange)}>
-          CONTINUE & PAY
-        </button>
+        <Button size="stretch">CONTINUE & PAY</Button>
       </div>
     );
   };

@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-body, p {
+* {
   font-family: Manrope;
   font-weight: 500;
   font-size: 15px;

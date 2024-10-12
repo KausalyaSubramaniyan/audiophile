@@ -8,6 +8,8 @@ export const colors = {
   lightBlack: "#0E0E0E",
   grey: "#F1F1F1",
   lightGrey: "#FAFAFA",
+  primary: "#D87D4A",
+  secondary: "#000000",
 };
 
 export const overline = css({
@@ -39,7 +41,7 @@ export const buttonStyles = (color, backgroundColor) => {
     width: "160px",
     border: "none",
     "&:hover": {
-      cursor: "pointer"
+      cursor: "pointer",
     },
   });
 };
