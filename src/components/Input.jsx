@@ -4,7 +4,7 @@ export default function Input({ id, placeholder, label, value, error }) {
   return (
     <div>
       {error && <p>{error}</p>}
-      <label for={id}>{label}</label> <br />
+      <label htmlFor={id}>{label}</label> <br />
       <input
         id={id}
         placeholder={placeholder}
@@ -18,7 +18,7 @@ export default function Input({ id, placeholder, label, value, error }) {
 const inputStyles = {
   container: css({
     height: "56px",
-    width: "290px",
+    width: "275px",
     padding: "0rem 1rem",
     borderRadius: "8px",
     border: "1px solid #CFCFCF",

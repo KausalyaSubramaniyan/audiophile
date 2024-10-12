@@ -1,41 +1,28 @@
 import { css } from "@emotion/react";
 import { buttonStyles, colors, spacer, subTitle } from "../styles/CommonStyles";
-
-function Item({ name, amount, currSymbol, quantity }) {
-  return (
-    <div css={cartStyles.itemContainer}>
-      <div css={cartStyles.itemLeft}>
-        <img src="/images/cart/image-xx99-mark-two-headphones.jpg" />
-        <div>
-          <p css={cartStyles.name}>{name}</p>
-          <p css={cartStyles.currency}>
-            {currSymbol} {amount}
-          </p>
-        </div>
-      </div>
-      <div css={cartStyles.counter}>
-        <button onClick={() => setQuantity(quantity - 1)}>-</button>
-        <p>{quantity}</p>
-        <button onClick={() => setQuantity(quantity + 1)}>+</button>
-      </div>
-    </div>
-  );
-}
+import Item from "./Item";
 
 export default function Cart() {
   const getItems = () => {
     const products = localStorage.getItem("products");
-    if (!products) return;
+    if (!products) return <></>;
 
     const jsonProducts = JSON.parse(products);
 
+    // TODO - Implement logic for + and -
     return Object.keys(jsonProducts).map((name) => (
       <Item
         key={name}
         name={name}
         amount={jsonProducts[name]["amount"]}
         currSymbol={jsonProducts[name]["currSymbol"]}
-        quantity={jsonProducts[name]["quantity"]}
+        child={
+          <div css={cartStyles.counter}>
+            <button onClick={() => {}}>-</button>
+            <p>{jsonProducts[name]["quantity"]}</p>
+            <button onClick={() => {}}>+</button>
+          </div>
+        }
       />
     ));
   };
@@ -64,7 +51,7 @@ const cartStyles = {
     left: "58%",
     backgroundColor: colors.white,
     color: colors.black,
-    zIndex: "4"
+    zIndex: "4",
   }),
   top: css({
     display: "flex",
@@ -76,38 +63,7 @@ const cartStyles = {
       textDecoration: "underline",
     },
   }),
-  name: css([
-    subTitle,
-    {
-      fontSize: "15px",
-      opacity: "100%",
-      margin: "0",
-    },
-  ]),
-  currency: css([
-    subTitle,
-    {
-      padding: "2px 0px",
-      margin: "0",
-    },
-  ]),
-  itemContainer: css({
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "1.5rem",
-  }),
-  itemLeft: css({
-    display: "flex",
-    alignItems: "center",
-    img: {
-      height: "80px",
-      width: "80px",
-      borderRadius: "10px",
-      marginRight: "1rem",
-    },
-  }),
+
   counter: css({
     display: "flex",
     width: "110px",
