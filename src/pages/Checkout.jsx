@@ -9,10 +9,14 @@ import Item from "../components/Item";
 import { useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
+import useBill from "../hooks/useBill";
 
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
   const [isVisible, setIsVisible] = useState(false);
+  const { total, vat, shipping, grandTotal } = useBill(
+    localStorage.getItem("products")
+  );
 
   const getForm = () => {
     return (
@@ -81,43 +85,27 @@ export default function Checkout() {
       />
     ));
 
-    const cost = getCost(jsonProducts);
     return (
       <>
         {items}
         <div css={[styles.section, styles.billText]}>
           <p>TOTAL</p>
-          <p css={styles.amount}>${cost.total}</p>
+          <p css={styles.amount}>${total}</p>
         </div>
         <div css={[styles.section, styles.billText]}>
           <p>SHIPPING</p>
-          <p css={styles.amount}>${cost.shipping}</p>
+          <p css={styles.amount}>${shipping}</p>
         </div>
         <div css={[styles.section, styles.billText]}>
           <p>VAT(INCLUDED)</p>
-          <p css={styles.amount}>${cost.vat}</p>
+          <p css={styles.amount}>${vat}</p>
         </div>
         <div css={[styles.section, styles.billText]}>
           <p>GRAND TOTAL</p>
-          <p css={styles.amount}>${cost.grandTotal}</p>
+          <p css={styles.amount}>${grandTotal}</p>
         </div>
       </>
     );
-  };
-
-  // TODO - Can we make this generic?
-  const getCost = (jsonProducts) => {
-    const total = Object.keys(jsonProducts).reduce((total, productName) => {
-      return (
-        jsonProducts[productName]["amount"] *
-          jsonProducts[productName]["quantity"] +
-        total
-      );
-    }, 0);
-    const vat = total * 0.2;
-    const shipping = 50;
-    const grandTotal = total + shipping;
-    return { total, vat, shipping, grandTotal };
   };
 
   const getSummary = () => {
