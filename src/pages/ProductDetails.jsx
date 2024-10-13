@@ -11,12 +11,14 @@ import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import { useLocation } from "react-router-dom";
 import Gallery from "../components/Gallery";
+import Counter from "../components/Counter";
+import useCounter from "../hooks/useCounter";
 
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
   const { product } = useLocation().state;
   const [productInfo, setProductInfo] = useState({});
-  const [quantity, setQuantity] = useState(1);
+  const { count, increment, decrement } = useCounter(1);
 
   const getProductInfo = () => {
     setProductInfo(productDetailsData(product.id));
@@ -62,7 +64,7 @@ export default function ProductDetails() {
     products[productInfo.name] = {
       amount: productInfo.amount,
       currSymbol: productInfo.currencySymbol,
-      quantity,
+      quantity: count,
     };
     localStorage.setItem("products", JSON.stringify(products));
   };
@@ -80,11 +82,11 @@ export default function ProductDetails() {
               description={product.description}
               suffix={
                 <div css={detailsStyles.btnContainer}>
-                  <div css={detailsStyles.counter}>
-                    <button onClick={() => setQuantity(quantity - 1)}>-</button>
-                    <p>{quantity}</p>
-                    <button onClick={() => setQuantity(quantity + 1)}>+</button>
-                  </div>
+                  <Counter
+                    count={count}
+                    increment={increment}
+                    decrement={decrement}
+                  />
                   <button
                     css={buttonStyles(colors.white, colors.orange)}
                     onClick={() => addToCart()}

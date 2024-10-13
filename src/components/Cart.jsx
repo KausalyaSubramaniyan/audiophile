@@ -1,41 +1,61 @@
 import { css } from "@emotion/react";
 import { buttonStyles, colors, spacer, subTitle } from "../styles/CommonStyles";
 import Item from "./Item";
+import Button from "./Button";
+import Counter from "./Counter";
+import useCounter from "../hooks/useCounter";
+import { useEffect, useState } from "react";
+
+function CartCounter({ quantity }) {
+  const { count, increment, decrement } = useCounter(quantity);
+  return <Counter count={count} increment={increment} decrement={decrement} />;
+}
 
 export default function Cart() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    getItems();
+  }, []);
+
   const getItems = () => {
-    const products = localStorage.getItem("products");
-    if (!products) return <></>;
+    let products = localStorage.getItem("products");
+    if (!products) {
+      setItems([]);
+      return;
+    }
 
-    const jsonProducts = JSON.parse(products);
-
-    // TODO - Implement logic for + and -
-    return Object.keys(jsonProducts).map((name) => (
-      <Item
-        key={name}
-        name={name}
-        amount={jsonProducts[name]["amount"]}
-        currSymbol={jsonProducts[name]["currSymbol"]}
-        child={
-          <div css={cartStyles.counter}>
-            <button onClick={() => {}}>-</button>
-            <p>{jsonProducts[name]["quantity"]}</p>
-            <button onClick={() => {}}>+</button>
-          </div>
-        }
-      />
-    ));
+    products = JSON.parse(products);
+    setItems(
+      Object.keys(products).map((name) => {
+        return (
+          <Item
+            key={name}
+            name={name}
+            amount={products[name]["amount"]}
+            currSymbol={products[name]["currSymbol"]}
+            child={<CartCounter quantity={products[name]["quantity"]} />}
+          />
+        );
+      })
+    );
   };
-  // TODO - Remove hardcoded count
+
+  const removeAll = () => {
+    localStorage.removeItem("products");
+    setItems([]);
+  };
+
+  // TODO - Should this button be converted
   return (
     <div css={cartStyles.container}>
       <div css={cartStyles.top}>
-        <h6>CART(2)</h6>
-        <button>Remove all</button>
+        <h6>CART({items.length})</h6>
+        <button onClick={() => removeAll()}>Remove all</button>
       </div>
       <div css={spacer("1rem")}></div>
-      <div>{getItems()}</div>
-      <button css={buttonStyles(colors.white, colors.orange)}>CHECKOUT</button>
+      <div>{items}</div>
+      <Button size="stretch">CHECKOUT</Button>
     </div>
   );
 }
@@ -55,19 +75,6 @@ const cartStyles = {
       backgroundColor: colors.white,
       opacity: "65%",
       textDecoration: "underline",
-    },
-  }),
-  counter: css({
-    display: "flex",
-    width: "110px",
-    height: "35px",
-    background: colors.grey,
-    justifyContent: "space-around",
-    alignItems: "center",
-    button: {
-      border: "none",
-      color: colors.black,
-      opacity: "25%",
       "&:hover": {
         cursor: "pointer",
       },
