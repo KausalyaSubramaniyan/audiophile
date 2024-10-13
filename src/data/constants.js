@@ -4,8 +4,12 @@ import headphones from "./heaphones.json";
 import speakers from "./speakers.json";
 import earphones from "./earphones.json";
 
-import markII from "./headphones/mark-II-headphones.json";
-import markI from "./headphones/mark-I-headphones.json";
+import markII from "./headphones/mark-II.json";
+import markI from "./headphones/mark-I.json";
+import xx59 from "./headphones/xx59.json";
+import zx9 from "./speakers/zx9.json";
+import zx7 from "./speakers/zx7.json";
+import yx1 from "./earphones/yx1.json";
 
 export const productData = (product) => {
   switch (product) {
@@ -24,5 +28,13 @@ export const productDetailsData = (productId) => {
       return markII;
     case 5:
       return markI;
+    case 6:
+      return xx59;
+    case 7:
+      return zx9;
+    case 8:
+      return zx7;
+    case 9:
+      return yx1;
   }
 };
