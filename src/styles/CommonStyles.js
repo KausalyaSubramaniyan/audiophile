@@ -40,19 +40,6 @@ export const radius = {
   lg: "10px",
 };
 
-export const buttonStyles = (color, backgroundColor) => {
-  return css({
-    color,
-    backgroundColor,
-    height: "50px",
-    width: "160px",
-    border: "none",
-    "&:hover": {
-      cursor: "pointer",
-    },
-  });
-};
-
 export const spacer = (space) => {
   return css({
     marginTop: space,

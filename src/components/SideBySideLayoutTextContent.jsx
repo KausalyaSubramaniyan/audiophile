@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { overline, subTitle, buttonStyles } from "../styles/CommonStyles";
+import { overline } from "../styles/CommonStyles";
 
 export default function SideBySideLayoutTextContent({
   tag,

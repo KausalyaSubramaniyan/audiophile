@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, spacer, subTitle, buttonStyles } from "../styles/CommonStyles";
+import { colors, spacer, subTitle } from "../styles/CommonStyles";
 import { useEffect, useState } from "react";
 import { productDetailsData } from "../data/constants";
 import Recommendations from "../components/Recommendations";

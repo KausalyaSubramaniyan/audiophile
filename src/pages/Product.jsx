@@ -8,7 +8,7 @@ import ProductCards from "../components/ProductCards";
 import ProductHeroSection from "../components/ProductHeroSection";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, buttonStyles } from "../styles/CommonStyles";
+import Button from "../components/Button";
 
 export default function Product({ name }) {
   const [products, setProducts] = useState([]);
@@ -35,8 +35,7 @@ export default function Product({ name }) {
             tag={product.tag}
             description={product.description}
             suffix={
-              <button
-                css={buttonStyles(colors.white, colors.orange)}
+              <Button
                 onClick={() => {
                   navigate(`/product/${name.toLowerCase()}/${product.id}`, {
                     state: { product },
@@ -44,7 +43,7 @@ export default function Product({ name }) {
                 }}
               >
                 SEE PRODUCT
-              </button>
+              </Button>
             }
           />
         }

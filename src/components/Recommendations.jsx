@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
-import { buttonStyles, colors } from "../styles/CommonStyles";
+import Button from "./Button";
+import { colors } from "../styles/CommonStyles";
 
 function RecommendationCard({ product }) {
   return (
@@ -10,9 +11,7 @@ function RecommendationCard({ product }) {
         css={recommendationsStyles.img}
       />
       <h5>{product.title}</h5>
-      <button css={buttonStyles(colors.white, colors.orange)}>
-        SEE PRODUCT
-      </button>
+      <Button>SEE PRODUCT</Button>
     </div>
   );
 }
