@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, spacer, subTitle } from "../styles/CommonStyles";
+import { colors, subTitle } from "../styles/CommonStyles";
 import { useEffect, useState } from "react";
 import { productDetailsData } from "../data/constants";
 import Recommendations from "../components/Recommendations";
@@ -14,6 +14,7 @@ import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
 import useCounter from "../hooks/useCounter";
 import Button from "../components/Button";
+import Spacer from "../components/Spacer";
 
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
@@ -102,7 +103,7 @@ export default function ProductDetails() {
               {getFeatures()}
               {getBox()}
             </div>
-            <div css={spacer("7rem")} />
+            <Spacer value="7rem" />
             <Gallery imgs={productInfo.gallery} />
             <Recommendations products={productInfo.recommendations} />
           </div>

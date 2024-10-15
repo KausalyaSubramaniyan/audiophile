@@ -34,7 +34,7 @@ export default function Footer() {
       </div>
       <Spacer value="1rem" />
       <div css={styles.twoCol}>
-        <p css={styles.description}>
+        <p css={styles.text}>
           Audiophile is an all in one stop to fulfill your audio needs. We're a
           small team of music lovers and sound specialists who are devoted to
           helping you get the most out of personal audio. Come and visit our
@@ -59,7 +59,7 @@ export default function Footer() {
         </ul>
       </div>
       <div css={styles.twoCol}>
-        <p css={subTitle}>Copyright 2021. All Rights Reserved</p>
+        <p css={styles.text}>Copyright 2021. All Rights Reserved</p>
       </div>
     </div>
   );
@@ -85,7 +85,7 @@ const styles = {
       textDecoration: "none",
     },
   ]),
-  description: css([subTitle, { width: "55%" }]),
+  text: css({ width: "55%", opacity: "50%" }),
   icons: css({ width: "10%", ol: { padding: "0px" } }),
   twoCol: css({
     display: "flex",

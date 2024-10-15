@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
-import { colors, spacer } from "../styles/CommonStyles";
+import { colors } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
+import Cart from "./Cart";
 import Counter from "./Counter";
 import useCounter from "../hooks/useCounter";
 import { useEffect, useState } from "react";
@@ -53,7 +54,7 @@ export default function Cart() {
         <h6>CART({items.length})</h6>
         <button onClick={() => removeAll()}>Remove all</button>
       </div>
-      <div css={spacer("1rem")}></div>
+      <Spacer value="1rem" />
       <div>{items}</div>
       <Button size="stretch">CHECKOUT</Button>
     </div>

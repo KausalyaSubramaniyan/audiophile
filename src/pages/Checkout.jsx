@@ -3,13 +3,14 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
-import { colors, subTitle, spacing, spacer, radius } from "../styles/CommonStyles";
+import { colors, subTitle, spacing, radius } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
 import { useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
 import useBill from "../hooks/useBill";
+import Spacer from "../components/Spacer";
 
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
@@ -38,7 +39,7 @@ export default function Checkout() {
             />
           </div>
         </div>
-        <div css={spacer("3rem")} />
+        <Spacer value="3rem" />
         <div>
           <p css={subTitle}>SHIPPING INFO</p>
           <div css={styles.section}>
@@ -52,7 +53,7 @@ export default function Checkout() {
             <Input id="country" label="Country" placeholder="United States" />
           </div>
         </div>
-        <div css={spacer("3rem")} />
+        <Spacer value="3rem" />
         <div>
           <p css={subTitle}>PAYMENT DETAILS</p>
           <div css={styles.section}>
@@ -112,7 +113,7 @@ export default function Checkout() {
     return (
       <div css={styles.summary}>
         <h6>SUMMARY</h6>
-        <div css={spacer("3rem")}></div>
+        <Spacer value="3rem" />
         {getItems()}
         <Button size="stretch" onClick={() => setIsVisible(true)}>
           CONTINUE & PAY

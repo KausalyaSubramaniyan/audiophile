@@ -39,9 +39,3 @@ export const radius = {
   md: "8px",
   lg: "10px",
 };
-
-export const spacer = (space) => {
-  return css({
-    marginTop: space,
-  });
-};

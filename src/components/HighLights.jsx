@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, radius, spacer } from "../styles/CommonStyles";
+import { colors, radius } from "../styles/CommonStyles";
 import Button from "./Button";
 import Spacer from "./Spacer";
 
