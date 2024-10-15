@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors } from "../styles/CommonStyles";
+import { colors, radius } from "../styles/CommonStyles";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export default function Overlay({
@@ -70,6 +70,6 @@ const styles = {
     backgroundColor: colors.white,
     zIndex: "4",
     opacity: "100%",
-    borderRadius: "8px",
+    borderRadius: radius.md,
   }),
 };

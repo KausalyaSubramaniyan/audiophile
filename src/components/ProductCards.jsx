@@ -12,7 +12,11 @@ export default function ProductCards() {
 
   const getCards = () => {
     return products.map((product) => (
-      <Card key={product.id} imgUrl={product.imgUrl} productName={product.name} />
+      <Card
+        key={product.id}
+        imgUrl={product.imgUrl}
+        productName={product.name}
+      />
     ));
   };
 
@@ -21,7 +25,6 @@ export default function ProductCards() {
 
 const productCardsStyles = {
   container: css({
-    margin: "12rem 0rem 9rem 0rem",
     display: "flex",
     justifyContent: "space-between",
   }),

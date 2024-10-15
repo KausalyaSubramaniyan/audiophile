@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
 import useCounter from "../hooks/useCounter";
+import Button from "../components/Button";
 
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
@@ -87,12 +88,7 @@ export default function ProductDetails() {
                     increment={increment}
                     decrement={decrement}
                   />
-                  <button
-                    css={buttonStyles(colors.white, colors.orange)}
-                    onClick={() => addToCart()}
-                  >
-                    ADD TO CART
-                  </button>
+                  <Button onClick={() => addToCart()}>ADD TO CART</Button>
                 </div>
               }
             />
@@ -143,7 +139,8 @@ const detailsStyles = {
   }),
   btnContainer: css({
     display: "flex",
-    width: "120%",
+    columnGap: "1rem",
+    height: "3.25rem"
   }),
   about: css({
     display: "flex",

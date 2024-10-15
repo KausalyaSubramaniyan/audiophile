@@ -11,7 +11,7 @@ export default function SideBySideLayoutTextContent({
     <div css={styles.container}>
       <p css={overline}>{tag}</p>
       {title}
-      <p css={subTitle}>{description}</p>
+      <p css={styles.description}>{description}</p>
       {suffix}
     </div>
   );
@@ -23,5 +23,8 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+  }),
+  description: css({
+    opacity: "55%",
   }),
 };

@@ -3,13 +3,15 @@ import { spacing, colors } from "../styles/CommonStyles";
 import Footer from "./Footer";
 import SideBySideLayout from "./SideBySideLayout";
 import SideBySideLayoutTextContent from "./SideBySideLayoutTextContent";
+import Spacer from "./Spacer";
 
 export default function Layout({ heroSection, content }) {
   return (
     <>
       {heroSection}
-      <div css={layoutStyles.layout}>
+      <div css={styles.layout}>
         {content}
+        <Spacer value={spacing.sm} />
         <SideBySideLayout
           isImgLeft={false}
           content={
@@ -19,25 +21,27 @@ export default function Layout({ heroSection, content }) {
               title={
                 <h2>
                   BRINGING YOU THE
-                  <span css={layoutStyles.textHighlight}> BEST</span> AUDIO GEAR
+                  <span css={styles.textHighlight}> BEST</span> AUDIO GEAR
                 </h2>
               }
             />
           }
           imgurl="/images/shared/desktop/image-best-gear.jpg"
-          imgDimension={{ height: "560px", width: "540px" }}
+          imgDimension={{ height: "560px", width: "48%" }}
         />
       </div>
+      <Spacer value="13rem" />
       <Footer />
     </>
   );
 }
 
-const layoutStyles = {
+const styles = {
   layout: css({
     margin: `0rem ${spacing.md}`,
   }),
   textHighlight: css({
     color: colors.orange,
+    font: "inherit",
   }),
 };

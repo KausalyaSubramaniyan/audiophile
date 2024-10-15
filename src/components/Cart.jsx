@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { buttonStyles, colors, spacer, subTitle } from "../styles/CommonStyles";
+import { colors, spacer } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
 import Counter from "./Counter";

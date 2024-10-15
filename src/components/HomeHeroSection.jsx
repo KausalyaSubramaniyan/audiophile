@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import { colors, overline, spacing } from "../styles/CommonStyles";
 
 import NavBar from "./NavBar";
+import Button from "./Button";
 
 export default function HomeHeroSection() {
   return (
@@ -11,13 +12,14 @@ export default function HomeHeroSection() {
         <hr css={heroStyles.line}></hr>
       </div>
       <div css={heroStyles.heroContainer}>
-        <div css={heroStyles.description}>
-          <p css={overline}>NEW PRODUCT</p>
+        <div css={heroStyles.text}>
+          <p css={heroStyles.tag}>NEW PRODUCT</p>
           <h1>XX99 MARK II HEADPHONES</h1>
-          <p>
+          <p css={heroStyles.description}>
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
+          <Button css={heroStyles.button}>SEE PRODUCT</Button>
         </div>
         <div css={heroStyles.imgContainer}>
           <img
@@ -33,20 +35,32 @@ export default function HomeHeroSection() {
 
 const heroStyles = {
   heroContainer: css({
-    backgroundColor: colors.lightBlack,
+    backgroundColor: "#141414",
     color: colors.white,
-    height: "30rem",
+    height: "41rem",
     display: "flex",
     padding: `0rem ${spacing.md}`,
     alignItems: "center",
   }),
+  description: css({
+    opacity: "75%",
+  }),
+  button: css({
+    marginTop: "2rem",
+  }),
+  tag: css([
+    overline,
+    {
+      opacity: "49.64%",
+    },
+  ]),
   img: css({
-    height: "118%",
+    height: "114.5%",
     width: "110%",
     objectFit: "cover",
-    objectPosition: "90% 100%",
+    objectPosition: "80% 100%",
     position: "absolute",
-    top: "-5.5rem",
+    top: "-91px",
     left: "0",
     zIndex: "0",
     mixBlendMode: "lighten",
@@ -57,7 +71,7 @@ const heroStyles = {
     height: "inherit",
     margin: "4rem 1rem",
   }),
-  description: css({
+  text: css({
     width: "45%",
     p: {
       width: "75%",
@@ -68,6 +82,6 @@ const heroStyles = {
     opacity: "25%",
   },
   lineContainer: {
-    background: colors.lightBlack,
+    background: "#141414",
   },
 };

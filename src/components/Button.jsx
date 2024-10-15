@@ -26,7 +26,7 @@ export default function Button({
       case "outlined":
         styles = {
           ...styles,
-          borderColor: colors[color],
+          border: `2px solid ${colors[color]}`,
           color: colors[color],
         };
         break;
@@ -39,7 +39,7 @@ export default function Button({
         styles = { ...styles, padding: "0.5rem 1rem" };
         break;
       case "medium":
-        styles = { ...styles, padding: "1rem 1.5rem" };
+        styles = { ...styles, padding: "0.8rem 2.2rem" };
         break;
       case "large":
         styles = { ...styles, padding: "1.5rem 2rem" };

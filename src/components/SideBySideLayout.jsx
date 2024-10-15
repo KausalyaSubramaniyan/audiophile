@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { radius } from "../styles/CommonStyles";
 
 export default function SideBySideLayout({
   isImgLeft,
@@ -9,6 +10,7 @@ export default function SideBySideLayout({
   const imgStyles = css({
     height: imgDimension.height,
     width: imgDimension.width,
+    borderRadius: radius.md,
   });
   if (isImgLeft) {
     return (
@@ -32,6 +34,5 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     width: "100%",
-    margin: "10rem 0rem",
   }),
 };

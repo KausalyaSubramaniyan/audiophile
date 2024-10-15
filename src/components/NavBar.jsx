@@ -1,10 +1,11 @@
 import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import { colors, spacing, subTitle } from "../styles/CommonStyles";
 
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
 import Cart from "./Cart";
 import Overlay from "./Overlay";
 
@@ -15,16 +16,24 @@ export default function NavBar() {
       <Logo />
       <ul css={navBarStyles.nav}>
         <ol>
-          <Link to={`/`}>HOME</Link>
+          <Link to={`/`} css={navBarStyles.link}>
+            HOME
+          </Link>
         </ol>
         <ol>
-          <Link to={`/headphones`}>HEADPHONES</Link>
+          <Link to={`/headphones`} css={navBarStyles.link}>
+            HEADPHONES
+          </Link>
         </ol>
         <ol>
-          <Link to={`/speakers`}>SPEAKERS</Link>
+          <Link to={`/speakers`} css={navBarStyles.link}>
+            SPEAKERS
+          </Link>
         </ol>
         <ol>
-          <Link to={`/earphones`}>EARPHONES</Link>
+          <Link to={`/earphones`} css={navBarStyles.link}>
+            EARPHONES
+          </Link>
         </ol>
       </ul>
       <button
@@ -33,7 +42,11 @@ export default function NavBar() {
       >
         <CartIcon />
       </button>
-      <Overlay open={isVisible} onClick={() => setIsVisible(!isVisible)} placement="top-right">
+      <Overlay
+        open={isVisible}
+        onClick={() => setIsVisible(!isVisible)}
+        placement="top-right"
+      >
         <Cart />
       </Overlay>
     </div>
@@ -42,26 +55,30 @@ export default function NavBar() {
 
 const navBarStyles = {
   container: css({
-    background: colors.lightBlack,
+    background: "#141414",
     color: colors.white,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `1rem ${spacing.md}`,
-    zIndex: "4",
+    padding: `1.2rem ${spacing.md}`
   }),
-  nav: css([
+  nav: css({
+    position: "relative",
+    display: "flex",
+    justifyContent: "space-between",
+    zIndex: "2",
+    padding: "0",
+    width: "40%",
+    ol: {
+      padding: "0",
+    },
+  }),
+  link: css([
     subTitle,
     {
-      position: "relative",
-      display: "flex",
-      justifyContent: "space-between",
       opacity: "100%",
-      zIndex: "2",
-      a: {
-        color: colors.white,
-        textDecoration: "none",
-      },
+      color: colors.white,
+      textDecoration: "none",
     },
   ]),
   cartButton: css({

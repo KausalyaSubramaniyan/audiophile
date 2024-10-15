@@ -29,8 +29,15 @@ export const subTitle = css({
   opacity: "50%",
 });
 
+// TODO - Switch to md and lg
 export const spacing = {
-  md: "10rem",
+  sm: "10rem",
+  md: "10.8rem",
+};
+
+export const radius = {
+  md: "8px",
+  lg: "10px",
 };
 
 export const buttonStyles = (color, backgroundColor) => {

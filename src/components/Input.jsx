@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { radius } from "../styles/CommonStyles";
 
 export default function Input({ id, placeholder, label, value, error }) {
   return (
@@ -20,7 +21,7 @@ const inputStyles = {
     height: "56px",
     width: "275px",
     padding: "0rem 1rem",
-    borderRadius: "8px",
+    borderRadius: radius.md,
     border: "1px solid #CFCFCF",
     "&::placeholder": {
       fontWeight: "700",

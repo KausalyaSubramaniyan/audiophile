@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { radius } from "../styles/CommonStyles";
 
 export default function Gallery({ imgs }) {
   return (
@@ -21,14 +22,14 @@ const galleryStyles = {
   }),
   first: css({
     gridArea: "first",
-    borderRadius: "7px",
+    borderRadius: radius.md,
   }),
   second: css({
     gridArea: "second",
-    borderRadius: "7px",
+    borderRadius: radius.md,
   }),
   third: css({
     gridArea: "third",
-    borderRadius: "7px",
+    borderRadius: radius.md,
   }),
 };

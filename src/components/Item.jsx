@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { subTitle } from "../styles/CommonStyles";
+import { radius, subTitle } from "../styles/CommonStyles";
 
 export default function Item({ name, amount, currSymbol, child }) {
   return (
@@ -32,7 +32,7 @@ const itemStyles = {
     img: {
       height: "80px",
       width: "80px",
-      borderRadius: "10px",
+      borderRadius: radius.lg,
       marginRight: "1rem",
     },
   }),

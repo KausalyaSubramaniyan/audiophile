@@ -17,8 +17,7 @@ export default function Counter({ count, increment, decrement }) {
 const styles = {
   counter: css({
     display: "flex",
-    width: "110px",
-    height: "35px",
+    width: "120px",
     background: colors.grey,
     justifyContent: "space-around",
     alignItems: "center",

@@ -3,7 +3,7 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
-import { colors, subTitle, spacing, spacer } from "../styles/CommonStyles";
+import { colors, subTitle, spacing, spacer, radius } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
 import { useState } from "react";
@@ -147,7 +147,7 @@ const styles = {
     maxWidth: "58%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
-    borderRadius: "8px",
+    borderRadius: radius.md,
     h3: {
       marginTop: "18px",
     },
@@ -156,7 +156,7 @@ const styles = {
     width: "25%",
     backgroundColor: colors.white,
     padding: "2rem",
-    borderRadius: "8px",
+    borderRadius: radius.md,
     maxHeight: "35rem",
   }),
   section: css({
