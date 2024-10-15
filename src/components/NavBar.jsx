@@ -55,7 +55,6 @@ export default function NavBar() {
 
 const navBarStyles = {
   container: css({
-    background: "#141414",
     color: colors.white,
     display: "flex",
     justifyContent: "space-between",
@@ -66,7 +65,6 @@ const navBarStyles = {
     position: "relative",
     display: "flex",
     justifyContent: "space-between",
-    zIndex: "2",
     padding: "0",
     width: "40%",
     ol: {
@@ -84,7 +82,6 @@ const navBarStyles = {
   cartButton: css({
     background: "none",
     border: "none",
-    zIndex: "2",
     "&:hover": {
       cursor: "pointer",
     },

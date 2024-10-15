@@ -6,36 +6,31 @@ import Button from "./Button";
 
 export default function HomeHeroSection() {
   return (
-    <>
+    <div css={styles.container}>
       <NavBar />
-      <div css={heroStyles.lineContainer}>
-        <hr css={heroStyles.line}></hr>
+      <div css={styles.lineContainer}>
+        <hr css={styles.line}></hr>
       </div>
-      <div css={heroStyles.heroContainer}>
-        <div css={heroStyles.text}>
-          <p css={heroStyles.tag}>NEW PRODUCT</p>
+      <div css={styles.heroContainer}>
+        <div css={styles.text}>
+          <p css={styles.tag}>NEW PRODUCT</p>
           <h1>XX99 MARK II HEADPHONES</h1>
-          <p css={heroStyles.description}>
+          <p css={styles.description}>
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button css={heroStyles.button}>SEE PRODUCT</Button>
-        </div>
-        <div css={heroStyles.imgContainer}>
-          <img
-            alt="headphone"
-            src="images/home/desktop/image-hero.jpg"
-            css={heroStyles.img}
-          />
+          <Button>SEE PRODUCT</Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-const heroStyles = {
+const styles = {
+  container: css({
+    backgroundImage: "url(/images/home/desktop/image-hero.jpg)",
+  }),
   heroContainer: css({
-    backgroundColor: "#141414",
     color: colors.white,
     height: "41rem",
     display: "flex",
@@ -44,9 +39,7 @@ const heroStyles = {
   }),
   description: css({
     opacity: "75%",
-  }),
-  button: css({
-    marginTop: "2rem",
+    marginBottom: "2rem",
   }),
   tag: css([
     overline,
@@ -54,23 +47,6 @@ const heroStyles = {
       opacity: "49.64%",
     },
   ]),
-  img: css({
-    height: "114.5%",
-    width: "110%",
-    objectFit: "cover",
-    objectPosition: "80% 100%",
-    position: "absolute",
-    top: "-91px",
-    left: "0",
-    zIndex: "0",
-    mixBlendMode: "lighten",
-  }),
-  imgContainer: css({
-    position: "relative",
-    width: "55%",
-    height: "inherit",
-    margin: "4rem 1rem",
-  }),
   text: css({
     width: "45%",
     p: {
