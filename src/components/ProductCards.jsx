@@ -32,7 +32,7 @@ const productCardsStyles = {
     [mediaQuery[0]]: {
       display: "flex",
       flexWrap: "wrap",
-      rowGap: "var(--spacing-2-5)"
+      rowGap: "var(--spacing-1)"
     },
   }),
 };

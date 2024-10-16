@@ -23,6 +23,11 @@
   --radius-lg: 10px;
 
   --side-spacing: var(--spacing-10);
+
+  --font-size-15: 15px;
+  --font-size-18: 18px;
+
+  --font-size-h6: var(--font-size-18);
 }
 
 @font-face {
@@ -91,7 +96,7 @@ h5 {
 h6 {
   font-family: Manrope;
   font-weight: 700;
-  font-size: 18px;
+  font-size: var(--font-size-h6);
   line-height: 24px;
   letter-spacing: 1.3px;
   margin: 0;
@@ -107,11 +112,13 @@ h6 {
 @media screen and (max-width: 768px) {
   :root {
     --side-spacing: var(--spacing-2-5);
+    --font-size-h6: var(--font-size-15);
   }
 }
 
 @media screen and (max-width: 576px) {
   :root {
     --side-spacing: var(--spacing-1);
+    --font-size-h6: var(--font-size-15);
   }
 }
