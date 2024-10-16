@@ -34,7 +34,7 @@ const styles = {
     color: colors.white,
     height: "41rem",
     display: "flex",
-    padding: `0rem ${spacing.md}`,
+    padding: "0rem var(--side-spacing)",
     alignItems: "center",
   }),
   description: css({
@@ -54,7 +54,7 @@ const styles = {
     },
   }),
   line: {
-    margin: `0rem ${spacing.md}`,
+    margin: "0rem var(--side-spacing)",
     opacity: "25%",
   },
   lineContainer: {

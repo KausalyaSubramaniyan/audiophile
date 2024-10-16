@@ -59,7 +59,7 @@ const navBarStyles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: `1.2rem ${spacing.md}`
+    padding: "1.2rem var(--side-spacing)",
   }),
   nav: css({
     position: "relative",

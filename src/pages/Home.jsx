@@ -8,7 +8,7 @@ export default function Home() {
   const getContent = () => {
     return (
       <div>
-        <Spacer value="12rem" />
+        <Spacer value="5rem" />
         <ProductCards />
         <Spacer value="9rem" />
         <Highlights />

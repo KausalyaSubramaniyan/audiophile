@@ -91,6 +91,6 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    margin: `0rem ${spacing.md}`,
+    margin: "0rem var(--side-spacing)",
   }),
 };

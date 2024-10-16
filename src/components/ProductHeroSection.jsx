@@ -25,7 +25,7 @@ const styles = {
     color: colors.white,
   }),
   line: {
-    margin: `0rem ${spacing.md}`,
+    margin: "0rem var(--side-spacing)",
     opacity: "25%",
   },
   lineContainer: {

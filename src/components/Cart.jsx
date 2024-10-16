@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 import { colors } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
-import Cart from "./Cart";
 import Counter from "./Counter";
 import useCounter from "../hooks/useCounter";
 import { useEffect, useState } from "react";

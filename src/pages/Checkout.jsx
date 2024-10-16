@@ -140,7 +140,7 @@ export default function Checkout() {
 const styles = {
   container: css({
     backgroundColor: "#F2F2F2",
-    padding: `0rem ${spacing.md}`,
+    padding: "0rem var(--side-spacing)",
     display: "flex",
     justifyContent: "space-between",
   }),

@@ -1,3 +1,30 @@
+:root {
+  --color-black-900: #0e0e0e;
+  --color-black-1000: #000000;
+  --color-white-1000: #ffffff;
+  --color-orange-500: #fbaf85;
+  --color-orange-700: #d87d4a;
+  --color-grey-100: #fafafa;
+  --color-grey-200: #f1f1f1;
+
+  --color-primary: var(--color-orange-700);
+  --color-secondary: var(--color-black-1000);
+
+  --spacing-0: 0rem;
+  --spacing-1: 1rem;
+  --spacing-1-5: 1.5rem;
+  --spacing-2: 2rem;
+  --spacing-2-5: 2.5rem;
+  --spacing-10: 10rem;
+
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  --side-spacing: var(--spacing-10);
+}
+
 @font-face {
   font-family: "Manrope";
   src: local("Manrope"),
@@ -69,4 +96,22 @@ h6 {
   letter-spacing: 1.3px;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width: 992px) {
+  :root {
+    --side-spacing: var(--spacing-2-5);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --side-spacing: var(--spacing-2-5);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  :root {
+    --side-spacing: var(--spacing-1);
+  }
 }

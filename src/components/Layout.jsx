@@ -38,7 +38,7 @@ export default function Layout({ heroSection, content }) {
 
 const styles = {
   layout: css({
-    margin: `0rem ${spacing.md}`,
+    margin: "0rem var(--side-spacing)",
   }),
   textHighlight: css({
     color: colors.orange,
