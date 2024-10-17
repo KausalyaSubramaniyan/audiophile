@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, radius } from "../styles/CommonStyles";
+import { colors, mediaQuery, radius } from "../styles/CommonStyles";
 import Button from "./Button";
 import Spacer from "./Spacer";
 
@@ -8,11 +8,23 @@ function SpeakerHighlight() {
     <>
       <div css={styles.highlights.speaker.zx9.container}>
         <div css={styles.highlights.speaker.zx9.imgContainer}>
-          <img
-            alt="ZX9 Speaker"
-            src="images/home/desktop/image-speaker-zx9.png"
-            css={styles.highlights.speaker.zx9.img}
-          />
+          <picture>
+            <source
+              srcSet="images/home/mobile/image-speaker-zx9.png"
+              media="(max-width: 576px)"
+              css={styles.highlights.speaker.zx9.img}
+            />
+            <source
+              srcSet="images/home/tablet/image-speaker-zx9.png"
+              media="(max-width: 767px)"
+              css={styles.highlights.speaker.zx9.img}
+            />
+            <img
+              alt="ZX9 Speaker"
+              src="images/home/desktop/image-speaker-zx9.png"
+              css={styles.highlights.speaker.zx9.img}
+            />
+          </picture>
         </div>
         <div css={styles.highlights.speaker.zx9.textContainer}>
           <div css={styles.highlights.speaker.zx9.text}>
@@ -27,12 +39,10 @@ function SpeakerHighlight() {
       </div>
       <Spacer value="3rem" />
       <div css={styles.highlights.speaker.zx7.container}>
-        <div>
-          <h4>ZX7 SPEAKER</h4>
-          <Button color="black" variant="outlined">
-            SEE PRODUCT
-          </Button>
-        </div>
+        <h4>ZX7 SPEAKER</h4>
+        <Button color="black" variant="outlined">
+          SEE PRODUCT
+        </Button>
       </div>
     </>
   );
@@ -41,11 +51,23 @@ function SpeakerHighlight() {
 function EarphoneHighlight() {
   return (
     <div css={styles.highlights.earphone.container}>
-      <img
-        alt="yx1 earphone"
-        src="images/home/desktop/image-earphones-yx1.jpg"
-        css={styles.highlights.earphone.img}
-      />
+      <picture css={styles.highlights.earphone.imgContainer}>
+        <source
+          srcSet="images/home/mobile/image-earphones-yx1.jpg"
+          media="(max-width: 576px)"
+          css={styles.highlights.earphone.img}
+        />
+        <source
+          srcSet="images/home/tablet/image-earphones-yx1.jpg"
+          media="(max-width: 767px)"
+          css={styles.highlights.earphone.img}
+        />
+        <img
+          alt="yx1 earphone"
+          src="images/home/desktop/image-earphones-yx1.jpg"
+          css={styles.highlights.earphone.img}
+        />
+      </picture>
       <div css={styles.highlights.earphone.textContainer}>
         <div css={styles.highlights.earphone.text}>
           <h4>YX1 EARPHONES</h4>
@@ -58,6 +80,7 @@ function EarphoneHighlight() {
   );
 }
 
+// TODO - See if sidebysidelayout can be used for earphone
 export default function Highlights() {
   return (
     <>
@@ -73,19 +96,35 @@ const styles = {
     speaker: {
       zx9: {
         container: css({
-          background: colors.orange,
+          background: "var(--color-primary)",
           height: "35rem",
           display: "flex",
           borderRadius: radius.md,
           backgroundImage: "url(/images/home/desktop/pattern-circles.svg)",
           backgroundPosition: "-195px -40px",
           backgroundRepeat: "no-repeat",
+          [mediaQuery[2]]: {
+            flexDirection: "column",
+            height: "40rem",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "var(--spacing-2-5) 0",
+          },
         }),
         text: css({
           width: "80%",
           p: {
             opacity: "78%",
             mixBlendMode: "normal",
+          },
+          [mediaQuery[2]]: {
+            textAlign: "center",
+          },
+          [mediaQuery[1]]: {
+            textAlign: "center",
+          },
+          [mediaQuery[0]]: {
+            textAlign: "center",
           },
         }),
         textContainer: css({
@@ -95,10 +134,23 @@ const styles = {
           justifyContent: "center",
           alignItems: "flex-start",
           flexDirection: "column",
+          [mediaQuery[2]]: {
+            width: "50%",
+            alignItems: "center",
+          },
         }),
         img: css({
           height: "450px",
           width: "350px",
+          verticalAlign: "middle",
+          [mediaQuery[2]]: {
+            height: "250px",
+            width: "210px",
+          },
+          [mediaQuery[1]]: {
+            height: "210px",
+            width: "160px",
+          },
           objectPosition: "100% 12px",
         }),
         imgContainer: css({
@@ -112,9 +164,23 @@ const styles = {
         container: css({
           height: "300px",
           backgroundImage: "url(/images/home/desktop/image-speaker-zx7.jpg)",
+          backgroundRepeat: "no-repeat",
           display: "flex",
-          alignItems: "center",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          justifyContent: "center",
           padding: "0% 10%",
+          backgroundSize: "100% 100%",
+          borderRadius: "var(--radius-md)",
+          [mediaQuery[2]]: {
+            backgroundImage: "url(/images/home/tablet/image-speaker-zx7.jpg)",
+          },
+          [mediaQuery[1]]: {
+            backgroundImage: "url(/images/home/tablet/image-speaker-zx7.jpg)",
+          },
+          [mediaQuery[0]]: {
+            backgroundImage: "url(/images/home/mobile/image-speaker-zx7.jpg)",
+          },
         }),
       },
     },
@@ -122,21 +188,37 @@ const styles = {
       container: css({
         height: "300px",
         display: "flex",
-        justifyContent: "space-between",
+        columnGap: "var(--spacing-2)",
+        [mediaQuery[0]]: {
+          flexWrap: "wrap",
+          rowGap: "var(--spacing-2)",
+        },
+        width: "100%",
       }),
       textContainer: css({
         backgroundColor: colors.grey,
-        width: "48.5%",
+        width: "50%",
         borderRadius: radius.md,
         display: "flex",
         alignItems: "center",
+        height: "100%",
+        [mediaQuery[0]]: {
+          width: "100%",
+        },
       }),
       text: css({
-        padding: "0% 20%",
+        padding: "0% 10%",
+      }),
+      imgContainer: css({
+        width: "50%",
+        [mediaQuery[0]]: {
+          width: "100%",
+        },
       }),
       img: css({
-        width: "48.5%",
+        maxWidth: "100%",
         borderRadius: radius.md,
+        height: "100%",
       }),
     },
   },
