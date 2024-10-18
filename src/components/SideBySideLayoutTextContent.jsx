@@ -19,10 +19,12 @@ export default function SideBySideLayoutTextContent({
 
 const styles = {
   container: css({
-    width: "40%",
+    width: "80%",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
   }),
   description: css({
     opacity: "55%",

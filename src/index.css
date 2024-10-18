@@ -26,10 +26,13 @@
 
   --font-size-15: 15px;
   --font-size-18: 18px;
+  --font-size-28: 28px;
   --font-size-36: 36px;
+  --font-size-40: 40px;
   --font-size-56: 56px;
 
   --font-size-h1: var(--font-size-56);
+  --font-size-h2: var(--font-size-40);
   --font-size-h6: var(--font-size-18);
 
   --device-sm: 576px;
@@ -70,7 +73,7 @@ h1 {
 h2 {
   font-family: Manrope;
   font-weight: 700;
-  font-size: 40px;
+  font-size: var(--font-size-h2);
   line-height: 44px;
   letter-spacing: 1.5px;
   margin: 0rem 0rem 1rem 0rem;
@@ -133,7 +136,11 @@ h6 {
 @media screen and (max-width: 576px) {
   :root {
     --side-spacing: var(--spacing-1);
-    --font-size-h6: var(--font-size-15);
     --font-size-h1: var(--font-size-36);
+    --font-size-h2: var(--font-size-28);
+    --font-size-h6: var(--font-size-15);
+  }
+  h2 {
+    margin: 0;
   }
 }

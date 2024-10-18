@@ -192,18 +192,20 @@ const styles = {
         [mediaQuery[0]]: {
           flexWrap: "wrap",
           rowGap: "var(--spacing-2)",
+          height: "400px",
         },
         width: "100%",
       }),
       textContainer: css({
-        backgroundColor: colors.grey,
+        backgroundColor: "var(--color-grey-200)",
         width: "50%",
-        borderRadius: radius.md,
+        borderRadius: "var(--radius-md)",
         display: "flex",
         alignItems: "center",
         height: "100%",
         [mediaQuery[0]]: {
           width: "100%",
+          height: "50%",
         },
       }),
       text: css({
@@ -213,11 +215,12 @@ const styles = {
         width: "50%",
         [mediaQuery[0]]: {
           width: "100%",
+          height: "50%",
         },
       }),
       img: css({
-        maxWidth: "100%",
-        borderRadius: radius.md,
+        width: "100%",
+        borderRadius: "var(--radius-md)",
         height: "100%",
       }),
     },
