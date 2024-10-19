@@ -27,11 +27,11 @@ export default function Layout({ heroSection, content }) {
                 }
               />
             }
-            imgurls={[
-              "/images/shared/mobile/image-best-gear.jpg",
-              "/images/shared/tablet/image-best-gear.jpg",
-              "/images/shared/desktop/image-best-gear.jpg",
-            ]}
+            imgUrls={{
+              mobile: "/images/shared/mobile/image-best-gear.jpg",
+              tablet: "/images/shared/tablet/image-best-gear.jpg",
+              desktop: "/images/shared/desktop/image-best-gear.jpg",
+            }}
             imgDimension={{ height: "39rem", width: "100%" }}
           />
         </div>

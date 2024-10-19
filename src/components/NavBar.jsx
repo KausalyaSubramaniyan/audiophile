@@ -39,6 +39,7 @@ const navBarStyles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "1.2rem var(--side-spacing)",
+    backgroundColor: "var(--color-black-900)"
   }),
   cartButton: css({
     background: "none",

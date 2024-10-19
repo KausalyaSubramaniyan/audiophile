@@ -21,14 +21,14 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.lightBlack,
-    color: colors.white,
+    backgroundColor: "var(--color-black-900)",
+    color: "var(--color-white-1000)",
   }),
   line: {
     margin: "0rem var(--side-spacing)",
     opacity: "25%",
   },
   lineContainer: {
-    background: colors.lightBlack,
+    background: "var(--color-black-900)",
   },
 };

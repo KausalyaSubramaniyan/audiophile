@@ -40,7 +40,7 @@ export const radius = {
   lg: "10px",
 };
 
-const breakpoints = [576, 767, 992, 1200];
+const breakpoints = [576, 768, 992, 1200];
 export const mediaQuery = breakpoints.map(
   (breakpoint) => `@media (max-width: ${breakpoint}px)`
 );

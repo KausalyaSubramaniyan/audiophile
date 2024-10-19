@@ -141,7 +141,7 @@ const detailsStyles = {
   btnContainer: css({
     display: "flex",
     columnGap: "1rem",
-    height: "3.25rem"
+    height: "3.25rem",
   }),
   about: css({
     display: "flex",
