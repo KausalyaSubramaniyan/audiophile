@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, subTitle } from "../styles/CommonStyles";
+import { colors, mediaQuery, subTitle } from "../styles/CommonStyles";
 import { useEffect, useState } from "react";
 import { productDetailsData } from "../data/constants";
 import Recommendations from "../components/Recommendations";
@@ -32,22 +32,22 @@ export default function ProductDetails() {
 
   const getFeatures = () => {
     return (
-      <div css={detailsStyles.features}>
+      <div css={styles.features}>
         <h3>FEATURES</h3>
-        <p>{productInfo.description}</p>
+        <p css={styles.aboutText}>{productInfo.description}</p>
       </div>
     );
   };
 
   const getBox = () => {
     return (
-      <div css={detailsStyles.box}>
+      <div css={styles.box}>
         <h3>IN THE BOX</h3>
         <ul>
           {productInfo.inTheBox.map((i) => (
             <ol key={i.item}>
-              <span css={detailsStyles.textHighlight}>{i.quantity}</span>
-              <span css={subTitle}>{i.item}</span>
+              <span css={styles.textHighlight}>{i.quantity}</span>
+              <span css={styles.aboutText}>{i.item}</span>
             </ol>
           ))}
         </ul>
@@ -73,8 +73,10 @@ export default function ProductDetails() {
 
   const getContent = () => {
     return (
-      <>
-        <p css={subTitle}>Go Back</p>
+      <div>
+        <Spacer value="5rem" />
+        <p>Go Back</p>
+        <Spacer value="3rem" />
         <SideBySideLayout
           isImgLeft={true}
           content={
@@ -83,33 +85,45 @@ export default function ProductDetails() {
               tag={product.tag}
               description={product.description}
               suffix={
-                <div css={detailsStyles.btnContainer}>
-                  <Counter
-                    count={count}
-                    increment={increment}
-                    decrement={decrement}
-                  />
-                  <Button onClick={() => addToCart()}>ADD TO CART</Button>
+                <div>
+                  {productInfo && Object.keys(productInfo).length > 0 && (
+                    <>
+                      <Spacer value="2rem" />
+                      <h6>
+                        {productInfo.currencySymbol} {productInfo.amount}
+                      </h6>
+                      <Spacer value="3rem" />
+                    </>
+                  )}
+                  <div css={styles.btnContainer}>
+                    <Counter
+                      count={count}
+                      increment={increment}
+                      decrement={decrement}
+                    />
+                    <Button onClick={() => addToCart()}>ADD TO CART</Button>
+                  </div>
                 </div>
               }
             />
           }
-          imgurl={product.imgUrl}
+          imgUrls={product.imgUrls}
           imgDimension={{ height: "560px", width: "538px" }}
         ></SideBySideLayout>
         {productInfo && Object.keys(productInfo).length > 0 && (
           <div>
-            <div css={detailsStyles.about}>
+            <Spacer value="7rem" />
+            <div css={styles.about}>
               {getFeatures()}
               {getBox()}
             </div>
             <Spacer value="7rem" />
             <Gallery imgs={productInfo.gallery} />
-            <Recommendations products={productInfo.recommendations} />
+            {/* <Recommendations products={productInfo.recommendations} /> */}
           </div>
         )}
         <ProductCards />
-      </>
+      </div>
     );
   };
 
@@ -120,7 +134,7 @@ export default function ProductDetails() {
   );
 }
 
-const detailsStyles = {
+const styles = {
   counter: css({
     display: "flex",
     width: "140px",
@@ -146,25 +160,39 @@ const detailsStyles = {
   about: css({
     display: "flex",
     justifyContent: "space-between",
+    [mediaQuery[1]]: {
+      display: "flex",
+      flexDirection: "column"
+      // flexWrap: "wrap",
+    }
   }),
   features: css({
     display: "flex",
     width: "55%",
     flexDirection: "column",
+    [mediaQuery[1]]: {
+      width: "100%"
+    }
   }),
-  featureText: css([
-    subTitle,
-    {
-      opacity: "100%",
-      whiteSpace: "pre-line",
-    },
-  ]),
+  aboutText: css({
+    opacity: "50%",
+    whiteSpace: "pre-line",
+  }),
   box: css({
     display: "flex",
     width: "35%",
     flexDirection: "column",
     ul: { padding: "0" },
-    ol: { padding: "0" },
+    ol: { padding: "0rem 0rem 0.2rem 0rem" },
+    [mediaQuery[1]]: {
+      width: "100%",
+      flexDirection: "row",
+      columnGap: "25%"
+    },
+    [mediaQuery[0]]: {
+      width: "100%",
+      flexDirection: "column",
+    }
   }),
   textHighlight: css({
     color: colors.orange,

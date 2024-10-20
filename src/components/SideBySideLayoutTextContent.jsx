@@ -34,6 +34,7 @@ const styles = {
     opacity: "55%",
   }),
   tag: css([overline, {
-    color: "var(--color-primary)"
+    color: "var(--color-primary)",
+    marginTop: "0"
   }])
 };
