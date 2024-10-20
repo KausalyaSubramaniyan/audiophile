@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { radius } from "../styles/CommonStyles";
+import { mediaQuery, radius } from "../styles/CommonStyles";
 
 export default function Gallery({ imgs }) {
   return (
@@ -15,21 +15,31 @@ const galleryStyles = {
   container: css({
     display: "grid",
     gap: "2rem 2rem",
-    gridTemplateColumns: "1fr 1fr",
+    gridTemplateColumns: "1.5fr 1fr 1fr",
     gridTemplateRows: "1fr 1fr",
-    gridTemplateAreas: `"first third"
-                        "second third"`,
+    gridTemplateAreas: `"first third third"
+                        "second third third"`,
+    img: {
+      borderRadius: radius.md,
+      height: "100%",
+      width: "100%",
+    },
+
+    [mediaQuery[0]]: {
+      gridTemplateColumns: "1fr",
+      gridTemplateRows: "1fr 1fr 1.5fr",
+      gridTemplateAreas: `"first"
+                        "second"
+                        "third"`,
+    },
   }),
   first: css({
     gridArea: "first",
-    borderRadius: radius.md,
   }),
   second: css({
     gridArea: "second",
-    borderRadius: radius.md,
   }),
   third: css({
     gridArea: "third",
-    borderRadius: radius.md,
   }),
 };

@@ -118,8 +118,9 @@ export default function ProductDetails() {
               {getBox()}
             </div>
             <Spacer value="7rem" />
-            {/* <Gallery imgs={productInfo.gallery} /> */}
+            <Gallery imgs={productInfo.gallery} />
             <Recommendations products={productInfo.recommendations} />
+            <Spacer value="5rem" />
           </div>
         )}
         <ProductCards />
@@ -162,17 +163,17 @@ const styles = {
     justifyContent: "space-between",
     [mediaQuery[1]]: {
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
       // flexWrap: "wrap",
-    }
+    },
   }),
   features: css({
     display: "flex",
     width: "55%",
     flexDirection: "column",
     [mediaQuery[1]]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   }),
   aboutText: css({
     opacity: "50%",
@@ -187,12 +188,12 @@ const styles = {
     [mediaQuery[1]]: {
       width: "100%",
       flexDirection: "row",
-      columnGap: "25%"
+      columnGap: "25%",
     },
     [mediaQuery[0]]: {
       width: "100%",
       flexDirection: "column",
-    }
+    },
   }),
   textHighlight: css({
     color: colors.orange,
