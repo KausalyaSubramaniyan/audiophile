@@ -9,6 +9,7 @@ import Cart from "./Cart";
 import Overlay from "./Overlay";
 import Nav from "./Nav";
 
+// TODO - Implement icon button
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
   return (
@@ -38,8 +39,9 @@ const navBarStyles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "1.2rem var(--side-spacing)",
-    backgroundColor: "var(--color-black-900)"
+    padding: "0rem var(--side-spacing)",
+    backgroundColor: "var(--color-black-900)",
+    height: "var(--nav-bar-height)"
   }),
   cartButton: css({
     background: "none",

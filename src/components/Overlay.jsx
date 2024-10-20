@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, radius } from "../styles/CommonStyles";
+import { colors, mediaQuery, radius } from "../styles/CommonStyles";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export default function Overlay({
@@ -32,8 +32,8 @@ export default function Overlay({
         });
       case "top-right": {
         return css({
-          top: `10%`,
-          left: `calc(100% - 10rem - ${childDimensions.width}px)`,
+          top: "calc(var(--nav-bar-height) + var(--spacing-2))",
+          right: "var(--side-spacing)"
         });
       }
       default:
@@ -71,5 +71,8 @@ const styles = {
     zIndex: "2",
     opacity: "100%",
     borderRadius: radius.md,
+    [mediaQuery[0]]: {
+      left: "var(--side-spacing)"
+    }
   }),
 };
