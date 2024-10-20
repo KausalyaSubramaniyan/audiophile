@@ -118,8 +118,8 @@ export default function ProductDetails() {
               {getBox()}
             </div>
             <Spacer value="7rem" />
-            <Gallery imgs={productInfo.gallery} />
-            {/* <Recommendations products={productInfo.recommendations} /> */}
+            {/* <Gallery imgs={productInfo.gallery} /> */}
+            <Recommendations products={productInfo.recommendations} />
           </div>
         )}
         <ProductCards />

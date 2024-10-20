@@ -37,7 +37,7 @@
   --font-size-h6: var(--font-size-18);
 
   --device-sm: 576px;
-  --device-md: 767px;
+  --device-md: 768px;
   --device-lg: 992px;
   --device-xl: 1200px;
 }

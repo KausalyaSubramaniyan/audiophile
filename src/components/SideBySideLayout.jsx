@@ -17,7 +17,7 @@ export default function SideBySideLayout({
         />
         <source
           srcSet={imgUrls["tablet"]}
-          media="(max-width: 767px)"
+          media="(max-width: 768px)"
           css={styles.img}
         />
         <img srcSet={imgUrls["desktop"]} css={styles.img} />

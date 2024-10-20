@@ -16,7 +16,7 @@ function SpeakerHighlight() {
             />
             <source
               srcSet="images/home/tablet/image-speaker-zx9.png"
-              media="(max-width: 767px)"
+              media="(max-width: 768px)"
               css={styles.highlights.speaker.zx9.img}
             />
             <img
@@ -59,7 +59,7 @@ function EarphoneHighlight() {
         />
         <source
           srcSet="images/home/tablet/image-earphones-yx1.jpg"
-          media="(max-width: 767px)"
+          media="(max-width: 768px)"
           css={styles.highlights.earphone.img}
         />
         <img
