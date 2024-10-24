@@ -6,11 +6,13 @@ import NavBar from "../components/NavBar";
 import { colors, subTitle, spacing, radius } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
 import useBill from "../hooks/useBill";
 import Spacer from "../components/Spacer";
+import RadioButton from "../components/RadioButton";
+import { paymentsData } from "../data/constants";
 
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
@@ -18,13 +20,18 @@ export default function Checkout() {
   const { total, vat, shipping, grandTotal } = useBill(
     localStorage.getItem("products")
   );
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    setPayments(paymentsData());
+  }, []);
 
   const getForm = () => {
     return (
       <div css={styles.checkout}>
         <h3>CHECKOUT</h3>
         <div>
-          <p css={subTitle}>BILLING DETAILS</p>
+          <p css={styles.sectionTitle}>BILLING DETAILS</p>
           <div css={styles.section}>
             <Input id="name" label="Name" placeholder="Alexei Ward" />
             <Input
@@ -41,12 +48,13 @@ export default function Checkout() {
         </div>
         <Spacer value="3rem" />
         <div>
-          <p css={subTitle}>SHIPPING INFO</p>
+          <p css={styles.sectionTitle}>SHIPPING INFO</p>
           <div css={styles.section}>
             <Input
               id="address"
               label="Address"
               placeholder="1137 Williams Avenue"
+              fullWidth
             />
             <Input id="zip-code" label="ZIP Code" placeholder="10001" />
             <Input id="city" label="City" placeholder="New York" />
@@ -54,17 +62,15 @@ export default function Checkout() {
           </div>
         </div>
         <Spacer value="3rem" />
-        <div>
-          <p css={subTitle}>PAYMENT DETAILS</p>
-          <div css={styles.section}>
-            <Input
-              id="e-money-number"
-              label="e-Money Number"
-              placeholder="238521993"
-            />
-            <Input id="e-money-pin" label="e-Money PIN" placeholder="6891" />
+        {payments && (
+          <div>
+            <p css={styles.sectionTitle}>PAYMENT DETAILS</p>
+            <div css={styles.section}>
+              <p>Payment Method</p>
+              <RadioButton name="payment" options={payments} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   };
@@ -114,7 +120,7 @@ export default function Checkout() {
       <div css={styles.summary}>
         <h6>SUMMARY</h6>
         <Spacer value="3rem" />
-        {getItems()}
+        <div css={styles.items}>{getItems()}</div>
         <Button size="stretch" onClick={() => setIsVisible(true)}>
           CONTINUE & PAY
         </Button>
@@ -140,12 +146,12 @@ export default function Checkout() {
 const styles = {
   container: css({
     backgroundColor: "#F2F2F2",
-    padding: "0rem var(--side-spacing)",
+    padding: "8rem var(--side-spacing)",
     display: "flex",
     justifyContent: "space-between",
   }),
   checkout: css({
-    maxWidth: "58%",
+    maxWidth: "57.5%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
     borderRadius: radius.md,
@@ -154,18 +160,29 @@ const styles = {
     },
   }),
   summary: css({
-    width: "25%",
+    width: "26%",
     backgroundColor: colors.white,
     padding: "2rem",
     borderRadius: radius.md,
     maxHeight: "35rem",
   }),
+  items: css({
+    overflowY: "auto",
+    height: "80%",
+  }),
   section: css({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    rowGap: "1rem",
+    rowGap: "1.5rem",
   }),
+  sectionTitle: css([
+    subTitle,
+    {
+      color: "var(--color-primary)",
+      opacity: "100%",
+    },
+  ]),
   billText: css({
     p: {
       margin: "8px 0px",

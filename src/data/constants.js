@@ -11,6 +11,8 @@ import zx9 from "./speakers/zx9.json";
 import zx7 from "./speakers/zx7.json";
 import yx1 from "./earphones/yx1.json";
 
+import paymentsResponse from "./payments.json";
+
 export const productData = (product) => {
   switch (product) {
     case "HEADPHONES":
@@ -37,4 +39,8 @@ export const productDetailsData = (productId) => {
     case 9:
       return yx1;
   }
+};
+
+export const paymentsData = () => {
+  return paymentsResponse;
 };
