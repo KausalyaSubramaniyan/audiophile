@@ -29,6 +29,20 @@ export const subTitle = css({
   opacity: "50%",
 });
 
+export const inputStyles = {
+  input: css({
+    border: "1px solid #CFCFCF",
+    width: "100%",
+    height: "3.5rem",
+    boxSizing: "border-box",
+    borderRadius: "var(--radius-md)",
+  }),
+  label: css({
+    fontWeight: "700",
+    fontSize: "12.5px",
+  }),
+};
+
 // TODO - Switch to md and lg
 export const spacing = {
   sm: "10rem",

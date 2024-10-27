@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { productData } from "../data/constants";
+import { productData } from "../data/mock";
 
 import Layout from "../components/Layout";
 import ProductCards from "../components/ProductCards";

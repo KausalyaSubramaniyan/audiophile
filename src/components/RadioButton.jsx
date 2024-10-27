@@ -1,6 +1,13 @@
 import { css } from "@emotion/react";
+import { inputStyles } from "../styles/CommonStyles";
 
-export default function RadioButton({ name, options }) {
+export default function RadioButton({
+  name,
+  options,
+  checked,
+  onChange,
+  ...props
+}) {
   return (
     <div css={styles.container}>
       {options &&
@@ -8,10 +15,13 @@ export default function RadioButton({ name, options }) {
           <label key={option.value} css={styles.input}>
             <input
               id={option.value}
+              value={option.value}
               type="radio"
               name={name}
-              value={option.value}
+              checked={checked === option.value}
               css={styles.radio}
+              onChange={onChange}
+              {...props}
             />
             {option.label}
           </label>
@@ -20,7 +30,6 @@ export default function RadioButton({ name, options }) {
   );
 }
 
-// TODO - Move code to input component
 const styles = {
   container: css({
     display: "flex",
@@ -28,16 +37,15 @@ const styles = {
     width: "20.5rem",
     rowGap: "var(--spacing-1)",
   }),
-  input: css({
-    border: "1px solid #CFCFCF",
-    padding: "0.9rem 0.8rem",
-    width: "100%",
-    boxSizing: "border-box",
-    borderRadius: "var(--radius-md)",
-    display: "flex",
-    alignItems: "center",
-    columnGap: "var(--spacing-1)",
-  }),
+  input: css([
+    inputStyles.input,
+    {
+      padding: "0.9rem 0.8rem",
+      display: "flex",
+      alignItems: "center",
+      columnGap: "var(--spacing-1)",
+    },
+  ]),
   radio: css({
     height: "1.2rem",
     width: "1.2rem",

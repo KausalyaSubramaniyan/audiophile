@@ -6,9 +6,11 @@
   --color-orange-700: #d87d4a;
   --color-grey-100: #fafafa;
   --color-grey-200: #f1f1f1;
+  --color-red-600: #cd2c2c;
 
   --color-primary: var(--color-orange-700);
   --color-secondary: var(--color-black-1000);
+  --color-error: var(--color-red-600);
 
   --spacing-0: 0rem;
   --spacing-0-5: 0.5rem;
