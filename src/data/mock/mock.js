@@ -1,8 +1,8 @@
 // This file will be removed after integrating with backend
 
-import headphones from "./heaphones.json";
-import speakers from "./speakers.json";
-import earphones from "./earphones.json";
+import headphones from "./headphones/heaphones.json";
+import speakers from "./speakers/speakers.json";
+import earphones from "./earphones/earphones.json";
 
 import markII from "./headphones/mark-II.json";
 import markI from "./headphones/mark-I.json";

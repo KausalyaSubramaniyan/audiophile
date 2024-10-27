@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Card from "./Card";
-import response from "../data/products.json";
+import response from "../data/mock/products.json";
 import { mediaQuery } from "../styles/CommonStyles";
 
 export default function ProductCards() {

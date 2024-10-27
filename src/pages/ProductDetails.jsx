@@ -6,7 +6,7 @@ import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
 import { colors, mediaQuery, subTitle } from "../styles/CommonStyles";
 import { useEffect, useState } from "react";
-import { productDetailsData } from "../data/mock";
+import { productDetailsData } from "../data/mock/mock";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import { useLocation } from "react-router-dom";

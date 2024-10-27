@@ -18,7 +18,7 @@ import Confirmation from "../components/Confirmation";
 import useBill from "../hooks/useBill";
 import Spacer from "../components/Spacer";
 import RadioButton from "../components/RadioButton";
-import { paymentsData } from "../data/mock";
+import { paymentsData } from "../data/mock/mock";
 import { inputCriteria } from "../data/constant";
 
 // TODO - Handle no items to checkout scenario
