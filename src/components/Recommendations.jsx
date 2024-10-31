@@ -3,7 +3,6 @@ import Button from "./Button";
 import { colors, mediaQuery } from "../styles/CommonStyles";
 
 function RecommendationCard({ product }) {
-  console.log("my", product, product.imgUrls, product.imgUrls["tablet"]);
   return (
     <div css={styles.card}>
       <picture css={styles.imgContainer}>

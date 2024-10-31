@@ -43,6 +43,12 @@ export const inputStyles = {
   }),
 };
 
+export const centerAlign = css({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
 // TODO - Switch to md and lg
 export const spacing = {
   sm: "10rem",

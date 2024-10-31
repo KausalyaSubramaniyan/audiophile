@@ -13,7 +13,7 @@ export default function Item({ name, amount, currSymbol, child }) {
           </p>
         </div>
       </div>
-      <div>{child}</div>
+      {child}
     </div>
   );
 }
@@ -30,8 +30,8 @@ const itemStyles = {
     display: "flex",
     alignItems: "center",
     img: {
-      height: "80px",
-      width: "80px",
+      height: "64px",
+      width: "64px",
       borderRadius: radius.lg,
       marginRight: "1rem",
     },
