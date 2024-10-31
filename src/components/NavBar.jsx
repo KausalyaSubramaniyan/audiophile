@@ -8,18 +8,19 @@ import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 import Cart from "./Cart";
 import Overlay from "./Overlay";
 import Nav from "./Nav";
+import { useSelector } from "react-redux";
 
 // TODO - Implement icon button
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
+  const items = useSelector((state) => state.cart.items);
+  const itemsCount = items ? items.length : 0;
   return (
-    <div css={navBarStyles.container}>
+    <div css={styles.container}>
       <Logo />
       <Nav />
-      <button
-        onClick={() => setIsVisible(!isVisible)}
-        css={navBarStyles.cartButton}
-      >
+      <button onClick={() => setIsVisible(!isVisible)} css={styles.cartButton}>
+        {itemsCount && <div css={styles.badge}>{itemsCount}</div>}
         <CartIcon />
       </button>
       <Overlay
@@ -33,7 +34,7 @@ export default function NavBar() {
   );
 }
 
-const navBarStyles = {
+const styles = {
   container: css({
     color: colors.white,
     display: "flex",
@@ -41,7 +42,7 @@ const navBarStyles = {
     alignItems: "center",
     padding: "0rem var(--side-spacing)",
     backgroundColor: "var(--color-black-900)",
-    height: "var(--nav-bar-height)"
+    height: "var(--nav-bar-height)",
   }),
   cartButton: css({
     background: "none",
@@ -49,5 +50,20 @@ const navBarStyles = {
     "&:hover": {
       cursor: "pointer",
     },
+    position: "relative",
+  }),
+  badge: css({
+    height: "20px",
+    width: "20px",
+    borderRadius: "50%",
+    backgroundColor: "var(--color-primary)",
+    position: "absolute",
+    left: "45%",
+    bottom: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "12px",
+    color: "var(--color-white-1000)",
   }),
 };

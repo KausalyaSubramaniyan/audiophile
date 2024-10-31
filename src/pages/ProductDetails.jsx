@@ -1,26 +1,28 @@
 import { css } from "@emotion/react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, mediaQuery, subTitle } from "../styles/CommonStyles";
-import { useEffect, useState } from "react";
+import { colors, mediaQuery } from "../styles/CommonStyles";
 import { productDetailsData } from "../data/mock/mock";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
-import { useLocation } from "react-router-dom";
 import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
 import useCounter from "../hooks/useCounter";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
+import { useAddItemMutation } from "../data/services/CartApi";
 
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
   const { product } = useLocation().state;
   const [productInfo, setProductInfo] = useState({});
   const { count, increment, decrement } = useCounter(1);
+  const [addItem] = useAddItemMutation();
 
   const getProductInfo = () => {
     setProductInfo(productDetailsData(product.id));
@@ -55,20 +57,14 @@ export default function ProductDetails() {
     );
   };
 
-  const addToCart = () => {
-    let products = localStorage.getItem("products");
-    if (products) {
-      products = JSON.parse(products);
-    } else {
-      products = {};
-    }
-
-    products[productInfo.name] = {
+  const addToCart = async () => {
+    // TODO - Handle remove and updateItem too
+    await addItem({
+      name: productInfo.name,
       amount: productInfo.amount,
       currSymbol: productInfo.currencySymbol,
       quantity: count,
-    };
-    localStorage.setItem("products", JSON.stringify(products));
+    });
   };
 
   const getContent = () => {

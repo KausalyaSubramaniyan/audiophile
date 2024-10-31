@@ -1,54 +1,47 @@
 import { css } from "@emotion/react";
-import { colors, mediaQuery } from "../styles/CommonStyles";
+
+import { centerAlign, colors, mediaQuery } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
 import Counter from "./Counter";
 import Spacer from "./Spacer";
-import useCounter from "../hooks/useCounter";
+import Spinner from "./Spinner";
+import {
+  useFetchItemsQuery,
+  useRemoveAllItemsMutation,
+  useRemoveItemMutation,
+  useUpdateQuantityMutation,
+} from "../data/services/CartApi";
 // import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
-import { useEffect, useState } from "react";
-
-function CartCounter({ quantity }) {
-  const { count, increment, decrement } = useCounter(quantity);
-  return <Counter count={count} increment={increment} decrement={decrement} />;
-}
 
 export default function Cart() {
-  const [items, setItems] = useState([]);
+  const { data, error, isLoading, isFetching } = useFetchItemsQuery();
+  const [updateQuantity] = useUpdateQuantityMutation();
+  const [removeAllItems] = useRemoveAllItemsMutation();
+  const [removeItem] = useRemoveItemMutation();
 
-  useEffect(() => {
-    getItems();
-  }, []);
-
-  const getItems = () => {
-    let products = localStorage.getItem("products");
-    if (!products) {
-      setItems([]);
-      return;
-    }
-
-    products = JSON.parse(products);
-    setItems(
-      Object.keys(products).map((name) => {
-        return (
-          <Item
-            key={name}
-            name={name}
-            amount={products[name]["amount"]}
-            currSymbol={products[name]["currSymbol"]}
-            child={<CartCounter quantity={products[name]["quantity"]} />}
-          />
-        );
-      })
+  if (isLoading) {
+    return (
+      <div css={[styles.container, centerAlign]}>
+        <Spinner />
+      </div>
     );
+  }
+
+  const updateItemQuantity = async (item, targetQuantity) => {
+    if (targetQuantity === 0) {
+      await removeItem(item);
+    } else {
+      await updateQuantity({ ...item, quantity: targetQuantity });
+    }
   };
 
-  const removeAll = () => {
-    localStorage.removeItem("products");
-    setItems([]);
-  };
+  // TODO - Comeup with generic error msg
+  if (error) {
+    return <p css={styles.container}>An error has occurred</p>;
+  }
 
-  if (items.length === 0) {
+  if (data && data.length === 0) {
     return (
       <div css={styles.container}>
         <h3>Your cart is empty!</h3>
@@ -57,15 +50,46 @@ export default function Cart() {
     );
   }
 
+  const getItems = () => {
+    if (!data) {
+      // TODO - Comeup with generic error msg
+      return <></>;
+    }
+
+    return data.map((item) => {
+      return (
+        <Item
+          key={item.name}
+          name={item.name}
+          amount={item.amount}
+          currSymbol={item.currSymbol}
+          child={
+            <div css={styles.counter}>
+              <Counter
+                count={item.quantity}
+                increment={() => updateItemQuantity(item, item.quantity + 1)}
+                decrement={() => updateItemQuantity(item, item.quantity - 1)}
+              />
+            </div>
+          }
+        />
+      );
+    });
+  };
+
+  const removeAll = async () => {
+    await removeAllItems();
+  };
+
   // TODO - Should this button be converted
   return (
     <div css={styles.container}>
       <div css={styles.top}>
-        <h6>CART({items.length})</h6>
+        <h6>CART({data.length})</h6>
         <button onClick={() => removeAll()}>Remove all</button>
       </div>
-      <Spacer value="1rem" />
-      <div css={styles.items}>{items}</div>
+      <Spacer value="2rem" />
+      <div css={styles.items}>{getItems()}</div>
       <Button size="stretch">CHECKOUT</Button>
     </div>
   );
@@ -76,7 +100,7 @@ const styles = {
     width: "22rem",
     padding: "2rem",
     height: "29rem",
-    color: colors.black,
+    color: "var(--color-secondary)",
     [mediaQuery[0]]: {
       width: "inherit",
     },
@@ -96,7 +120,12 @@ const styles = {
   }),
   items: css({
     overflowY: "auto",
-    height: "80%",
+    height: "60%",
+  }),
+  counter: css({
+    width: "6.5rem",
+    height: "2.5rem",
+    background: "red",
   }),
   // icon: css({
   //   stroke: "var(--color-secondary)",
