@@ -12,21 +12,15 @@ import {
   useRemoveItemMutation,
   useUpdateQuantityMutation,
 } from "../data/services/CartApi";
+import { useSelector } from "react-redux";
 // import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 
 export default function Cart() {
-  const { data, error, isLoading, isFetching } = useFetchItemsQuery();
+  const items = useSelector((state) => state.cart.items);
   const [updateQuantity] = useUpdateQuantityMutation();
   const [removeAllItems] = useRemoveAllItemsMutation();
   const [removeItem] = useRemoveItemMutation();
 
-  if (isLoading) {
-    return (
-      <div css={[styles.container, centerAlign]}>
-        <Spinner />
-      </div>
-    );
-  }
 
   const updateItemQuantity = async (item, targetQuantity) => {
     if (targetQuantity === 0) {
@@ -36,12 +30,8 @@ export default function Cart() {
     }
   };
 
-  // TODO - Comeup with generic error msg
-  if (error) {
-    return <p css={styles.container}>An error has occurred</p>;
-  }
 
-  if (data && data.length === 0) {
+  if (items.length === 0) {
     return (
       <div css={styles.container}>
         <h3>Your cart is empty!</h3>
@@ -51,12 +41,7 @@ export default function Cart() {
   }
 
   const getItems = () => {
-    if (!data) {
-      // TODO - Comeup with generic error msg
-      return <></>;
-    }
-
-    return data.map((item) => {
+    return items.map((item) => {
       return (
         <Item
           key={item.name}
@@ -85,7 +70,7 @@ export default function Cart() {
   return (
     <div css={styles.container}>
       <div css={styles.top}>
-        <h6>CART({data.length})</h6>
+        <h6>CART({items.length})</h6>
         <button onClick={() => removeAll()}>Remove all</button>
       </div>
       <Spacer value="2rem" />

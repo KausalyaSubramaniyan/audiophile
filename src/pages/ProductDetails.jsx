@@ -12,17 +12,50 @@ import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
-import useCounter from "../hooks/useCounter";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
-import { useAddItemMutation } from "../data/services/CartApi";
+import {
+  useAddItemMutation,
+  useRemoveItemMutation,
+  useUpdateQuantityMutation,
+} from "../data/services/CartApi";
+import { useSelector } from "react-redux";
 
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
   const { product } = useLocation().state;
   const [productInfo, setProductInfo] = useState({});
-  const { count, increment, decrement } = useCounter(1);
+
   const [addItem] = useAddItemMutation();
+  const [updateQuantity] = useUpdateQuantityMutation();
+  const [removeItem] = useRemoveItemMutation();
+
+  const items = useSelector((state) => state.cart.items);
+  const getItemCount = () => {
+    return items.find((item) => item.name === productInfo.name)?.quantity ?? 0;
+  };
+  const [count, setCount] = useState(getItemCount());
+  const [action, setAction] = useState("");
+
+  const increment = () => {
+    const itemCountInCart = getItemCount();
+    if (itemCountInCart === 0) {
+      setAction("ADD");
+    } else {
+      setAction("UPDATE");
+    }
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    const itemCountInCart = getItemCount();
+    if (itemCountInCart - 1 === 0) {
+      setAction("DELETE");
+    } else {
+      setAction("UPDATE");
+    }
+    setCount(count - 1);
+  };
 
   const getProductInfo = () => {
     setProductInfo(productDetailsData(product.id));
@@ -31,6 +64,12 @@ export default function ProductDetails() {
   useEffect(() => {
     getProductInfo();
   }, [product]);
+
+  // TODO - See if productInfo is needed after consolidating product
+  // and productInfo in single call
+  useEffect(() => {
+    setCount(getItemCount());
+  }, [items, productInfo]);
 
   const getFeatures = () => {
     return (
@@ -58,13 +97,19 @@ export default function ProductDetails() {
   };
 
   const addToCart = async () => {
-    // TODO - Handle remove and updateItem too
-    await addItem({
+    const payload = {
       name: productInfo.name,
       amount: productInfo.amount,
       currSymbol: productInfo.currencySymbol,
       quantity: count,
-    });
+    };
+    if (action === "ADD") {
+      await addItem(payload);
+    } else if (action === "UPDATE") {
+      await updateQuantity(payload);
+    } else if (action === "DELETE") {
+      await removeItem(payload);
+    }
   };
 
   const getContent = () => {

@@ -13,8 +13,8 @@ import { useSelector } from "react-redux";
 // TODO - Implement icon button
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
-  const items = useSelector((state) => state.cart.items);
-  const itemsCount = items ? items.length : 0;
+  const itemsCount = useSelector((state) => state.cart.items).length;
+
   return (
     <div css={styles.container}>
       <Logo />

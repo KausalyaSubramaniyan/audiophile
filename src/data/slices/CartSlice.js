@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cartApi } from "../services/CartApi";
 
-// TODO - Should we add all endpoints in matcher?
+// TODO - Verify logic again
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    fetched: false,
   },
   extraReducers: (builder) => {
     builder.addMatcher(
       cartApi.endpoints.fetchItems.matchFulfilled,
       (state, { payload }) => {
         state.items = payload;
+        state.fetched = true;
       }
     );
     builder.addMatcher(
@@ -28,16 +30,13 @@ export const cartSlice = createSlice({
         );
         if (existingItem) {
           existingItem.quantity = payload.quantity;
-        } else {
-          state.items = [...state.items, payload];
         }
       }
     );
     builder.addMatcher(
       cartApi.endpoints.removeItem.matchFulfilled,
       (state, { payload }) => {
-        const items = state.items.filter((item) => item.name !== payload.name);
-        state.items = items;
+        state.items = state.items.filter((item) => item.name !== payload.name);
       }
     );
     builder.addMatcher(
