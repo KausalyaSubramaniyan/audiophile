@@ -35,7 +35,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     padding: "0",
-    width: "40%",
+    width: "100%",
     ol: {
       padding: "0",
     },

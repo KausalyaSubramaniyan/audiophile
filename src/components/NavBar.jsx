@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-import { colors } from "../styles/CommonStyles";
+import { colors, mediaQuery } from "../styles/CommonStyles";
 
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
@@ -11,16 +11,23 @@ import Nav from "./Nav";
 import { useSelector } from "react-redux";
 
 // TODO - Implement icon button
-export default function NavBar() {
+export default function NavBar({ customStyles = css({}) }) {
   const [isVisible, setIsVisible] = useState(false);
   const itemsCount = useSelector((state) => state.cart.items).length;
 
   return (
-    <div css={styles.container}>
+    <div css={[styles.container, customStyles]}>
+      <div css={styles.hamburgerMenu}>
+        <div css={styles.line}></div>
+        <div css={styles.line}></div>
+        <div css={styles.line}></div>
+      </div>
       <Logo />
-      <Nav />
+      <div css={styles.nav}>
+        <Nav />
+      </div>
       <button onClick={() => setIsVisible(!isVisible)} css={styles.cartButton}>
-        {itemsCount && <div css={styles.badge}>{itemsCount}</div>}
+        {itemsCount > 0 && <div css={styles.badge}>{itemsCount}</div>}
         <CartIcon />
       </button>
       <Overlay
@@ -65,5 +72,25 @@ const styles = {
     alignItems: "center",
     fontSize: "12px",
     color: "var(--color-white-1000)",
+  }),
+  hamburgerMenu: css({
+    height: "20%",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    display: "none",
+    [mediaQuery[1]]: {
+      display: "flex",
+    },
+  }),
+  line: css({
+    height: "4px",
+    width: "20px",
+    backgroundColor: "var(--color-white-1000)",
+  }),
+  nav: css({
+    width: "40%",
+    [mediaQuery[1]]: {
+      display: "none",
+    },
   }),
 };

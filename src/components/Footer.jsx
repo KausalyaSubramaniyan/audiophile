@@ -27,7 +27,9 @@ export default function Footer() {
       <div css={styles.line} />
       <div css={styles.row1}>
         <Logo />
-        <Nav />
+        <div css={styles.navContainer}>
+          <Nav />
+        </div>
       </div>
       <Spacer value="1rem" />
       <div css={styles.row2}>
@@ -136,8 +138,8 @@ const styles = {
       textAlign: "center",
       width: "100%",
       p: {
-        width: "100%"
-      }
+        width: "100%",
+      },
     },
   }),
   line: css({
@@ -147,5 +149,8 @@ const styles = {
     background: "var(--color-primary)",
     height: "4px",
     width: "96px",
+  }),
+  navContainer: css({
+    width: "40%",
   }),
 };

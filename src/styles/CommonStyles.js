@@ -49,6 +49,13 @@ export const centerAlign = css({
   alignItems: "center",
 });
 
+export const line = css({
+  background: "var(--color-white-1000)",
+  opacity: "20%",
+  height: "1px",
+  margin: "0rem var(--side-spacing)",
+});
+
 // TODO - Switch to md and lg
 export const spacing = {
   sm: "10rem",

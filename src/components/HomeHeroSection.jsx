@@ -1,5 +1,11 @@
 import { css } from "@emotion/react";
-import { colors, overline, spacing } from "../styles/CommonStyles";
+import {
+  centerAlign,
+  colors,
+  line,
+  mediaQuery,
+  overline,
+} from "../styles/CommonStyles";
 
 import NavBar from "./NavBar";
 import Button from "./Button";
@@ -7,9 +13,9 @@ import Button from "./Button";
 export default function HomeHeroSection() {
   return (
     <div css={styles.container}>
-      <NavBar />
+      <NavBar customStyles={styles.navbar} />
       <div css={styles.lineContainer}>
-        <hr css={styles.line}></hr>
+        <div css={line}></div>
       </div>
       <div css={styles.heroContainer}>
         <div css={styles.text}>
@@ -34,7 +40,7 @@ const styles = {
     color: colors.white,
     height: "41rem",
     display: "flex",
-    padding: "0rem var(--side-spacing)",
+    margin: "0rem var(--side-spacing)",
     alignItems: "center",
   }),
   description: css({
@@ -45,6 +51,7 @@ const styles = {
     overline,
     {
       opacity: "49.64%",
+      marginTop: "0",
     },
   ]),
   text: css({
@@ -53,11 +60,10 @@ const styles = {
       width: "75%",
     },
   }),
-  line: {
-    margin: "0rem var(--side-spacing)",
-    opacity: "25%",
-  },
-  lineContainer: {
-    background: "#141414",
-  },
+  navbar: css({
+    backgroundColor: "transparent",
+  }),
+  lineContainer: css({
+    backgroundColor: "transparent",
+  }),
 };
