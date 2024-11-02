@@ -34,7 +34,15 @@ export default function HomeHeroSection() {
 
 const styles = {
   container: css({
+    height: "100%",
+    width: "100%",
     backgroundImage: "url(/images/home/desktop/image-hero.jpg)",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    [mediaQuery[1]]: {
+      backgroundImage: "url(/images/home/tablet/image-hero.jpg)",
+    },
   }),
   heroContainer: css({
     color: colors.white,
@@ -42,6 +50,14 @@ const styles = {
     display: "flex",
     margin: "0rem var(--side-spacing)",
     alignItems: "center",
+    [mediaQuery[1]]: css({
+      justifyContent: "center",
+      width: "100%",
+      margin: "0",
+    }),
+    [mediaQuery[0]]: css({
+      height: "36rem",
+    }),
   }),
   description: css({
     opacity: "75%",
@@ -55,10 +71,15 @@ const styles = {
     },
   ]),
   text: css({
-    width: "45%",
-    p: {
-      width: "75%",
-    },
+    width: "38%",
+    [mediaQuery[1]]: css([
+      centerAlign,
+      {
+        width: "48%",
+        flexDirection: "column",
+        textAlign: "center",
+      },
+    ]),
   }),
   navbar: css({
     backgroundColor: "transparent",
