@@ -101,7 +101,7 @@ const styles = {
           display: "flex",
           borderRadius: radius.md,
           backgroundImage: "url(/images/home/desktop/pattern-circles.svg)",
-          backgroundPosition: "-195px -40px",
+          backgroundPosition: "-90% 10%",          
           backgroundRepeat: "no-repeat",
           [mediaQuery[2]]: {
             flexDirection: "column",
@@ -109,6 +109,7 @@ const styles = {
             alignItems: "center",
             justifyContent: "space-between",
             padding: "var(--spacing-2-5) 0",
+            backgroundPosition: "50% 120%",
           },
         }),
         text: css({
