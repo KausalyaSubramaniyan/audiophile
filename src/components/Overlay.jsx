@@ -30,10 +30,15 @@ export default function Overlay({
           top: `calc(50% - ${childDimensions.height}px / 2)`,
           left: `calc(50% - ${childDimensions.width}px / 2)`,
         });
+      case "top-center":
+        return css({
+          top: "10%",
+          left: `calc(50% - ${childDimensions.width}px / 2)`,
+        });
       case "top-right": {
         return css({
           top: "calc(var(--nav-bar-height) + var(--spacing-2))",
-          right: "var(--side-spacing)"
+          right: "var(--side-spacing)",
         });
       }
       default:
@@ -72,7 +77,7 @@ const styles = {
     opacity: "100%",
     borderRadius: radius.md,
     [mediaQuery[0]]: {
-      left: "var(--side-spacing)"
-    }
+      left: "var(--side-spacing)",
+    },
   }),
 };

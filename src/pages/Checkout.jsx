@@ -272,6 +272,12 @@ export default function Checkout() {
     );
   };
 
+  const isValid = () => {
+    return Object.keys(inputData).every(
+      (field) => inputData[field].error === ""
+    );
+  };
+
   const getSummary = () => {
     return (
       <div css={styles.summary}>
@@ -286,7 +292,11 @@ export default function Checkout() {
         >
           CONTINUE & PAY
         </Button>
-        <Overlay open={isVisible} onClick={() => setIsVisible(!isVisible)}>
+        <Overlay
+          open={isVisible}
+          onClick={() => setIsVisible(!isVisible)}
+          placement="top-center"
+        >
           <Confirmation />
         </Overlay>
       </div>
