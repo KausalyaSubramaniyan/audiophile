@@ -46,6 +46,9 @@ const styles = {
       opacity: "100%",
       color: colors.white,
       textDecoration: "none",
+      "&:hover": {
+        color: "var(--color-primary)",
+      },
     },
   ]),
 };
