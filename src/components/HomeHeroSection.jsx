@@ -9,14 +9,13 @@ import {
 
 import NavBar from "./NavBar";
 import Button from "./Button";
+import Divider from "./Divider";
 
 export default function HomeHeroSection() {
   return (
     <div css={styles.container}>
       <NavBar customStyles={styles.navbar} />
-      <div css={styles.lineContainer}>
-        <div css={line}></div>
-      </div>
+      <Divider />
       <div css={styles.heroContainer}>
         <div css={styles.text}>
           <p css={styles.tag}>NEW PRODUCT</p>
@@ -82,9 +81,6 @@ const styles = {
     ]),
   }),
   navbar: css({
-    backgroundColor: "transparent",
-  }),
-  lineContainer: css({
     backgroundColor: "transparent",
   }),
 };
