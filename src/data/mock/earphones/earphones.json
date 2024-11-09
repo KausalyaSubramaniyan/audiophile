@@ -1,9 +1,13 @@
 [
   {
     "id": 9,
-    "imgUrl": "/images/product-yx1-earphones/desktop/image-product.jpg",
+    "imgUrls": {
+      "mobile": "/images/product-yx1-earphones/mobile/image-product.jpg",
+      "tablet": "/images/product-yx1-earphones/tablet/image-product.jpg",
+      "desktop": "/images/product-yx1-earphones/desktop/image-product.jpg"
+    },
     "tag": "NEW PRODUCT",
-    "title": "ZX9 SPEAKER",
-    "description": "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups."
+    "title": "YX1 WIRELESS EARPHONES",
+    "description": "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature."
   }
 ]
