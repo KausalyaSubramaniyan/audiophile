@@ -1,15 +1,22 @@
 import { css } from "@emotion/react";
-import { useState } from "react";
 import { colors } from "../styles/CommonStyles";
-import useCounter from "../hooks/useCounter";
 
-// TODO - Implement logic from removing from cart on count of zero
 export default function Counter({ count, increment, decrement }) {
   return (
     <div css={styles.counter}>
-      <button onClick={decrement}>-</button>
+      <button
+        onClick={decrement}
+        disabled={count <= 0}
+        css={
+          count <= 0 ? [styles.button, styles.buttonOnCountZero] : styles.button
+        }
+      >
+        -
+      </button>
       <p>{count}</p>
-      <button onClick={increment}>+</button>
+      <button onClick={increment} css={styles.button}>
+        +
+      </button>
     </div>
   );
 }
@@ -22,13 +29,22 @@ const styles = {
     background: colors.grey,
     justifyContent: "space-around",
     alignItems: "center",
-    button: {
-      border: "none",
+  }),
+  button: css({
+    border: "none",
+    color: colors.black,
+    opacity: "25%",
+    "&:hover": {
+      cursor: "pointer",
+      color: "var(--color-primary)",
+      opacity: "100%",
+    },
+  }),
+  buttonOnCountZero: css({
+    "&:hover": {
+      cursor: "auto",
       color: colors.black,
       opacity: "25%",
-      "&:hover": {
-        cursor: "pointer",
-      },
     },
   }),
 };

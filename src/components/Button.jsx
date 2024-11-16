@@ -17,6 +17,7 @@ export default function Button({
       },
       color: colors.white,
       padding: "1rem 0rem",
+      whiteSpace: "nowrap"
     };
 
     switch (variant) {

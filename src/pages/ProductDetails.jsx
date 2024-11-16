@@ -75,7 +75,7 @@ export default function ProductDetails() {
     return (
       <div css={styles.features}>
         <h3>FEATURES</h3>
-        <p css={styles.aboutText}>{productInfo.description}</p>
+        <p css={styles.aboutText}>{productInfo.features}</p>
       </div>
     );
   };
@@ -126,7 +126,7 @@ export default function ProductDetails() {
               tag={product.tag}
               description={product.description}
               suffix={
-                <div>
+                <div css={styles.productSummary}>
                   {productInfo && Object.keys(productInfo).length > 0 && (
                     <>
                       <Spacer value="2rem" />
@@ -137,11 +137,14 @@ export default function ProductDetails() {
                     </>
                   )}
                   <div css={styles.btnContainer}>
-                    <Counter
-                      count={count}
-                      increment={increment}
-                      decrement={decrement}
-                    />
+                    <div css={styles.counterContainer}>
+                      <Counter
+                        count={count}
+                        increment={increment}
+                        decrement={decrement}
+                      />
+                    </div>
+
                     <Button onClick={() => addToCart()}>ADD TO CART</Button>
                   </div>
                 </div>
@@ -193,6 +196,13 @@ const styles = {
         cursor: "pointer",
       },
     },
+  }),
+  productSummary: css({
+    width: "100%",
+    textAlign: "left",
+  }),
+  counterContainer: css({
+    width: "8rem",
   }),
   btnContainer: css({
     display: "flex",
