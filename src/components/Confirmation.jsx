@@ -6,17 +6,7 @@ import Button from "./Button";
 import Item from "./Item";
 import Spacer from "./Spacer";
 import Divider from "./Divider";
-
-function ItemWithQuantity({ item }) {
-  return (
-    <Item
-      name={item.name}
-      amount={item.amount}
-      currSymbol={item.currSymbol}
-      child={<p css={styles.quantity}>x{item.quantity}</p>}
-    ></Item>
-  );
-}
+import ItemWithQuantity from "./ItemWithQuantity";
 
 export default function Confirmation() {
   const [displayAll, setDisplayAll] = useState(false);
@@ -148,11 +138,6 @@ const styles = {
   }),
   totalAmount: css({
     fontSize: "18px",
-    margin: "0",
-  }),
-  quantity: css({
-    opacity: "50%",
-    fontWeight: "700",
     margin: "0",
   }),
   lineContainer: css({

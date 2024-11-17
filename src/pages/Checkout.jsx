@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import {
   colors,
@@ -12,7 +11,7 @@ import {
 } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
 import useBill from "../hooks/useBill";
@@ -20,6 +19,8 @@ import Spacer from "../components/Spacer";
 import RadioButton from "../components/RadioButton";
 import { paymentsData } from "../data/mock/mock";
 import { inputCriteria } from "../data/constant";
+import ItemWithQuantity from "../components/ItemWithQuantity";
+import { useSelector } from "react-redux";
 
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
@@ -27,6 +28,7 @@ export default function Checkout() {
   const { total, vat, shipping, grandTotal } = useBill(
     localStorage.getItem("products")
   );
+  const items = useSelector((state) => state.cart.items);
   // const [payments, setPayments] = useState([]);
   const [inputData, setInputData] = useState({
     name: { value: "", error: "" },
@@ -40,10 +42,6 @@ export default function Checkout() {
     ePin: { value: "", error: "" },
     eNum: { value: "", error: "" },
   });
-
-  // useEffect(() => {
-  //   setPayments(paymentsData());
-  // }, []);
 
   const getError = (ele) => {
     const criteria = inputCriteria[ele.name];
@@ -234,24 +232,11 @@ export default function Checkout() {
 
   // TODO - Can we make this generic?
   const getItems = () => {
-    const products = localStorage.getItem("products");
-    if (!products) return <></>;
-
-    const jsonProducts = JSON.parse(products);
-
-    const items = Object.keys(jsonProducts).map((name) => (
-      <Item
-        key={name}
-        name={name}
-        amount={jsonProducts[name]["amount"]}
-        currSymbol={jsonProducts[name]["currSymbol"]}
-        child={<p>x{jsonProducts[name]["quantity"]}</p>}
-      />
-    ));
-
     return (
       <>
-        {items}
+        {items.map((item) => (
+          <ItemWithQuantity item={item} key={item.name} />
+        ))}
         <div css={[styles.section, styles.billText]}>
           <p>TOTAL</p>
           <p css={styles.amount}>${total}</p>

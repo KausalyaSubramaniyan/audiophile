@@ -1,11 +1,10 @@
 import { css } from "@emotion/react";
 
-import { centerAlign, colors, mediaQuery } from "../styles/CommonStyles";
+import { colors, mediaQuery } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
 import Counter from "./Counter";
 import Spacer from "./Spacer";
-import Spinner from "./Spinner";
 import {
   useFetchItemsQuery,
   useRemoveAllItemsMutation,
@@ -21,7 +20,6 @@ export default function Cart() {
   const [removeAllItems] = useRemoveAllItemsMutation();
   const [removeItem] = useRemoveItemMutation();
 
-
   const updateItemQuantity = async (item, targetQuantity) => {
     if (targetQuantity === 0) {
       await removeItem(item);
@@ -29,7 +27,6 @@ export default function Cart() {
       await updateQuantity({ ...item, quantity: targetQuantity });
     }
   };
-
 
   if (items.length === 0) {
     return (
@@ -48,6 +45,7 @@ export default function Cart() {
           name={item.name}
           amount={item.amount}
           currSymbol={item.currSymbol}
+          imgUrl={item.imgUrl}
           child={
             <div css={styles.counter}>
               <Counter

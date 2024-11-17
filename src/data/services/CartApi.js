@@ -8,6 +8,7 @@ const saveItem = (item) => {
     amount: item.amount,
     currSymbol: item.currSymbol,
     quantity: item.quantity,
+    imgUrl: item.imgUrl
   };
   localStorage.setItem("products", JSON.stringify(items));
 
@@ -23,6 +24,7 @@ const getItems = (items = JSON.parse(localStorage.getItem("products"))) => {
       amount: items[itemName].amount,
       currSymbol: items[itemName].currSymbol,
       quantity: items[itemName].quantity,
+      imgUrl: items[itemName].imgUrl
     });
     return acc;
   }, []);

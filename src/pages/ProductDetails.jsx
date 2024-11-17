@@ -102,6 +102,7 @@ export default function ProductDetails() {
       amount: productInfo.amount,
       currSymbol: productInfo.currencySymbol,
       quantity: count,
+      imgUrl: product.imgUrls.mobile,
     };
     if (action === "ADD") {
       await addItem(payload);

@@ -1,11 +1,11 @@
 import { css } from "@emotion/react";
 import { radius, subTitle } from "../styles/CommonStyles";
 
-export default function Item({ name, amount, currSymbol, child }) {
+export default function Item({ name, amount, currSymbol, imgUrl, child }) {
   return (
     <div css={itemStyles.container}>
       <div css={itemStyles.left}>
-        <img src="/images/cart/image-xx99-mark-two-headphones.jpg" />
+        <img src={imgUrl} />
         <div>
           <p css={itemStyles.name}>{name}</p>
           <p css={itemStyles.currency}>
