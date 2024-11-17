@@ -1,18 +1,16 @@
 import { css } from "@emotion/react";
 
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { colors, mediaQuery, subTitle } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
 import Counter from "./Counter";
 import Spacer from "./Spacer";
 import {
-  useFetchItemsQuery,
   useRemoveAllItemsMutation,
   useRemoveItemMutation,
   useUpdateQuantityMutation,
 } from "../data/services/CartApi";
 import { useSelector } from "react-redux";
-// import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 
 export default function Cart() {
   const items = useSelector((state) => state.cart.items);
@@ -30,9 +28,18 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <div css={styles.container}>
-        <h3>Your cart is empty!</h3>
-        {/* <CartIcon css={styles.icon} /> */}
+      <div css={[styles.container, styles.emptyCart]}>
+        <img
+          alt="Empty Cart"
+          src="/images/cart/empty-cart.png"
+          height="300px"
+          width="300px"
+        />
+        <h6>Your cart is empty</h6>
+        <p css={subTitle}>
+          Looks like you have not added anything to your cart. Go ahead &
+          explore top categories.
+        </p>
       </div>
     );
   }
@@ -110,15 +117,7 @@ const styles = {
     height: "2.5rem",
     background: "red",
   }),
-  // icon: css({
-  //   stroke: "var(--color-secondary)",
-  //   transform: "scale(8)",
-  //   marginTop: "30%",
-  // }),
-  // emptyCart: css({
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   flexDirection: "column",
-  // }),
+  emptyCart: css({
+    textAlign: "center"
+  })
 };
