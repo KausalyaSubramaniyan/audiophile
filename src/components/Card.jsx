@@ -1,19 +1,23 @@
 import { css } from "@emotion/react";
-import { colors, radius, subTitle, mediaQuery } from "../styles/CommonStyles";
+import { subTitle, mediaQuery } from "../styles/CommonStyles";
+import { Link } from "react-router-dom";
 
 export default function Card({ imgUrl, productName }) {
   return (
-    <div css={cardStyles.container}>
-      <img alt="product" src={imgUrl} css={cardStyles.img}></img>
-      <div css={cardStyles.text}>
+    <div css={styles.container}>
+      <img alt="product" src={imgUrl} css={styles.img}></img>
+      <div css={styles.text}>
         <h6>{productName}</h6>
-        <p css={subTitle}>SHOP</p>
+        <Link to={`/${productName.toLowerCase()}`} css={styles.link}>
+          <span css={styles.linkText}>SHOP </span>
+          <span css={styles.linkArrow}>{">"}</span>
+        </Link>
       </div>
     </div>
   );
 }
 
-const cardStyles = {
+const styles = {
   container: css({
     height: "20.5rem",
     width: "100%",
@@ -61,4 +65,24 @@ const cardStyles = {
       left: "calc(50% - 85px)",
     },
   }),
+  link: css([
+    {
+      textDecoration: "none",
+      margin: "var(--spacing-0-5) 0rem",
+      display: "flex",
+    },
+  ]),
+  linkText: css([subTitle, {
+    color: "var(--color-secondary)",
+    "&:hover": {
+      color: "var(--color-primary)",
+      opacity: "100%"
+    }
+  }]),
+  linkArrow: css({
+    color: "var(--color-primary)",
+    opacity: "100%",
+    fontSize: "26px",
+  }),
 };
+// TODO - Change replace 26px with var of body/span font size
