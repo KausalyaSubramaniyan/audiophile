@@ -33,14 +33,14 @@ function SpeakerHighlight() {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button color="black">SEE PRODUCT</Button>
+            <Button color="secondary">SEE PRODUCT</Button>
           </div>
         </div>
       </div>
       <Spacer value="3rem" />
       <div css={styles.highlights.speaker.zx7.container}>
         <h4>ZX7 SPEAKER</h4>
-        <Button color="black" variant="outlined">
+        <Button color="secondary" variant="outlined">
           SEE PRODUCT
         </Button>
       </div>
@@ -71,7 +71,7 @@ function EarphoneHighlight() {
       <div css={styles.highlights.earphone.textContainer}>
         <div css={styles.highlights.earphone.text}>
           <h4>YX1 EARPHONES</h4>
-          <Button color="black" variant="outlined">
+          <Button color="secondary" variant="outlined">
             SEE PRODUCT
           </Button>
         </div>

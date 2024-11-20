@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import { colors } from "../styles/CommonStyles";
 
+// TODO - Recheck
 export default function Button({
   variant = "contained",
   color = "primary",
@@ -9,26 +9,42 @@ export default function Button({
   children,
   ...props
 }) {
+  const colorProp = color.startsWith("--color-")
+    ? `var(${color})`
+    : `var(--color-${color})`;
+
   const getStyles = () => {
     let styles = {
       border: "none",
       "&:hover": {
         cursor: "pointer",
       },
-      color: colors.white,
+      color: "var(--color-white-1000)",
       padding: "1rem 0rem",
-      whiteSpace: "nowrap"
+      whiteSpace: "nowrap",
     };
 
     switch (variant) {
       case "contained":
-        styles = { ...styles, backgroundColor: colors[color] };
+        styles = {
+          ...styles,
+          backgroundColor: colorProp,
+          "&:hover": {
+            ...styles["&:hover"],
+            backgroundColor: `var(--color-${color}-hover)`,
+          },
+        };
         break;
       case "outlined":
         styles = {
           ...styles,
-          border: `2px solid ${colors[color]}`,
-          color: colors[color],
+          border: `2px solid ${colorProp}`,
+          color: colorProp,
+          "&:hover": {
+            ...styles["&:hover"],
+            backgroundColor: colorProp,
+            color: "var(--color-white-1000)"
+          },
         };
         break;
       default:
