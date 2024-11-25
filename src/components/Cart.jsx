@@ -6,6 +6,7 @@ import Button from "./Button";
 import Counter from "./Counter";
 import Spacer from "./Spacer";
 import {
+  useFetchItemsQuery,
   useRemoveAllItemsMutation,
   useRemoveItemMutation,
   useUpdateQuantityMutation,
@@ -18,12 +19,15 @@ export default function Cart() {
   const [removeAllItems] = useRemoveAllItemsMutation();
   const [removeItem] = useRemoveItemMutation();
 
+  const { refetch } = useFetchItemsQuery();
+
   const updateItemQuantity = async (item, targetQuantity) => {
     if (targetQuantity === 0) {
       await removeItem(item);
     } else {
       await updateQuantity({ ...item, quantity: targetQuantity });
     }
+    refetch();
   };
 
   if (items.length === 0) {
@@ -69,6 +73,7 @@ export default function Cart() {
 
   const removeAll = async () => {
     await removeAllItems();
+    refetch();
   };
 
   // TODO - Should this button be converted

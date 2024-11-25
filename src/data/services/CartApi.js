@@ -100,7 +100,6 @@ const getMockData = ({ method, url, body }) => {
 // TODO - Change url to /cart/item
 export const cartApi = createApi({
   reducerPath: "cartApi",
-  tagTypes: ["Cart"],
   baseQuery: (args, api, extraOptions) => {
     // TODO - Check this logic
     return new Promise((resolve) =>
@@ -115,7 +114,6 @@ export const cartApi = createApi({
         url: "/cart",
         method: "GET",
       }),
-      providesTags: ["Cart"],
     }),
     addItem: builder.mutation({
       query: (data) => ({
@@ -123,7 +121,6 @@ export const cartApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Cart"],
     }),
     updateQuantity: builder.mutation({
       query: (data) => ({
@@ -131,7 +128,6 @@ export const cartApi = createApi({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags: ["Cart"],
     }),
     removeItem: builder.mutation({
       query: (data) => ({
@@ -139,14 +135,12 @@ export const cartApi = createApi({
         method: "DELETE",
         body: data,
       }),
-      invalidatesTags: ["Cart"],
     }),
     removeAllItems: builder.mutation({
       query: () => ({
         url: "/cart/all",
         method: "DELETE",
       }),
-      invalidatesTags: ["Cart"],
     }),
   }),
 });
