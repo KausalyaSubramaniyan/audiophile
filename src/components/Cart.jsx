@@ -48,7 +48,7 @@ export default function Cart() {
     return items.map((item) => {
       return (
         <Item
-          key={item.name}
+          key={item.id}
           name={item.name}
           amount={item.amount}
           currSymbol={item.currSymbol}
@@ -118,6 +118,6 @@ const styles = {
     background: "red",
   }),
   emptyCart: css({
-    textAlign: "center"
-  })
+    textAlign: "center",
+  }),
 };

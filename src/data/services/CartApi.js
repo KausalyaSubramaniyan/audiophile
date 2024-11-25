@@ -4,11 +4,12 @@ const saveItem = (item) => {
   let items = JSON.parse(localStorage.getItem("products"));
   items = items ?? {};
 
-  items[item.name] = {
+  items[item.id] = {
+    name: item.name,
     amount: item.amount,
     currSymbol: item.currSymbol,
     quantity: item.quantity,
-    imgUrl: item.imgUrl
+    imgUrl: item.imgUrl,
   };
   localStorage.setItem("products", JSON.stringify(items));
 
@@ -18,13 +19,14 @@ const saveItem = (item) => {
 const getItems = (items = JSON.parse(localStorage.getItem("products"))) => {
   if (!items) return [];
 
-  return Object.keys(items).reduce((acc, itemName) => {
+  return Object.keys(items).reduce((acc, id) => {
     acc.push({
-      name: itemName,
-      amount: items[itemName].amount,
-      currSymbol: items[itemName].currSymbol,
-      quantity: items[itemName].quantity,
-      imgUrl: items[itemName].imgUrl
+      id,
+      name: items[id].name,
+      amount: items[id].amount,
+      currSymbol: items[id].currSymbol,
+      quantity: items[id].quantity,
+      imgUrl: items[id].imgUrl,
     });
     return acc;
   }, []);
@@ -34,7 +36,7 @@ const updateQuantity = (item) => {
   let items = JSON.parse(localStorage.getItem("products"));
   if (!items) return {};
 
-  items[item.name]["quantity"] = item.quantity;
+  items[item.id]["quantity"] = item.quantity;
   localStorage.setItem("products", JSON.stringify(items));
   return item;
 };
@@ -43,7 +45,7 @@ const deleteItem = (item) => {
   let items = JSON.parse(localStorage.getItem("products"));
   if (!items) return {};
 
-  delete items[item.name];
+  delete items[item.id];
   localStorage.setItem("products", JSON.stringify(items));
   return item;
 };
@@ -55,44 +57,51 @@ const removeAllItems = () => {
 
 const getMockData = ({ method, url, body }) => {
   switch (`${method} ${url}`) {
-    case "POST /cart":
-      return {
-        data: saveItem(body),
-        error: null,
-        meta: {},
-      };
-    case "GET /cart":
+    case `GET /cart`:
       return {
         data: getItems(),
         error: null,
         meta: {},
       };
-    case "PUT /cart":
+    case `POST /cart`:
+      return {
+        data: saveItem(body),
+        error: null,
+        meta: {},
+      };
+    case `PUT /cart/${body.id}`:
       return {
         data: updateQuantity(body),
         error: null,
         meta: {},
       };
-    case "DELETE /cart": {
+    case `DELETE /cart/${body.id}`: {
       return {
         data: deleteItem(body),
         error: null,
         meta: {},
       };
     }
-    case "DELETE /cart/all":
+    case `DELETE /cart/all`:
       return {
         data: removeAllItems(),
         error: null,
         meta: {},
       };
+    default:
+      return {
+        data: {},
+        error: "No matching api",
+        meta: {},
+      };
   }
 };
 
+// TODO - Change url to /cart/item
 export const cartApi = createApi({
   reducerPath: "cartApi",
   tagTypes: ["Cart"],
-  baseQuery: async (args, api, extraOptions) => {
+  baseQuery: (args, api, extraOptions) => {
     // TODO - Check this logic
     return new Promise((resolve) =>
       setTimeout(() => {
@@ -118,7 +127,7 @@ export const cartApi = createApi({
     }),
     updateQuantity: builder.mutation({
       query: (data) => ({
-        url: "/cart",
+        url: `/cart/${data.id}`,
         method: "PUT",
         body: data,
       }),
@@ -126,7 +135,7 @@ export const cartApi = createApi({
     }),
     removeItem: builder.mutation({
       query: (data) => ({
-        url: "/cart",
+        url: `/cart/${data.id}`,
         method: "DELETE",
         body: data,
       }),

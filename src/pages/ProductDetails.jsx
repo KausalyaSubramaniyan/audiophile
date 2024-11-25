@@ -98,6 +98,7 @@ export default function ProductDetails() {
 
   const addToCart = async () => {
     const payload = {
+      id: productInfo.id,
       name: productInfo.name,
       amount: productInfo.amount,
       currSymbol: productInfo.currencySymbol,

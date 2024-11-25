@@ -20,7 +20,7 @@ export default function Confirmation() {
     }
 
     const itemsList = itemsToDisplay.map((item) => (
-      <ItemWithQuantity item={item} key={item.name} />
+      <ItemWithQuantity item={item} key={item.id} />
     ));
 
     return (
