@@ -16,7 +16,7 @@ import Button from "../components/Button";
 import Spacer from "../components/Spacer";
 import {
   useAddItemMutation,
-  useFetchItemsQuery,
+  useGetCartQuery,
   useRemoveItemMutation,
   useUpdateQuantityMutation,
 } from "../data/services/CartApi";
@@ -31,7 +31,7 @@ export default function ProductDetails() {
   const [updateQuantity] = useUpdateQuantityMutation();
   const [removeItem] = useRemoveItemMutation();
 
-  const { refetch } = useFetchItemsQuery();
+  const { refetch } = useGetCartQuery();
 
   const items = useSelector((state) => state.cart.items);
   const getItemCount = () => {

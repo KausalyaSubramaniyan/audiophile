@@ -5,13 +5,15 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: [],
+    bill: {},
     fetched: false,
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      cartApi.endpoints.fetchItems.matchFulfilled,
+      cartApi.endpoints.getCart.matchFulfilled,
       (state, { payload }) => {
-        state.items = payload;
+        state.items = payload.items;
+        state.bill = payload.bill;
         state.fetched = true;
       }
     );

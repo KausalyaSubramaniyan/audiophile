@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
-import { useFetchItemsQuery } from "../data/services/CartApi";
+import { useGetCartQuery } from "../data/services/CartApi";
 import { Outlet } from "react-router-dom";
 
 export default function Init() {
   const cart = useSelector((state) => state.cart);
 
-  useFetchItemsQuery(cart.items, {
+  useGetCartQuery(cart.items, {
     skip: cart.fetched,
   });
   

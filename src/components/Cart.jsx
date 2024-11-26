@@ -6,7 +6,7 @@ import Button from "./Button";
 import Counter from "./Counter";
 import Spacer from "./Spacer";
 import {
-  useFetchItemsQuery,
+  useGetCartQuery,
   useRemoveAllItemsMutation,
   useRemoveItemMutation,
   useUpdateQuantityMutation,
@@ -19,7 +19,7 @@ export default function Cart() {
   const [removeAllItems] = useRemoveAllItemsMutation();
   const [removeItem] = useRemoveItemMutation();
 
-  const { refetch } = useFetchItemsQuery();
+  const { refetch } = useGetCartQuery();
 
   const updateItemQuantity = async (item, targetQuantity) => {
     if (targetQuantity === 0) {

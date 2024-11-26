@@ -1,7 +1,41 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
+const getTotalObj = (total = 0, vat = 0, shipping = 0, grandTotal = 0) => {
+  return {
+    total,
+    vat,
+    shipping,
+    grandTotal,
+  };
+};
+
+const getCartObj = (items = []) => {
+  return {
+    bill: getTotalSummary(items),
+    items,
+  };
+};
+
+const getTotalSummary = (items) => {
+  if (items.length === 0) {
+    return getTotalObj();
+  }
+
+  const amt = Object.keys(items).reduce((total, id) => {
+    return items[id]["amount"] * items[id]["quantity"] + total;
+  }, 0);
+  const shipping = 50;
+
+  return getTotalObj(
+    Number(amt.toFixed(2)),
+    Number((amt * 0.2).toFixed(2)),
+    shipping,
+    amt + shipping
+  );
+};
+
 const saveItem = (item) => {
-  let items = JSON.parse(localStorage.getItem("products"));
+  let items = JSON.parse(localStorage.getItem("cart"))?.items;
   items = items ?? {};
 
   items[item.id] = {
@@ -11,47 +45,51 @@ const saveItem = (item) => {
     quantity: item.quantity,
     imgUrl: item.imgUrl,
   };
-  localStorage.setItem("products", JSON.stringify(items));
 
+  localStorage.setItem("cart", JSON.stringify(getCartObj(items)));
   return item;
 };
 
-const getItems = (items = JSON.parse(localStorage.getItem("products"))) => {
-  if (!items) return [];
+const getCart = (cart = JSON.parse(localStorage.getItem("cart"))) => {
+  if (!cart) return getCartObj([]);
 
-  return Object.keys(items).reduce((acc, id) => {
-    acc.push({
-      id,
-      name: items[id].name,
-      amount: items[id].amount,
-      currSymbol: items[id].currSymbol,
-      quantity: items[id].quantity,
-      imgUrl: items[id].imgUrl,
-    });
-    return acc;
-  }, []);
+  const items = cart["items"];
+
+  return getCartObj(
+    Object.keys(items).reduce((acc, id) => {
+      acc.push({
+        id,
+        name: items[id].name,
+        amount: items[id].amount,
+        currSymbol: items[id].currSymbol,
+        quantity: items[id].quantity,
+        imgUrl: items[id].imgUrl,
+      });
+      return acc;
+    }, [])
+  );
 };
 
 const updateQuantity = (item) => {
-  let items = JSON.parse(localStorage.getItem("products"));
+  let items = JSON.parse(localStorage.getItem("cart"))?.items;
   if (!items) return {};
 
   items[item.id]["quantity"] = item.quantity;
-  localStorage.setItem("products", JSON.stringify(items));
+  localStorage.setItem("cart", JSON.stringify(getCartObj(items)));
   return item;
 };
 
 const deleteItem = (item) => {
-  let items = JSON.parse(localStorage.getItem("products"));
+  let items = JSON.parse(localStorage.getItem("cart"))?.items;
   if (!items) return {};
 
   delete items[item.id];
-  localStorage.setItem("products", JSON.stringify(items));
+  localStorage.setItem("products", JSON.stringify(getCartObj(items)));
   return item;
 };
 
 const removeAllItems = () => {
-  localStorage.removeItem("products");
+  localStorage.removeItem("cart");
   return [];
 };
 
@@ -59,7 +97,7 @@ const getMockData = ({ method, url, body }) => {
   switch (`${method} ${url}`) {
     case `GET /cart`:
       return {
-        data: getItems(),
+        data: getCart(),
         error: null,
         meta: {},
       };
@@ -109,7 +147,7 @@ export const cartApi = createApi({
     );
   },
   endpoints: (builder) => ({
-    fetchItems: builder.query({
+    getCart: builder.query({
       query: () => ({
         url: "/cart",
         method: "GET",
@@ -146,7 +184,7 @@ export const cartApi = createApi({
 });
 
 export const {
-  useFetchItemsQuery,
+  useGetCartQuery,
   useAddItemMutation,
   useUpdateQuantityMutation,
   useRemoveItemMutation,

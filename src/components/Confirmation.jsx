@@ -10,7 +10,9 @@ import ItemWithQuantity from "./ItemWithQuantity";
 
 export default function Confirmation() {
   const [displayAll, setDisplayAll] = useState(false);
-  const items = useSelector((state) => state.cart.items);
+  const cartInfo = useSelector((state) => state.cart);
+  const items = cartInfo.items;
+  const bill = cartInfo.bill;
 
   const getItemsCard = () => {
     let itemsToDisplay = items;
@@ -51,9 +53,7 @@ export default function Confirmation() {
     );
   };
 
-  // TODO - Replace hardcoded total with useBill
   const getSummaryCard = () => {
-    const total = "$5,544";
     return (
       <div css={styles.summaryCard}>
         <div css={styles.items}>{getItemsCard()}</div>
@@ -61,7 +61,7 @@ export default function Confirmation() {
           css={displayAll ? [styles.total, styles.totalAtBottom] : styles.total}
         >
           <p css={styles.totalText}>GRAND TOTAL</p>
-          <p css={styles.totalAmount}>{total}</p>
+          <p css={styles.totalAmount}>{bill.grandTotal}</p>
         </div>
       </div>
     );
