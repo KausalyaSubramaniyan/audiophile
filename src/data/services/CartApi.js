@@ -1,11 +1,18 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
-const getTotalObj = (total = 0, vat = 0, shipping = 0, grandTotal = 0) => {
+const getTotalObj = (
+  total = 0,
+  vat = 0,
+  shipping = 0,
+  grandTotal = 0,
+  currSymbol = "$"
+) => {
   return {
     total,
     vat,
     shipping,
     grandTotal,
+    currSymbol,
   };
 };
 
@@ -84,7 +91,7 @@ const deleteItem = (item) => {
   if (!items) return {};
 
   delete items[item.id];
-  localStorage.setItem("products", JSON.stringify(getCartObj(items)));
+  localStorage.setItem("cart", JSON.stringify(getCartObj(items)));
   return item;
 };
 
@@ -107,13 +114,13 @@ const getMockData = ({ method, url, body }) => {
         error: null,
         meta: {},
       };
-    case `PUT /cart/${body.id}`:
+    case `PUT /cart/${body?.id}`:
       return {
         data: updateQuantity(body),
         error: null,
         meta: {},
       };
-    case `DELETE /cart/${body.id}`: {
+    case `DELETE /cart/${body?.id}`: {
       return {
         data: deleteItem(body),
         error: null,

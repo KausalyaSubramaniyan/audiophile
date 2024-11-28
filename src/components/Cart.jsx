@@ -14,7 +14,7 @@ import {
 import { useSelector } from "react-redux";
 
 export default function Cart() {
-  const items = useSelector((state) => state.cart.items);
+  const { items, bill } = useSelector((state) => state.cart);
   const [updateQuantity] = useUpdateQuantityMutation();
   const [removeAllItems] = useRemoveAllItemsMutation();
   const [removeItem] = useRemoveItemMutation();
@@ -85,6 +85,10 @@ export default function Cart() {
       </div>
       <Spacer value="2rem" />
       <div css={styles.items}>{getItems()}</div>
+      <div css={styles.total}>
+        <p css={styles.totalText}>TOTAL</p>
+        <p css={styles.totalAmt}>{bill.currSymbol} {bill.total}</p>
+      </div>
       <Button size="stretch">CHECKOUT</Button>
     </div>
   );
@@ -94,7 +98,7 @@ const styles = {
   container: css({
     width: "22rem",
     padding: "2rem",
-    height: "29rem",
+    maxHeight: "29rem",
     color: "var(--color-secondary)",
     [mediaQuery[0]]: {
       width: "inherit",
@@ -114,15 +118,26 @@ const styles = {
     },
   }),
   items: css({
-    overflowY: "auto",
-    height: "60%",
+    maxHeight: "17.4rem",
+    overflowY: "auto"
   }),
   counter: css({
     width: "6.5rem",
     height: "2.5rem",
-    background: "red",
   }),
   emptyCart: css({
     textAlign: "center",
+  }),
+  total: css({
+    display: "flex",
+    justifyContent: "space-between",
+  }),
+  totalText: css({
+    fontSize: "15px",
+    opacity: "50%",
+  }),
+  totalAmt: css({
+    fontSize: "18px",
+    fontWeight: "700"
   }),
 };
