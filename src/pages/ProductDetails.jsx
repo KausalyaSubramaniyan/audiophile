@@ -25,60 +25,57 @@ import { useSelector } from "react-redux";
 export default function ProductDetails() {
   // TODO - Will lose state on page refresh
   const { product } = useLocation().state;
-  const [productInfo, setProductInfo] = useState({});
+  const [productAdditionalInfo, setProductAdditionalInfo] = useState({});
 
   const [addItem] = useAddItemMutation();
   const [updateQuantity] = useUpdateQuantityMutation();
   const [removeItem] = useRemoveItemMutation();
-
   const { refetch } = useGetCartQuery();
 
   const items = useSelector((state) => state.cart.items);
-  const getItemCount = () => {
-    return items.find((item) => item.name === productInfo.name)?.quantity ?? 0;
+  const getItemQuantity = () => {
+    return items.find((item) => item.name === productAdditionalInfo.name)?.quantity ?? 0;
   };
-  const [count, setCount] = useState(getItemCount());
+  const [quantity, setQuantity] = useState(getItemQuantity());
   const [action, setAction] = useState("");
 
   const increment = () => {
-    const itemCountInCart = getItemCount();
-    if (itemCountInCart === 0) {
+    const itemQuantityInCart = getItemQuantity();
+    if (itemQuantityInCart === 0) {
       setAction("ADD");
     } else {
       setAction("UPDATE");
     }
-    setCount(count + 1);
+    setQuantity(quantity + 1);
   };
 
   const decrement = () => {
-    const itemCountInCart = getItemCount();
-    if (itemCountInCart - 1 === 0) {
+    const itemQuantityInCart = getItemQuantity();
+    if (itemQuantityInCart - 1 === 0) {
       setAction("DELETE");
     } else {
       setAction("UPDATE");
     }
-    setCount(count - 1);
+    setQuantity(quantity - 1);
   };
 
-  const getProductInfo = () => {
-    setProductInfo(productDetailsData(product.id));
+  const getProductAdditionalInfo = () => {
+    setProductAdditionalInfo(productDetailsData(product.id));
   };
 
   useEffect(() => {
-    getProductInfo();
+    getProductAdditionalInfo();
   }, [product]);
 
-  // TODO - See if productInfo is needed after consolidating product
-  // and productInfo in single call
   useEffect(() => {
-    setCount(getItemCount());
-  }, [items, productInfo]);
+    setQuantity(getItemQuantity());
+  }, [items, productAdditionalInfo]);
 
   const getFeatures = () => {
     return (
       <div css={styles.features}>
         <h3>FEATURES</h3>
-        <p css={styles.aboutText}>{productInfo.features}</p>
+        <p css={styles.aboutText}>{productAdditionalInfo.features}</p>
       </div>
     );
   };
@@ -88,7 +85,7 @@ export default function ProductDetails() {
       <div css={styles.box}>
         <h3>IN THE BOX</h3>
         <ul>
-          {productInfo.inTheBox.map((i) => (
+          {productAdditionalInfo.inTheBox.map((i) => (
             <ol key={i.item}>
               <span css={styles.textHighlight}>{i.quantity}</span>
               <span css={styles.aboutText}>{i.item}</span>
@@ -101,11 +98,11 @@ export default function ProductDetails() {
 
   const addToCart = async () => {
     const payload = {
-      id: productInfo.id,
-      name: productInfo.name,
-      amount: productInfo.amount,
-      currSymbol: productInfo.currencySymbol,
-      quantity: count,
+      id: productAdditionalInfo.id,
+      name: productAdditionalInfo.name,
+      amount: productAdditionalInfo.amount,
+      currSymbol: productAdditionalInfo.currencySymbol,
+      quantity: quantity,
       imgUrl: product.imgUrls.mobile,
     };
     if (action === "ADD") {
@@ -133,11 +130,11 @@ export default function ProductDetails() {
               description={product.description}
               children={
                 <div css={styles.productSummary}>
-                  {productInfo && Object.keys(productInfo).length > 0 && (
+                  {productAdditionalInfo && Object.keys(productAdditionalInfo).length > 0 && (
                     <>
                       <Spacer value="2rem" />
                       <h6>
-                        {productInfo.currencySymbol} {productInfo.amount.toLocaleString()}
+                        {productAdditionalInfo.currencySymbol} {productAdditionalInfo.amount.toLocaleString()}
                       </h6>
                       <Spacer value="3rem" />
                     </>
@@ -145,7 +142,7 @@ export default function ProductDetails() {
                   <div css={styles.btnContainer}>
                     <div css={styles.counterContainer}>
                       <Counter
-                        count={count}
+                        count={quantity}
                         increment={increment}
                         decrement={decrement}
                       />
@@ -160,7 +157,7 @@ export default function ProductDetails() {
           imgUrls={product.imgUrls}
           imgDimension={{ height: "560px", width: "538px" }}
         ></SideBySideLayout>
-        {productInfo && Object.keys(productInfo).length > 0 && (
+        {productAdditionalInfo && Object.keys(productAdditionalInfo).length > 0 && (
           <div>
             <Spacer value="7rem" />
             <div css={styles.about}>
@@ -168,8 +165,8 @@ export default function ProductDetails() {
               {getBox()}
             </div>
             <Spacer value="7rem" />
-            <Gallery imgs={productInfo.gallery} />
-            <Recommendations products={productInfo.recommendations} />
+            <Gallery imgs={productAdditionalInfo.gallery} />
+            <Recommendations products={productAdditionalInfo.recommendations} />
             <Spacer value="5rem" />
           </div>
         )}
