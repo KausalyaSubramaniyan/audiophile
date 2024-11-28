@@ -131,7 +131,7 @@ export default function ProductDetails() {
               title={<h2>{product.title}</h2>}
               tag={product.tag}
               description={product.description}
-              suffix={
+              children={
                 <div css={styles.productSummary}>
                   {productInfo && Object.keys(productInfo).length > 0 && (
                     <>

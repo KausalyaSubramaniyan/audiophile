@@ -5,14 +5,14 @@ export default function SideBySideLayoutTextContent({
   tag,
   description,
   title,
-  suffix,
+  children,
 }) {
   return (
     <div css={styles.container}>
       <p css={styles.tag}>{tag}</p>
       {title}
       <p css={styles.description}>{description}</p>
-      {suffix}
+      {children}
     </div>
   );
 }

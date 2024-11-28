@@ -37,7 +37,7 @@ export default function Product({ name }) {
               title={<h2 css={styles.title}>{product.title}</h2>}
               tag={product.tag}
               description={product.description}
-              suffix={
+              children={
                 <Button
                   onClick={() => {
                     navigate(`/product/${name.toLowerCase()}/${product.id}`, {
