@@ -10,9 +10,7 @@ import ItemWithQuantity from "./ItemWithQuantity";
 
 export default function Confirmation() {
   const [displayAll, setDisplayAll] = useState(false);
-  const cartInfo = useSelector((state) => state.cart);
-  const items = cartInfo.items;
-  const bill = cartInfo.bill;
+  const { items, bill } = useSelector((state) => state.cart);
 
   const getItemsCard = () => {
     let itemsToDisplay = items;
@@ -28,7 +26,7 @@ export default function Confirmation() {
     return (
       <>
         {itemsList}
-        {items.length > 0 && (
+        {items.length > 1 && (
           <>
             <Divider customCss={styles.lineContainer} />
             {!displayAll && (
