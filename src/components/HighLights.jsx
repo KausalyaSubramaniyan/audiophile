@@ -103,7 +103,7 @@ const styles = {
           backgroundImage: "url(/images/home/desktop/pattern-circles.svg)",
           backgroundPosition: "-90% 10%",          
           backgroundRepeat: "no-repeat",
-          [mediaQuery[2]]: {
+          [mediaQuery["lg"]]: {
             flexDirection: "column",
             height: "40rem",
             alignItems: "center",
@@ -118,13 +118,7 @@ const styles = {
             opacity: "78%",
             mixBlendMode: "normal",
           },
-          [mediaQuery[2]]: {
-            textAlign: "center",
-          },
-          [mediaQuery[1]]: {
-            textAlign: "center",
-          },
-          [mediaQuery[0]]: {
+          [mediaQuery["lg"]]: {
             textAlign: "center",
           },
         }),
@@ -135,7 +129,7 @@ const styles = {
           justifyContent: "center",
           alignItems: "flex-start",
           flexDirection: "column",
-          [mediaQuery[2]]: {
+          [mediaQuery["lg"]]: {
             width: "50%",
             alignItems: "center",
           },
@@ -144,11 +138,11 @@ const styles = {
           height: "450px",
           width: "350px",
           verticalAlign: "middle",
-          [mediaQuery[2]]: {
+          [mediaQuery["lg"]]: {
             height: "250px",
             width: "210px",
           },
-          [mediaQuery[1]]: {
+          [mediaQuery["md"]]: {
             height: "210px",
             width: "160px",
           },
@@ -173,13 +167,10 @@ const styles = {
           padding: "0% 10%",
           backgroundSize: "100% 100%",
           borderRadius: "var(--radius-md)",
-          [mediaQuery[2]]: {
+          [mediaQuery["lg"]]: {
             backgroundImage: "url(/images/home/tablet/image-speaker-zx7.jpg)",
           },
-          [mediaQuery[1]]: {
-            backgroundImage: "url(/images/home/tablet/image-speaker-zx7.jpg)",
-          },
-          [mediaQuery[0]]: {
+          [mediaQuery["sm"]]: {
             backgroundImage: "url(/images/home/mobile/image-speaker-zx7.jpg)",
           },
         }),
@@ -190,7 +181,7 @@ const styles = {
         height: "300px",
         display: "flex",
         columnGap: "var(--spacing-2)",
-        [mediaQuery[0]]: {
+        [mediaQuery["sm"]]: {
           flexWrap: "wrap",
           rowGap: "var(--spacing-2)",
           height: "400px",
@@ -204,7 +195,7 @@ const styles = {
         display: "flex",
         alignItems: "center",
         height: "100%",
-        [mediaQuery[0]]: {
+        [mediaQuery["sm"]]: {
           width: "100%",
           height: "50%",
         },
@@ -214,7 +205,7 @@ const styles = {
       }),
       imgContainer: css({
         width: "50%",
-        [mediaQuery[0]]: {
+        [mediaQuery["sm"]]: {
           width: "100%",
           height: "50%",
         },

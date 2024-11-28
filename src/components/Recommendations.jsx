@@ -47,7 +47,7 @@ const styles = {
   imgContainer: css({
     height: "20.5rem",
     width: "100%",
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       height: "10.5rem",
     },
   }),
@@ -55,7 +55,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     columnGap: "2rem",
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       display: "flex",
       flexWrap: "wrap",
       rowGap: "5rem",

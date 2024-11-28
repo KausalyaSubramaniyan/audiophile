@@ -34,7 +34,7 @@ export default function BestGear() {
 const styles = {
   layoutContainer: css({
     height: "38rem",
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       height: "50rem",
     },
   }),

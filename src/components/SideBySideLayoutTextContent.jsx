@@ -25,7 +25,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       alignItems: "center",
       justifyContent: "flex-start",
     },

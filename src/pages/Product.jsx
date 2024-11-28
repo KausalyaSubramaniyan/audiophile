@@ -77,15 +77,15 @@ const styles = {
   layoutContainer: css({
     marginTop: "10rem",
     height: "38rem",
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       height: "45rem",
     },
   }),
   title: css({
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       width: "50%",
     },
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       width: "70%",
     },
   }),

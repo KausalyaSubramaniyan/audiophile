@@ -100,7 +100,7 @@ const styles = {
     padding: "2rem",
     maxHeight: "29rem",
     color: "var(--color-secondary)",
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       width: "inherit",
     },
   }),

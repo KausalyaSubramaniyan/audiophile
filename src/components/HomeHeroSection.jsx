@@ -39,7 +39,7 @@ const styles = {
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       backgroundImage: "url(/images/home/tablet/image-hero.jpg)",
     },
   }),
@@ -49,12 +49,12 @@ const styles = {
     display: "flex",
     margin: "0rem var(--side-spacing)",
     alignItems: "center",
-    [mediaQuery[1]]: css({
+    [mediaQuery["md"]]: css({
       justifyContent: "center",
       width: "100%",
       margin: "0",
     }),
-    [mediaQuery[0]]: css({
+    [mediaQuery["sm"]]: css({
       height: "36rem",
     }),
   }),
@@ -71,7 +71,7 @@ const styles = {
   ]),
   text: css({
     width: "38%",
-    [mediaQuery[1]]: css([
+    [mediaQuery["md"]]: css([
       centerAlign,
       {
         width: "48%",

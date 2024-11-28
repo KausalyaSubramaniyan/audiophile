@@ -25,7 +25,7 @@ const galleryStyles = {
       width: "100%",
     },
 
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       gridTemplateColumns: "1fr",
       gridTemplateRows: "1fr 1fr 1.5fr",
       gridTemplateAreas: `"first"

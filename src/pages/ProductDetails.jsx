@@ -218,7 +218,7 @@ const styles = {
   about: css({
     display: "flex",
     justifyContent: "space-between",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       display: "flex",
       flexDirection: "column",
       // flexWrap: "wrap",
@@ -228,7 +228,7 @@ const styles = {
     display: "flex",
     width: "55%",
     flexDirection: "column",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       width: "100%",
     },
   }),
@@ -242,12 +242,12 @@ const styles = {
     flexDirection: "column",
     ul: { padding: "0" },
     ol: { padding: "0rem 0rem 0.2rem 0rem" },
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       width: "100%",
       flexDirection: "row",
       columnGap: "25%",
     },
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       width: "100%",
       flexDirection: "column",
     },

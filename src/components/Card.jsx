@@ -26,13 +26,7 @@ const styles = {
     background:
       "linear-gradient(to bottom, var(--color-white-1000) 35%, var(--color-grey-200) 35%)",
     borderRadius: "var(--radius-md)",
-    [mediaQuery[2]]: {
-      height: "18.5rem",
-    },
-    [mediaQuery[1]]: {
-      height: "18.5rem",
-    },
-    [mediaQuery[0]]: {
+    [mediaQuery["lg"]]: {
       height: "18.5rem",
     },
   }),
@@ -49,17 +43,7 @@ const styles = {
     height: "210px",
     top: "10%",
     left: "calc(50% - 105px)",
-    [mediaQuery[2]]: {
-      height: "170px",
-      width: "170px",
-      left: "calc(50% - 85px)",
-    },
-    [mediaQuery[1]]: {
-      height: "170px",
-      width: "170px",
-      left: "calc(50% - 85px)",
-    },
-    [mediaQuery[0]]: {
+    [mediaQuery["lg"]]: {
       height: "170px",
       width: "170px",
       left: "calc(50% - 85px)",

@@ -49,13 +49,13 @@ const styles = {
     height: "100%",
   }),
   leftImgContainer: css({
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       flexWrap: "wrap",
       rowGap: "var(--spacing-1)",
     },
   }),
   rightImgContainer: css({
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       flexWrap: "wrap-reverse",
       rowGap: "var(--spacing-1)",
     },
@@ -63,11 +63,7 @@ const styles = {
   imgContainer: css({
     width: "50%",
     height: "100%",
-    [mediaQuery[1]]: {
-      width: "100%",
-      height: "50%",
-    },
-    [mediaQuery[0]]: {
+    [mediaQuery["md"]]: {
       width: "100%",
       height: "50%",
     },
@@ -79,7 +75,7 @@ const styles = {
   }),
   contentContainer: css({
     width: "40%",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       width: "100%",
       display: "flex",
       justifyContent: "center",

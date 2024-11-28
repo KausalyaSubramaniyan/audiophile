@@ -21,15 +21,15 @@ export default function ProductCards() {
     ));
   };
 
-  return <div css={productCardsStyles.container}>{getCards()}</div>;
+  return <div css={styles.container}>{getCards()}</div>;
 }
 
-const productCardsStyles = {
+const styles = {
   container: css({
     display: "flex",
     justifyContent: "space-between",
     columnGap: "2rem",
-    [mediaQuery[0]]: {
+    [mediaQuery["sm"]]: {
       display: "flex",
       flexWrap: "wrap",
       rowGap: "var(--spacing-1)"

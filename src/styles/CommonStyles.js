@@ -68,6 +68,9 @@ export const radius = {
 };
 
 const breakpoints = [576, 768, 992, 1200];
-export const mediaQuery = breakpoints.map(
-  (breakpoint) => `@media (max-width: ${breakpoint}px)`
-);
+const screenSizes = ["sm", "md", "lg", "xl"];
+export const mediaQuery = {};
+
+breakpoints.map((breakpoint, index) => {
+  mediaQuery[screenSizes[index]] = `@media (max-width: ${breakpoint}px)`;
+});

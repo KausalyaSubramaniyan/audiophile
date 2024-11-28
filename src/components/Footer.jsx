@@ -64,7 +64,7 @@ const styles = {
     margin: "0",
     width: "10%",
     ol: { padding: "0px" },
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       display: "none",
     },
   }),
@@ -75,16 +75,16 @@ const styles = {
     width: "10%",
     ol: { padding: "0px" },
     display: "none",
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       display: "flex",
       padding: "0",
       width: "15%",
     },
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       display: "flex",
       width: "15%",
     },
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       display: "flex",
       width: "25%",
     },
@@ -95,7 +95,7 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "flex-end",
     margin: "0rem var(--side-spacing)",
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       flexDirection: "column",
       alignItems: "flex-start",
       rowGap: "var(--spacing-1-5)",
@@ -103,7 +103,7 @@ const styles = {
         width: "50%",
       },
     },
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       flexDirection: "column",
       alignItems: "center",
       rowGap: "var(--spacing-1-5)",
@@ -119,10 +119,10 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "flex-end",
     margin: "0rem var(--side-spacing)",
-    [mediaQuery[2]]: {
+    [mediaQuery["lg"]]: {
       p: { width: "80%" },
     },
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       p: { width: "100%", textAlign: "center" },
     },
   }),
@@ -132,7 +132,7 @@ const styles = {
     alignItems: "flex-end",
     margin: "0rem var(--side-spacing)",
     rowGap: "var(--spacing-2)",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       flexDirection: "column",
       alignItems: "center",
       textAlign: "center",

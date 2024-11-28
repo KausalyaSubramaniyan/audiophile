@@ -78,7 +78,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-between",
     display: "none",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       display: "flex",
     },
   }),
@@ -89,7 +89,7 @@ const styles = {
   }),
   nav: css({
     width: "40%",
-    [mediaQuery[1]]: {
+    [mediaQuery["md"]]: {
       display: "none",
     },
   }),
