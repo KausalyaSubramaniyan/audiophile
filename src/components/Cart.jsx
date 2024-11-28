@@ -87,7 +87,7 @@ export default function Cart() {
       <div css={styles.items}>{getItems()}</div>
       <div css={styles.total}>
         <p css={styles.totalText}>TOTAL</p>
-        <p css={styles.totalAmt}>{bill.currSymbol} {bill.total}</p>
+        <p css={styles.totalAmt}>{bill.currSymbol} {bill.total.toLocaleString()}</p>
       </div>
       <Button size="stretch">CHECKOUT</Button>
     </div>

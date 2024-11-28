@@ -9,7 +9,7 @@ export default function Item({ name, amount, currSymbol, imgUrl, child }) {
         <div>
           <p css={itemStyles.name}>{name}</p>
           <p css={itemStyles.currency}>
-            {currSymbol} {amount}
+            {currSymbol} {amount.toLocaleString()}
           </p>
         </div>
       </div>

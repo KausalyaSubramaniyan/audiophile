@@ -137,7 +137,7 @@ export default function ProductDetails() {
                     <>
                       <Spacer value="2rem" />
                       <h6>
-                        {productInfo.currencySymbol} {productInfo.amount}
+                        {productInfo.currencySymbol} {productInfo.amount.toLocaleString()}
                       </h6>
                       <Spacer value="3rem" />
                     </>

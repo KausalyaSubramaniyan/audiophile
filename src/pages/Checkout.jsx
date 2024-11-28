@@ -242,20 +242,20 @@ export default function Checkout() {
       <>
         <div css={styles.billRow}>
           <p css={styles.billText}>TOTAL</p>
-          <p css={styles.billValue}>${bill.total}</p>
+          <p css={styles.billValue}>${bill.total.toLocaleString()}</p>
         </div>
         <div css={styles.billRow}>
           <p css={styles.billText}>SHIPPING</p>
-          <p css={styles.billValue}>${bill.shipping}</p>
+          <p css={styles.billValue}>${bill.shipping.toLocaleString()}</p>
         </div>
         <div css={styles.billRow}>
           <p css={styles.billText}>VAT(INCLUDED)</p>
-          <p css={styles.billValue}>${bill.vat}</p>
+          <p css={styles.billValue}>${bill.vat.toLocaleString()}</p>
         </div>
         <Spacer value="1rem" />
         <div css={styles.billRow}>
           <p css={styles.billText}>GRAND TOTAL</p>
-          <p css={[styles.billValue, styles.grandTotal]}>${bill.grandTotal}</p>
+          <p css={[styles.billValue, styles.grandTotal]}>${bill.grandTotal.toLocaleString()}</p>
         </div>
       </>
     );

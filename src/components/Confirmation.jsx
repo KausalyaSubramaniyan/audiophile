@@ -59,7 +59,7 @@ export default function Confirmation() {
           css={displayAll ? [styles.total, styles.totalAtBottom] : styles.total}
         >
           <p css={styles.totalText}>GRAND TOTAL</p>
-          <p css={styles.totalAmount}>{bill.grandTotal}</p>
+          <p css={styles.totalAmount}>{bill.currSymbol} {bill.grandTotal.toLocaleString()}</p>
         </div>
       </div>
     );
