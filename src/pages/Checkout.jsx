@@ -14,7 +14,6 @@ import Item from "../components/Item";
 import { useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
-import useBill from "../hooks/useBill";
 import Spacer from "../components/Spacer";
 import RadioButton from "../components/RadioButton";
 import { paymentsData } from "../data/mock/mock";
@@ -25,10 +24,8 @@ import { useSelector } from "react-redux";
 // TODO - Handle no items to checkout scenario
 export default function Checkout() {
   const [isVisible, setIsVisible] = useState(false);
-  const { total, vat, shipping, grandTotal } = useBill(
-    localStorage.getItem("products")
-  );
-  const items = useSelector((state) => state.cart.items);
+  const { items, bill } = useSelector((state) => state.cart);
+
   // const [payments, setPayments] = useState([]);
   const [inputData, setInputData] = useState({
     name: { value: "", error: "" },
@@ -230,28 +227,35 @@ export default function Checkout() {
     );
   };
 
-  // TODO - Can we make this generic?
   const getItems = () => {
     return (
       <>
         {items.map((item) => (
           <ItemWithQuantity item={item} key={item.name} />
         ))}
-        <div css={[styles.section, styles.billText]}>
-          <p>TOTAL</p>
-          <p css={styles.amount}>${total}</p>
+      </>
+    );
+  };
+
+  const getBills = () => {
+    return (
+      <>
+        <div css={styles.billRow}>
+          <p css={styles.billText}>TOTAL</p>
+          <p css={styles.billValue}>${bill.total}</p>
         </div>
-        <div css={[styles.section, styles.billText]}>
-          <p>SHIPPING</p>
-          <p css={styles.amount}>${shipping}</p>
+        <div css={styles.billRow}>
+          <p css={styles.billText}>SHIPPING</p>
+          <p css={styles.billValue}>${bill.shipping}</p>
         </div>
-        <div css={[styles.section, styles.billText]}>
-          <p>VAT(INCLUDED)</p>
-          <p css={styles.amount}>${vat}</p>
+        <div css={styles.billRow}>
+          <p css={styles.billText}>VAT(INCLUDED)</p>
+          <p css={styles.billValue}>${bill.vat}</p>
         </div>
-        <div css={[styles.section, styles.billText]}>
-          <p>GRAND TOTAL</p>
-          <p css={styles.amount}>${grandTotal}</p>
+        <Spacer value="1rem" />
+        <div css={styles.billRow}>
+          <p css={styles.billText}>GRAND TOTAL</p>
+          <p css={[styles.billValue, styles.grandTotal]}>${bill.grandTotal}</p>
         </div>
       </>
     );
@@ -265,25 +269,30 @@ export default function Checkout() {
 
   const getSummary = () => {
     return (
-      <div css={styles.summary}>
-        <h6>SUMMARY</h6>
-        <Spacer value="3rem" />
-        <div css={styles.items}>{getItems()}</div>
-        <Button
-          size="stretch"
-          onClick={() => {
-            setIsVisible(isValid());
-          }}
-        >
-          CONTINUE & PAY
-        </Button>
-        <Overlay
-          open={isVisible}
-          onClick={() => setIsVisible(!isVisible)}
-          placement="top-center"
-        >
-          <Confirmation />
-        </Overlay>
+      <div css={styles.summaryContainer}>
+        <div css={styles.summary}>
+          <h6>SUMMARY</h6>
+          <Spacer value="2rem" />
+          <div css={styles.items}>{getItems()}</div>
+          <Spacer value="1rem" />
+          <div>{getBills()}</div>
+          <Spacer value="2rem" />
+          <Button
+            size="stretch"
+            onClick={() => {
+              setIsVisible(isValid());
+            }}
+          >
+            CONTINUE & PAY
+          </Button>
+          <Overlay
+            open={isVisible}
+            onClick={() => setIsVisible(!isVisible)}
+            placement="top-center"
+          >
+            <Confirmation />
+          </Overlay>
+        </div>
       </div>
     );
   };
@@ -316,23 +325,25 @@ const styles = {
       marginTop: "18px",
     },
   }),
-  summary: css({
+  summaryContainer: css({
     width: "26%",
+  }),
+  summary: css({
     backgroundColor: colors.white,
     padding: "2rem",
     borderRadius: radius.md,
     maxHeight: "35rem",
+    width: "100%",
   }),
   items: css({
     overflowY: "auto",
-    height: "80%",
+    maxHeight: "16rem",
   }),
   section: css({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
     rowGap: "1.5rem",
-    // background: "red"
   }),
   sectionTitle: css([
     subTitle,
@@ -341,15 +352,19 @@ const styles = {
       opacity: "100%",
     },
   ]),
-  billText: css({
-    p: {
-      margin: "8px 0px",
-    },
+  billRow: css({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   }),
-  amount: css([
+  billText: css({
+    margin: "8px 0px 0px 0px",
+    opacity: "50%",
+  }),
+  billValue: css([
     subTitle,
     {
-      fontSize: "15px",
+      fontSize: "17px",
       opacity: "100%",
       margin: "0",
     },
@@ -361,5 +376,8 @@ const styles = {
     p: {
       opacity: "50%",
     },
+  }),
+  grandTotal: css({
+    color: "var(--color-primary)",
   }),
 };
