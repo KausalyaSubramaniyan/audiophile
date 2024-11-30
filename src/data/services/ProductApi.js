@@ -1,5 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
+import products from "../mock/products.json";
+
 import headphones from "../mock/headphones/heaphones.json";
 import speakers from "../mock/speakers/speakers.json";
 import earphones from "../mock/earphones/earphones.json";
@@ -22,6 +24,9 @@ const createResponse = (data, error = null, meta = {}) => {
 const getMockData = ({ method, url }) => {
   console.log("getMockData", method, url);
   switch (`${method} ${url}`) {
+    case `GET /products`:
+      return createResponse(products);
+
     case `GET /products/headphones`:
       return createResponse(headphones);
     case `GET /products/speakers`:
@@ -61,6 +66,12 @@ export const productApi = createApi({
     );
   },
   endpoints: (builder) => ({
+    getAllProducts: builder.query({
+      query: () => ({
+        url: `/products`,
+        method: "GET",
+      }),
+    }),
     getProductsByCategory: builder.query({
       query: (category) => ({
         url: `/products/${category}`,
@@ -76,5 +87,8 @@ export const productApi = createApi({
   }),
 });
 
-export const { useGetProductByIdQuery, useGetProductsByCategoryQuery } =
-  productApi;
+export const {
+  useGetAllProductsQuery,
+  useGetProductByIdQuery,
+  useGetProductsByCategoryQuery,
+} = productApi;

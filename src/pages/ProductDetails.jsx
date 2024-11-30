@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { centerAlign, colors, mediaQuery } from "../styles/CommonStyles";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import Gallery from "../components/Gallery";
@@ -128,14 +128,12 @@ export default function ProductDetails() {
                   description={product.description}
                   children={
                     <div css={styles.productSummary}>
-                      <>
-                        <Spacer value="2rem" />
-                        <h6>
-                          {product.currencySymbol}{" "}
-                          {product.amount.toLocaleString()}
-                        </h6>
-                        <Spacer value="3rem" />
-                      </>
+                      <Spacer value="2rem" />
+                      <h6>
+                        {product.currencySymbol}{" "}
+                        {product.amount.toLocaleString()}
+                      </h6>
+                      <Spacer value="3rem" />
                       <div css={styles.btnContainer}>
                         <div css={styles.counterContainer}>
                           <Counter
@@ -165,7 +163,7 @@ export default function ProductDetails() {
           </>
         )}
         {isLoading && (
-          <div css={styles.spinnerContainer}>
+          <div css={centerAlign}>
             <Spinner />
           </div>
         )}
@@ -251,10 +249,5 @@ const styles = {
   textHighlight: css({
     color: colors.orange,
     marginRight: "2rem",
-  }),
-  spinnerContainer: css({
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-  }),
+  })
 };

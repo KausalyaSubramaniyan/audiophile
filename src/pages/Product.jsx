@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { productData } from "../data/mock/mock";
 
 import Layout from "../components/Layout";
 import ProductCards from "../components/ProductCards";
@@ -10,24 +7,25 @@ import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
+import Spinner from "../components/Spinner";
 import { css } from "@emotion/react";
-import { mediaQuery } from "../styles/CommonStyles";
+import { centerAlign, mediaQuery } from "../styles/CommonStyles";
+import { useGetProductsByCategoryQuery } from "../data/services/ProductApi";
 
 export default function Product({ name }) {
-  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
-  const getProducts = () => {
-    setProducts(productData(name.toUpperCase()));
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, [window.location.pathname]);
+  const { isLoading, data: products } = useGetProductsByCategoryQuery(name);
 
   // TODO - See whether product should be sent instead of individual props
   const getContent = () => {
-    const navigate = useNavigate();
-
+    if (isLoading) {
+      return (
+        <div css={centerAlign}>
+          <Spinner />
+        </div>
+      );
+    }
     return products.map((product) => (
       <div css={styles.layoutContainer} key={product.id}>
         <SideBySideLayout

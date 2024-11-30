@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Card from "./Card";
-import response from "../data/mock/products.json";
-import { mediaQuery } from "../styles/CommonStyles";
+import Spinner from "./Spinner";
+import { centerAlign, mediaQuery } from "../styles/CommonStyles";
+import { useGetAllProductsQuery } from "../data/services/ProductApi";
 
 export default function ProductCards() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    setProducts(response);
-  }, []);
+  const { isLoading, data: products } = useGetAllProductsQuery();
 
   const getCards = () => {
+    if (isLoading) {
+      return (
+        <div css={centerAlign}>
+          <Spinner />
+        </div>
+      );
+    }
     return products.map((product) => (
-      <Card
-        key={product.id}
-        imgUrl={product.imgUrl}
-        productName={product.name}
-      />
+      <Card key={product.id} imgUrl={product.imgUrl} category={product.name} />
     ));
   };
 
@@ -32,7 +32,7 @@ const styles = {
     [mediaQuery["sm"]]: {
       display: "flex",
       flexWrap: "wrap",
-      rowGap: "var(--spacing-1)"
+      rowGap: "var(--spacing-1)",
     },
   }),
 };
