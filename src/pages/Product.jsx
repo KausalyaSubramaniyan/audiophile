@@ -17,7 +17,7 @@ export default function Product({ name }) {
   const [products, setProducts] = useState([]);
 
   const getProducts = () => {
-    setProducts(productData(name));
+    setProducts(productData(name.toUpperCase()));
   };
 
   useEffect(() => {
@@ -40,9 +40,7 @@ export default function Product({ name }) {
               children={
                 <Button
                   onClick={() => {
-                    navigate(`/product/${name.toLowerCase()}/${product.id}`, {
-                      state: { product },
-                    });
+                    navigate(`/products/${name}/${product.id}`);
                   }}
                 >
                   SEE PRODUCT
@@ -60,7 +58,7 @@ export default function Product({ name }) {
   return (
     <>
       <Layout
-        heroSection={<ProductHeroSection product={name} />}
+        heroSection={<ProductHeroSection product={name.toUpperCase()} />}
         content={
           <>
             {getContent()}

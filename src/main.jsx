@@ -19,18 +19,18 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<Home />} />
             <Route
               path="headphones"
-              element={<Product key="headphones" name="HEADPHONES" />}
+              element={<Product key="headphones" name="headphones" />}
             />
             <Route
               path="speakers"
-              element={<Product key="speakers" name="SPEAKERS" />}
+              element={<Product key="speakers" name="speakers" />}
             />
             <Route
               path="earphones"
-              element={<Product key="earphones" name="EARPHONES" />}
+              element={<Product key="earphones" name="earphones" />}
             />
             <Route
-              path="/product/:productName/:id"
+              path="/products/:productCategory/:id"
               element={<ProductDetails />}
             />
             <Route path="/checkout" element={<Checkout />} />

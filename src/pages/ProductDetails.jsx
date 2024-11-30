@@ -1,19 +1,19 @@
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import SideBySideLayout from "../components/SideBySideLayout";
 import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
 import { colors, mediaQuery } from "../styles/CommonStyles";
-import { productDetailsData } from "../data/mock/mock";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
+import Spinner from "../components/Spinner";
 import {
   useAddItemMutation,
   useGetCartQuery,
@@ -21,11 +21,14 @@ import {
   useUpdateQuantityMutation,
 } from "../data/services/CartApi";
 import { useSelector } from "react-redux";
+import { useGetProductByIdQuery } from "../data/services/ProductApi";
 
 export default function ProductDetails() {
-  // TODO - Will lose state on page refresh
-  const { product } = useLocation().state;
-  const [productAdditionalInfo, setProductAdditionalInfo] = useState({});
+  const { productCategory, id } = useParams();
+  const { isLoading, data: product } = useGetProductByIdQuery({
+    category: productCategory,
+    id: id,
+  });
 
   const [addItem] = useAddItemMutation();
   const [updateQuantity] = useUpdateQuantityMutation();
@@ -34,8 +37,9 @@ export default function ProductDetails() {
 
   const items = useSelector((state) => state.cart.items);
   const getItemQuantity = () => {
-    return items.find((item) => item.name === productAdditionalInfo.name)?.quantity ?? 0;
+    return items.find((item) => item.name === product.name)?.quantity ?? 0;
   };
+
   const [quantity, setQuantity] = useState(getItemQuantity());
   const [action, setAction] = useState("");
 
@@ -59,23 +63,15 @@ export default function ProductDetails() {
     setQuantity(quantity - 1);
   };
 
-  const getProductAdditionalInfo = () => {
-    setProductAdditionalInfo(productDetailsData(product.id));
-  };
-
-  useEffect(() => {
-    getProductAdditionalInfo();
-  }, [product]);
-
   useEffect(() => {
     setQuantity(getItemQuantity());
-  }, [items, productAdditionalInfo]);
+  }, [items, product]);
 
   const getFeatures = () => {
     return (
       <div css={styles.features}>
         <h3>FEATURES</h3>
-        <p css={styles.aboutText}>{productAdditionalInfo.features}</p>
+        <p css={styles.aboutText}>{product.features}</p>
       </div>
     );
   };
@@ -85,7 +81,7 @@ export default function ProductDetails() {
       <div css={styles.box}>
         <h3>IN THE BOX</h3>
         <ul>
-          {productAdditionalInfo.inTheBox.map((i) => (
+          {product.inTheBox.map((i) => (
             <ol key={i.item}>
               <span css={styles.textHighlight}>{i.quantity}</span>
               <span css={styles.aboutText}>{i.item}</span>
@@ -98,12 +94,12 @@ export default function ProductDetails() {
 
   const addToCart = async () => {
     const payload = {
-      id: productAdditionalInfo.id,
-      name: productAdditionalInfo.name,
-      amount: productAdditionalInfo.amount,
-      currSymbol: productAdditionalInfo.currencySymbol,
-      quantity: quantity,
+      id: product.id,
+      name: product.name,
+      amount: product.amount,
+      currSymbol: product.currencySymbol,
       imgUrl: product.imgUrls.mobile,
+      quantity,
     };
     if (action === "ADD") {
       await addItem(payload);
@@ -121,53 +117,56 @@ export default function ProductDetails() {
         <Spacer value="5rem" />
         <p>Go Back</p>
         <Spacer value="3rem" />
-        <SideBySideLayout
-          isImgLeft={true}
-          content={
-            <SideBySideLayoutTextContent
-              title={<h2>{product.title}</h2>}
-              tag={product.tag}
-              description={product.description}
-              children={
-                <div css={styles.productSummary}>
-                  {productAdditionalInfo && Object.keys(productAdditionalInfo).length > 0 && (
-                    <>
-                      <Spacer value="2rem" />
-                      <h6>
-                        {productAdditionalInfo.currencySymbol} {productAdditionalInfo.amount.toLocaleString()}
-                      </h6>
-                      <Spacer value="3rem" />
-                    </>
-                  )}
-                  <div css={styles.btnContainer}>
-                    <div css={styles.counterContainer}>
-                      <Counter
-                        count={quantity}
-                        increment={increment}
-                        decrement={decrement}
-                      />
+        {product && Object.keys(product).length > 0 && (
+          <>
+            <SideBySideLayout
+              isImgLeft={true}
+              content={
+                <SideBySideLayoutTextContent
+                  title={<h2>{product.title}</h2>}
+                  tag={product.tag}
+                  description={product.description}
+                  children={
+                    <div css={styles.productSummary}>
+                      <>
+                        <Spacer value="2rem" />
+                        <h6>
+                          {product.currencySymbol}{" "}
+                          {product.amount.toLocaleString()}
+                        </h6>
+                        <Spacer value="3rem" />
+                      </>
+                      <div css={styles.btnContainer}>
+                        <div css={styles.counterContainer}>
+                          <Counter
+                            count={quantity}
+                            increment={increment}
+                            decrement={decrement}
+                          />
+                        </div>
+                        <Button onClick={() => addToCart()}>ADD TO CART</Button>
+                      </div>
                     </div>
-
-                    <Button onClick={() => addToCart()}>ADD TO CART</Button>
-                  </div>
-                </div>
+                  }
+                />
               }
-            />
-          }
-          imgUrls={product.imgUrls}
-          imgDimension={{ height: "560px", width: "538px" }}
-        ></SideBySideLayout>
-        {productAdditionalInfo && Object.keys(productAdditionalInfo).length > 0 && (
-          <div>
+              imgUrls={product.imgUrls}
+              imgDimension={{ height: "560px", width: "538px" }}
+            ></SideBySideLayout>
             <Spacer value="7rem" />
             <div css={styles.about}>
               {getFeatures()}
               {getBox()}
             </div>
             <Spacer value="7rem" />
-            <Gallery imgs={productAdditionalInfo.gallery} />
-            <Recommendations products={productAdditionalInfo.recommendations} />
+            <Gallery imgs={product.gallery} />
+            <Recommendations products={product.recommendations} />
             <Spacer value="5rem" />
+          </>
+        )}
+        {isLoading && (
+          <div css={styles.spinnerContainer}>
+            <Spinner />
           </div>
         )}
         <ProductCards />
@@ -252,5 +251,10 @@ const styles = {
   textHighlight: css({
     color: colors.orange,
     marginRight: "2rem",
+  }),
+  spinnerContainer: css({
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
   }),
 };
