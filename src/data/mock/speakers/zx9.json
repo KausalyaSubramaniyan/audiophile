@@ -68,5 +68,13 @@
       "id": 111,
       "imgUrl": "/images/product-zx9-speaker/desktop/image-gallery-3.jpg"
     }
-  ]
+  ],
+  "imgUrls": {
+    "mobile": "/images/product-zx9-speaker/mobile/image-product.jpg",
+    "tablet": "/images/product-zx9-speaker/tablet/image-product.jpg",
+    "desktop": "/images/product-zx9-speaker/desktop/image-product.jpg"
+  },
+  "tag": "NEW PRODUCT",
+  "title": "ZX9 SPEAKER",
+  "description": "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups."
 }

@@ -68,5 +68,13 @@
       "id": 114,
       "imgUrl": "/images/product-zx9-speaker/desktop/image-gallery-3.jpg"
     }
-  ]
+  ],
+  "imgUrls": {
+    "mobile": "/images/product-zx7-speaker/mobile/image-product.jpg",
+    "tablet": "/images/product-zx7-speaker/tablet/image-product.jpg",
+    "desktop": "/images/product-zx7-speaker/desktop/image-product.jpg"
+  },
+  "tag": "",
+  "title": "ZX7 SPEAKER",
+  "description": "Stream high quality sound wirelessly with minimal loss. The ZX7 bookshelf speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use."
 }
