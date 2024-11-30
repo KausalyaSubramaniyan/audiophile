@@ -11,17 +11,17 @@ export default function Nav() {
         </Link>
       </ol>
       <ol>
-        <Link to={`/headphones`} css={styles.link}>
+        <Link to={`/products/headphones`} css={styles.link}>
           HEADPHONES
         </Link>
       </ol>
       <ol>
-        <Link to={`/speakers`} css={styles.link}>
+        <Link to={`/products/speakers`} css={styles.link}>
           SPEAKERS
         </Link>
       </ol>
       <ol>
-        <Link to={`/earphones`} css={styles.link}>
+        <Link to={`/products/earphones`} css={styles.link}>
           EARPHONES
         </Link>
       </ol>

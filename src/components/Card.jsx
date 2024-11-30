@@ -2,13 +2,13 @@ import { css } from "@emotion/react";
 import { subTitle, mediaQuery } from "../styles/CommonStyles";
 import { Link } from "react-router-dom";
 
-export default function Card({ imgUrl, productName }) {
+export default function Card({ imgUrl, category }) {
   return (
     <div css={styles.container}>
       <img alt="product" src={imgUrl} css={styles.img}></img>
       <div css={styles.text}>
-        <h6>{productName}</h6>
-        <Link to={`/${productName.toLowerCase()}`} css={styles.link}>
+        <h6>{category.toUpperCase()}</h6>
+        <Link to={`/products/${category}`} css={styles.link}>
           <span css={styles.linkText}>SHOP </span>
           <span css={styles.linkArrow}>{">"}</span>
         </Link>
