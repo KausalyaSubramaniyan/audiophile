@@ -2,29 +2,22 @@ import { css } from "@emotion/react";
 import { colors, mediaQuery, radius } from "../styles/CommonStyles";
 import Button from "./Button";
 import Spacer from "./Spacer";
+import Picture from "./Picture";
 
 function SpeakerHighlight() {
   return (
     <>
       <div css={styles.highlights.speaker.zx9.container}>
         <div css={styles.highlights.speaker.zx9.imgContainer}>
-          <picture>
-            <source
-              srcSet="images/home/mobile/image-speaker-zx9.png"
-              media="(max-width: 576px)"
-              css={styles.highlights.speaker.zx9.img}
-            />
-            <source
-              srcSet="images/home/tablet/image-speaker-zx9.png"
-              media="(max-width: 768px)"
-              css={styles.highlights.speaker.zx9.img}
-            />
-            <img
-              alt="ZX9 Speaker"
-              src="images/home/desktop/image-speaker-zx9.png"
-              css={styles.highlights.speaker.zx9.img}
-            />
-          </picture>
+          <Picture
+            containerCss={css({})}
+            imgCss={styles.highlights.speaker.zx9.img}
+            imgUrls={{
+              mobile: "/images/home/mobile/image-speaker-zx9.png",
+              tablet: "/images/home/tablet/image-speaker-zx9.png",
+              desktop: "/images/home/desktop/image-speaker-zx9.png",
+            }}
+          />
         </div>
         <div css={styles.highlights.speaker.zx9.textContainer}>
           <div css={styles.highlights.speaker.zx9.text}>
@@ -51,23 +44,15 @@ function SpeakerHighlight() {
 function EarphoneHighlight() {
   return (
     <div css={styles.highlights.earphone.container}>
-      <picture css={styles.highlights.earphone.imgContainer}>
-        <source
-          srcSet="images/home/mobile/image-earphones-yx1.jpg"
-          media="(max-width: 576px)"
-          css={styles.highlights.earphone.img}
-        />
-        <source
-          srcSet="images/home/tablet/image-earphones-yx1.jpg"
-          media="(max-width: 768px)"
-          css={styles.highlights.earphone.img}
-        />
-        <img
-          alt="yx1 earphone"
-          src="images/home/desktop/image-earphones-yx1.jpg"
-          css={styles.highlights.earphone.img}
-        />
-      </picture>
+      <Picture
+        containerCss={styles.highlights.earphone.imgContainer}
+        imgCss={styles.highlights.earphone.img}
+        imgUrls={{
+          mobile: "/images/home/mobile/image-earphones-yx1.jpg",
+          tablet: "/images/home/tablet/image-earphones-yx1.jpg",
+          desktop: "/images/home/desktop/image-earphones-yx1.jpg",
+        }}
+      />
       <div css={styles.highlights.earphone.textContainer}>
         <div css={styles.highlights.earphone.text}>
           <h4>YX1 EARPHONES</h4>
@@ -101,7 +86,7 @@ const styles = {
           display: "flex",
           borderRadius: radius.md,
           backgroundImage: "url(/images/home/desktop/pattern-circles.svg)",
-          backgroundPosition: "-90% 10%",          
+          backgroundPosition: "-90% 10%",
           backgroundRepeat: "no-repeat",
           [mediaQuery["lg"]]: {
             flexDirection: "column",

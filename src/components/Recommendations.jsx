@@ -1,23 +1,20 @@
 import { css } from "@emotion/react";
 import Button from "./Button";
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { mediaQuery } from "../styles/CommonStyles";
+import Picture from "./Picture";
 
 function RecommendationCard({ product }) {
   return (
     <div css={styles.card}>
-      <picture css={styles.imgContainer}>
-        <source
-          srcSet={product.imgUrls["mobile"]}
-          media="(max-width: 576px)"
-          css={styles.img}
-        />
-        <source
-          srcSet={product.imgUrls["tablet"]}
-          media="(max-width: 768px)"
-          css={styles.img}
-        />
-        <img srcSet={product.imgUrls["desktop"]} css={styles.img} />
-      </picture>
+      <Picture
+        containerCss={styles.imgContainer}
+        imgCss={styles.img}
+        imgUrls={{
+          mobile: product.imgUrls["mobile"],
+          tablet: product.imgUrls["tablet"],
+          desktop: product.imgUrls["desktop"],
+        }}
+      />
       <h5>{product.title}</h5>
       <Button>SEE PRODUCT</Button>
     </div>

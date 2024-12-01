@@ -70,7 +70,13 @@ export const radius = {
 const breakpoints = [576, 768, 992, 1200];
 const screenSizes = ["sm", "md", "lg", "xl"];
 export const mediaQuery = {};
+export const mediaQueryCondition = {};
+
+// mediaQueryCondition is used in Picture component
+breakpoints.map((breakpoint, index) => {
+  mediaQueryCondition[screenSizes[index]] = `(max-width: ${breakpoint}px)`;
+});
 
 breakpoints.map((breakpoint, index) => {
-  mediaQuery[screenSizes[index]] = `@media (max-width: ${breakpoint}px)`;
+  mediaQuery[screenSizes[index]] = `@media ${mediaQueryCondition[screenSizes[index]]}`;
 });

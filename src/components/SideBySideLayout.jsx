@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { mediaQuery } from "../styles/CommonStyles";
+import Picture from "./Picture";
 
 export default function SideBySideLayout({
   isImgLeft,
@@ -9,19 +10,15 @@ export default function SideBySideLayout({
 }) {
   const getImg = () => {
     return (
-      <picture css={styles.imgContainer}>
-        <source
-          srcSet={imgUrls["mobile"]}
-          media="(max-width: 576px)"
-          css={styles.img}
-        />
-        <source
-          srcSet={imgUrls["tablet"]}
-          media="(max-width: 768px)"
-          css={styles.img}
-        />
-        <img srcSet={imgUrls["desktop"]} css={styles.img} />
-      </picture>
+      <Picture
+        containerCss={styles.imgContainer}
+        imgCss={styles.img}
+        imgUrls={{
+          mobile: imgUrls["mobile"],
+          tablet: imgUrls["tablet"],
+          desktop: imgUrls["desktop"],
+        }}
+      />
     );
   };
 
