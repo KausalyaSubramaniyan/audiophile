@@ -84,7 +84,7 @@ const styles = {
       display: "flex",
       width: "15%",
     },
-    [mediaQuery["md"]]: {
+    [mediaQuery["sm"]]: {
       display: "flex",
       width: "25%",
     },
@@ -100,7 +100,7 @@ const styles = {
       alignItems: "flex-start",
       rowGap: "var(--spacing-1-5)",
       ul: {
-        width: "50%",
+        width: "100%",
       },
     },
     [mediaQuery["md"]]: {
@@ -137,6 +137,7 @@ const styles = {
       alignItems: "center",
       textAlign: "center",
       width: "100%",
+      margin: "0",
       p: {
         width: "100%",
       },
@@ -149,8 +150,14 @@ const styles = {
     background: "var(--color-primary)",
     height: "4px",
     width: "96px",
+    [mediaQuery["md"]]: {
+      left: "calc(50% - 96px/2)",
+    },
   }),
   navContainer: css({
     width: "40%",
+    [mediaQuery["lg"]]: {
+      width: "60%",
+    },
   }),
 };
