@@ -255,7 +255,9 @@ export default function Checkout() {
         <Spacer value="1rem" />
         <div css={styles.billRow}>
           <p css={styles.billText}>GRAND TOTAL</p>
-          <p css={[styles.billValue, styles.grandTotal]}>${bill.grandTotal.toLocaleString()}</p>
+          <p css={[styles.billValue, styles.grandTotal]}>
+            ${bill.grandTotal.toLocaleString()}
+          </p>
         </div>
       </>
     );
@@ -290,7 +292,7 @@ export default function Checkout() {
             onClick={() => setIsVisible(!isVisible)}
             placement="top-center"
           >
-            <Confirmation />
+            <Confirmation items={items} bill={bill} />
           </Overlay>
         </div>
       </div>

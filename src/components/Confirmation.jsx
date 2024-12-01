@@ -8,9 +8,8 @@ import Spacer from "./Spacer";
 import Divider from "./Divider";
 import ItemWithQuantity from "./ItemWithQuantity";
 
-export default function Confirmation() {
+export default function Confirmation({ items, bill }) {
   const [displayAll, setDisplayAll] = useState(false);
-  const { items, bill } = useSelector((state) => state.cart);
 
   const getItemsCard = () => {
     let itemsToDisplay = items;
@@ -59,7 +58,9 @@ export default function Confirmation() {
           css={displayAll ? [styles.total, styles.totalAtBottom] : styles.total}
         >
           <p css={styles.totalText}>GRAND TOTAL</p>
-          <p css={styles.totalAmount}>{bill.currSymbol} {bill.grandTotal.toLocaleString()}</p>
+          <p css={styles.totalAmount}>
+            {bill.currSymbol} {bill.grandTotal.toLocaleString()}
+          </p>
         </div>
       </div>
     );
