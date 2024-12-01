@@ -43,10 +43,16 @@ export default function Button({
           "&:hover": {
             ...styles["&:hover"],
             backgroundColor: colorProp,
-            color: "var(--color-white-1000)"
+            color: "var(--color-white-1000)",
           },
         };
         break;
+      case "ghost":
+        styles = {
+          ...styles,
+          backgroundColor: "transparent",
+          color: "var(--color-secondary)"
+        };
       default:
         break;
     }

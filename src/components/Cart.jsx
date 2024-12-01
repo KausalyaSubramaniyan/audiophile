@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-import { colors, mediaQuery, subTitle } from "../styles/CommonStyles";
+import { mediaQuery, subTitle } from "../styles/CommonStyles";
 import Item from "./Item";
 import Button from "./Button";
 import Counter from "./Counter";
@@ -76,18 +76,25 @@ export default function Cart() {
     refetch();
   };
 
-  // TODO - Should this button be converted
   return (
     <div css={styles.container}>
       <div css={styles.top}>
         <h6>CART({items.length})</h6>
-        <button onClick={() => removeAll()}>Remove all</button>
+        <Button
+          variant="ghost"
+          css={styles.removeAllBtn}
+          onClick={() => removeAll()}
+        >
+          Remove all
+        </Button>
       </div>
       <Spacer value="2rem" />
       <div css={styles.items}>{getItems()}</div>
       <div css={styles.total}>
         <p css={styles.totalText}>TOTAL</p>
-        <p css={styles.totalAmt}>{bill.currSymbol} {bill.total.toLocaleString()}</p>
+        <p css={styles.totalAmt}>
+          {bill.currSymbol} {bill.total.toLocaleString()}
+        </p>
       </div>
       <Button size="stretch">CHECKOUT</Button>
     </div>
@@ -107,19 +114,15 @@ const styles = {
   top: css({
     display: "flex",
     justifyContent: "space-between",
-    button: {
-      border: "none",
-      backgroundColor: colors.white,
-      opacity: "65%",
-      textDecoration: "underline",
-      "&:hover": {
-        cursor: "pointer",
-      },
-    },
+  }),
+  removeAllBtn: css({
+    opacity: "65%",
+    textDecoration: "underline",
+    padding: "0",
   }),
   items: css({
     maxHeight: "17.4rem",
-    overflowY: "auto"
+    overflowY: "auto",
   }),
   counter: css({
     width: "6.5rem",
@@ -138,6 +141,6 @@ const styles = {
   }),
   totalAmt: css({
     fontSize: "18px",
-    fontWeight: "700"
+    fontWeight: "700",
   }),
 };
