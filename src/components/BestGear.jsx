@@ -25,7 +25,6 @@ export default function BestGear() {
           tablet: "/images/shared/tablet/image-best-gear.jpg",
           desktop: "/images/shared/desktop/image-best-gear.jpg",
         }}
-        imgDimension={{ height: "39rem", width: "100%" }}
       />
     </div>
   );

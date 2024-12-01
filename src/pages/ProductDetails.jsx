@@ -37,6 +37,9 @@ export default function ProductDetails() {
 
   const items = useSelector((state) => state.cart.items);
   const getItemQuantity = () => {
+    if (!product) {
+      return 0;
+    }
     return items.find((item) => item.name === product.name)?.quantity ?? 0;
   };
 
@@ -149,7 +152,6 @@ export default function ProductDetails() {
                 />
               }
               imgUrls={product.imgUrls}
-              imgDimension={{ height: "560px", width: "538px" }}
             ></SideBySideLayout>
             <Spacer value="7rem" />
             <div css={styles.about}>
@@ -249,5 +251,5 @@ const styles = {
   textHighlight: css({
     color: colors.orange,
     marginRight: "2rem",
-  })
+  }),
 };

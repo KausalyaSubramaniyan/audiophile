@@ -6,7 +6,6 @@ export default function SideBySideLayout({
   isImgLeft,
   content,
   imgUrls,
-  imgDimension,
 }) {
   const getImg = () => {
     return (

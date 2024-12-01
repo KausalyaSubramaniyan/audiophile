@@ -47,7 +47,6 @@ export default function Product({ name }) {
             />
           }
           imgUrls={product.imgUrls}
-          imgDimension={{ height: "560px", width: "538px" }}
         />
       </div>
     ));

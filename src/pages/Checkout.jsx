@@ -7,10 +7,8 @@ import {
   subTitle,
   radius,
   inputStyles,
-  mediaQuery,
 } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
-import Item from "../components/Item";
 import { useState } from "react";
 import Overlay from "../components/Overlay";
 import Confirmation from "../components/Confirmation";
