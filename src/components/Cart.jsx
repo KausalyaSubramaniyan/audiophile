@@ -1,4 +1,6 @@
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
+import { useNavigate } from "react-router-dom";;
+import { useSelector } from "react-redux";
 
 import { mediaQuery, subTitle } from "../styles/CommonStyles";
 import Item from "./Item";
@@ -11,9 +13,9 @@ import {
   useRemoveItemMutation,
   useUpdateQuantityMutation,
 } from "../data/services/CartApi";
-import { useSelector } from "react-redux";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const { items, bill } = useSelector((state) => state.cart);
   const [updateQuantity] = useUpdateQuantityMutation();
   const [removeAllItems] = useRemoveAllItemsMutation();
@@ -76,6 +78,10 @@ export default function Cart() {
     refetch();
   };
 
+  const checkout = () => {
+    navigate("/checkout");
+  };
+
   return (
     <div css={styles.container}>
       <div css={styles.top}>
@@ -96,7 +102,9 @@ export default function Cart() {
           {bill.currSymbol} {bill.total.toLocaleString()}
         </p>
       </div>
-      <Button size="stretch">CHECKOUT</Button>
+      <Button size="stretch" onClick={() => checkout()}>
+        CHECKOUT
+      </Button>
     </div>
   );
 }
