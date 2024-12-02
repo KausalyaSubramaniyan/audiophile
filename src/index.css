@@ -32,13 +32,16 @@
 
   --font-size-15: 15px;
   --font-size-18: 18px;
+  --font-size-24: 24px;
   --font-size-28: 28px;
+  --font-size-32: 32px;
   --font-size-36: 36px;
   --font-size-40: 40px;
   --font-size-56: 56px;
 
   --font-size-h1: var(--font-size-56);
   --font-size-h2: var(--font-size-40);
+  --font-size-h3: var(--font-size-32);
   --font-size-h6: var(--font-size-18);
 
   --nav-bar-height: 92px;
@@ -127,7 +130,7 @@ h2 {
 h3 {
   font-family: Manrope;
   font-weight: 700;
-  font-size: 32px;
+  font-size: var(--font-size-h3);
   line-height: 36px;
   letter-spacing: 1.15px;
 }
@@ -184,6 +187,7 @@ h6 {
     --side-spacing: var(--spacing-1);
     --font-size-h1: var(--font-size-36);
     --font-size-h2: var(--font-size-28);
+    --font-size-h3: var(--font-size-24);
     --font-size-h6: var(--font-size-15);
   }
   h2 {
