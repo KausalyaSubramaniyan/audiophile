@@ -1,5 +1,5 @@
-import { css } from "@emotion/react"
-import { useNavigate } from "react-router-dom";;
+import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { mediaQuery, subTitle } from "../styles/CommonStyles";
@@ -38,8 +38,7 @@ export default function Cart() {
         <img
           alt="Empty Cart"
           src="/images/cart/empty-cart.png"
-          height="300px"
-          width="300px"
+          css={styles.emptyCartImg}
         />
         <h6>Your cart is empty</h6>
         <p css={subTitle}>
@@ -138,6 +137,18 @@ const styles = {
   }),
   emptyCart: css({
     textAlign: "center",
+  }),
+  emptyCartImg: css({
+    height: "300px",
+    width: "300px",
+    [mediaQuery["md"]]: {
+      height: "270px",
+      width: "270px",
+    },
+    [mediaQuery["sm"]]: {
+      height: "200px",
+      width: "200px",
+    },
   }),
   total: css({
     display: "flex",
