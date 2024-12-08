@@ -2,6 +2,9 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { colors, mediaQuery, spacing, subTitle } from "../styles/CommonStyles";
 import Logo from "../../public/images/shared/desktop/logo.svg";
+import FacebookLogo from "../../public/images/shared/desktop/icon-facebook.svg";
+import TwitterLogo from "../../public/images/shared/desktop/icon-twitter.svg";
+import InstagramLogo from "../../public/images/shared/desktop/icon-instagram.svg";
 import Spacer from "./Spacer";
 import Nav from "./Nav";
 
@@ -9,13 +12,13 @@ function Icons({ styles }) {
   return (
     <ul css={styles}>
       <ol>
-        <img alt="facebook" src="/images/shared/desktop/icon-facebook.svg" />
+        <FacebookLogo />
       </ol>
       <ol>
-        <img alt="twitter" src="/images/shared/desktop/icon-twitter.svg" />
+        <TwitterLogo />
       </ol>
       <ol>
-        <img alt="instagram" src="/images/shared/desktop/icon-instagram.svg" />
+        <InstagramLogo />
       </ol>
     </ul>
   );
@@ -39,12 +42,12 @@ export default function Footer() {
           helping you get the most out of personal audio. Come and visit our
           demo facility - we’re open 7 days a week.
         </p>
-        <Icons styles={styles.iconsTop} />
+        <Icons styles={[styles.icons, styles.iconsTop]} />
       </div>
       <Spacer value="3rem" />
       <div css={styles.row3}>
         <p css={styles.text}>Copyright 2021. All Rights Reserved</p>
-        <Icons styles={styles.iconsBottom} />
+        <Icons styles={[styles.icons, styles.iconsBottom]} />
       </div>
     </div>
   );
@@ -57,24 +60,33 @@ const styles = {
     color: colors.white,
     position: "relative",
   }),
+  icons: css({
+    margin: "0",
+    width: "10%",
+    ol: {
+      padding: "0px",
+      "&:hover": {
+        svg: {
+          cursor: "pointer",
+          path: {
+            fill: "var(--color-primary)",
+          },
+        },
+      },
+    },
+  }),
   iconsTop: css({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    margin: "0",
-    width: "10%",
-    ol: { padding: "0px" },
     [mediaQuery["lg"]]: {
       display: "none",
     },
   }),
   iconsBottom: css({
+    display: "none",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    margin: "0",
-    width: "10%",
-    ol: { padding: "0px" },
-    display: "none",
     [mediaQuery["lg"]]: {
       display: "flex",
       padding: "0",
