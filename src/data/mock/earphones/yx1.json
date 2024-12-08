@@ -31,27 +31,27 @@
       "id": 5,
       "title": "XX99 Mark I",
       "imgUrls": {
-        "mobile": "/images/product-xx99-mark-one-headphones/mobile/image-product.jpg",
-        "tablet": "/images/product-xx99-mark-one-headphones/tablet/image-product.jpg",
-        "desktop": "/images/product-xx99-mark-one-headphones/desktop/image-product.jpg"
+        "mobile": "/images/shared/mobile/image-xx99-mark-one-headphones.jpg",
+        "tablet": "/images/shared/tablet/image-xx99-mark-one-headphones.jpg",
+        "desktop": "/images/shared/desktop/image-xx99-mark-one-headphones.jpg"
       }
     },
     {
       "id": 6,
       "title": "XX59",
       "imgUrls": {
-        "mobile": "/images/product-xx59-headphones/mobile/image-product.jpg",
-        "tablet": "/images/product-xx59-headphones/tablet/image-product.jpg",
-        "desktop": "/images/product-xx59-headphones/desktop/image-product.jpg"
+        "mobile": "/images/shared/mobile/image-xx59-headphones.jpg",
+        "tablet": "/images/shared/tablet/image-xx59-headphones.jpg",
+        "desktop": "/images/shared/desktop/image-xx59-headphones.jpg"
       }
     },
     {
       "id": 7,
       "title": "ZX9 SPEAKER",
       "imgUrls": {
-        "mobile": "/images/product-zx9-speaker/mobile/image-product.jpg",
-        "tablet": "/images/product-zx9-speaker/tablet/image-product.jpg",
-        "desktop": "/images/product-zx9-speaker/desktop/image-product.jpg"
+        "mobile": "/images/shared/mobile/image-zx9-speaker.jpg",
+        "tablet": "/images/shared/tablet/image-zx9-speaker.jpg",
+        "desktop": "/images/shared/desktop/image-zx9-speaker.jpg"
       }
     }
   ],
