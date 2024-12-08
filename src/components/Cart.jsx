@@ -124,8 +124,7 @@ const styles = {
   }),
   removeAllBtn: css({
     opacity: "65%",
-    textDecoration: "underline",
-    padding: "0",
+    textDecoration: "underline"
   }),
   items: css({
     maxHeight: "17.4rem",

@@ -24,6 +24,21 @@ export default function Button({
       whiteSpace: "nowrap",
     };
 
+    switch (size) {
+      case "small":
+        styles = { ...styles, padding: "0.5rem 1rem" };
+        break;
+      case "medium":
+        styles = { ...styles, padding: "0.8rem 2.2rem" };
+        break;
+      case "large":
+        styles = { ...styles, padding: "1.5rem 2rem" };
+        break;
+      case "stretch":
+        styles = { ...styles, width: "100%" };
+        break;
+    }
+
     switch (variant) {
       case "contained":
         styles = {
@@ -51,24 +66,10 @@ export default function Button({
         styles = {
           ...styles,
           backgroundColor: "transparent",
-          color: "var(--color-secondary)"
+          color: "var(--color-secondary)",
+          padding: "0",
         };
       default:
-        break;
-    }
-
-    switch (size) {
-      case "small":
-        styles = { ...styles, padding: "0.5rem 1rem" };
-        break;
-      case "medium":
-        styles = { ...styles, padding: "0.8rem 2.2rem" };
-        break;
-      case "large":
-        styles = { ...styles, padding: "1.5rem 2rem" };
-        break;
-      case "stretch":
-        styles = { ...styles, width: "100%" };
         break;
     }
 
