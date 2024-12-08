@@ -89,6 +89,9 @@ const styles = {
   }),
   nav: css({
     width: "40%",
+    [mediaQuery["lg"]]: {
+      width: "50%",
+    },
     [mediaQuery["md"]]: {
       display: "none",
     },

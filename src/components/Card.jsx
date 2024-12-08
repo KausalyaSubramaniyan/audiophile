@@ -44,9 +44,9 @@ const styles = {
     top: "10%",
     left: "calc(50% - 105px)",
     [mediaQuery["lg"]]: {
-      height: "170px",
-      width: "170px",
-      left: "calc(50% - 85px)",
+      width: "140px",
+      height: "140px",
+      left: "calc(50% - 70px)",
     },
   }),
   link: css([
@@ -56,13 +56,16 @@ const styles = {
       display: "flex",
     },
   ]),
-  linkText: css([subTitle, {
-    color: "var(--color-secondary)",
-    "&:hover": {
-      color: "var(--color-primary)",
-      opacity: "100%"
-    }
-  }]),
+  linkText: css([
+    subTitle,
+    {
+      color: "var(--color-secondary)",
+      "&:hover": {
+        color: "var(--color-primary)",
+        opacity: "100%",
+      },
+    },
+  ]),
   linkArrow: css({
     color: "var(--color-primary)",
     opacity: "100%",

@@ -130,7 +130,7 @@ export default function ProductDetails() {
                   tag={product.tag}
                   description={product.description}
                   children={
-                    <div css={styles.productSummary}>
+                    <div css={styles.children}>
                       <Spacer value="2rem" />
                       <h6>
                         {product.currencySymbol}{" "}
@@ -199,9 +199,8 @@ const styles = {
       },
     },
   }),
-  productSummary: css({
+  children: css({
     width: "100%",
-    textAlign: "left",
   }),
   counterContainer: css({
     width: "8rem",
@@ -210,6 +209,10 @@ const styles = {
     display: "flex",
     columnGap: "1rem",
     height: "3.25rem",
+    [mediaQuery["md"]]: {
+      display: "flex",
+      justifyContent: "center"
+    },
   }),
   about: css({
     display: "flex",
