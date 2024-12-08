@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
@@ -24,6 +24,8 @@ import { useSelector } from "react-redux";
 import { useGetProductByIdQuery } from "../data/services/ProductApi";
 
 export default function ProductDetails() {
+  const navigate = useNavigate();
+
   const { productCategory, id } = useParams();
   const { isLoading, data: product } = useGetProductByIdQuery({
     category: productCategory,
@@ -114,11 +116,17 @@ export default function ProductDetails() {
     refetch();
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const getContent = () => {
     return (
       <div>
         <Spacer value="5rem" />
-        <p>Go Back</p>
+        <Button variant="ghost" onClick={() => goBack()}>
+          Go Back
+        </Button>
         <Spacer value="3rem" />
         {product && Object.keys(product).length > 0 && (
           <>
@@ -211,7 +219,7 @@ const styles = {
     height: "3.25rem",
     [mediaQuery["md"]]: {
       display: "flex",
-      justifyContent: "center"
+      justifyContent: "center",
     },
   }),
   about: css({
