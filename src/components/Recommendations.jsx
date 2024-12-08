@@ -16,7 +16,7 @@ function RecommendationCard({ product }) {
         }}
       />
       <h5>{product.title}</h5>
-      <Button>SEE PRODUCT</Button>
+      <Button css={styles.button}>SEE PRODUCT</Button>
     </div>
   );
 }
@@ -44,14 +44,25 @@ const styles = {
   imgContainer: css({
     height: "20.5rem",
     width: "100%",
+    [mediaQuery["lg"]]: {
+      height: "16.5rem",
+    },
     [mediaQuery["sm"]]: {
       height: "10.5rem",
+    },
+  }),
+  button: css({
+    [mediaQuery["md"]]: {
+      fontSize: "13px"
     },
   }),
   cardContainer: css({
     display: "flex",
     justifyContent: "space-between",
     columnGap: "2rem",
+    [mediaQuery["md"]]: {
+      columnGap: "1rem",
+    },
     [mediaQuery["sm"]]: {
       display: "flex",
       flexWrap: "wrap",
@@ -62,6 +73,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+    width: "100%",
   }),
   img: css({
     height: "100%",
