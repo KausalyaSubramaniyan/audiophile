@@ -25,7 +25,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    [mediaQuery["lg"]]: {
+    [mediaQuery["md"]]: {
       alignItems: "center",
       justifyContent: "flex-start",
     },
@@ -33,8 +33,11 @@ const styles = {
   description: css({
     opacity: "55%",
   }),
-  tag: css([overline, {
-    color: "var(--color-primary)",
-    marginTop: "0"
-  }])
+  tag: css([
+    overline,
+    {
+      color: "var(--color-primary)",
+      marginTop: "0",
+    },
+  ]),
 };

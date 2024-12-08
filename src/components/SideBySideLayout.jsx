@@ -2,11 +2,7 @@ import { css } from "@emotion/react";
 import { mediaQuery } from "../styles/CommonStyles";
 import Picture from "./Picture";
 
-export default function SideBySideLayout({
-  isImgLeft,
-  content,
-  imgUrls,
-}) {
+export default function SideBySideLayout({ isImgLeft, content, imgUrls }) {
   const getImg = () => {
     return (
       <Picture
@@ -24,7 +20,7 @@ export default function SideBySideLayout({
   if (isImgLeft) {
     return (
       <div css={[styles.container, styles.leftImgContainer]}>
-        <div css={styles.imgContainer}>{getImg()}</div>
+        {getImg()}
         <div css={styles.contentContainer}>{content}</div>
       </div>
     );
@@ -32,7 +28,7 @@ export default function SideBySideLayout({
   return (
     <div css={[styles.container, styles.rightImgContainer]}>
       <div css={styles.contentContainer}>{content}</div>
-      <div css={styles.imgContainer}>{getImg()}</div>
+      {getImg()}
     </div>
   );
 }
@@ -77,6 +73,7 @@ const styles = {
       justifyContent: "center",
       alignItems: "center",
       textAlign: "center",
+      height: "40%",
     },
   }),
 };
