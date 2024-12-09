@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
 
-// TODO - Recheck
 export default function Button({
   variant = "contained",
   color = "primary",

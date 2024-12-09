@@ -146,11 +146,10 @@ const getMockData = ({ method, url, body }) => {
 export const cartApi = createApi({
   reducerPath: "cartApi",
   baseQuery: (args, api, extraOptions) => {
-    // TODO - Check this logic
     return new Promise((resolve) =>
       setTimeout(() => {
         resolve(getMockData(args));
-      }, 1000)
+      }, 250)
     );
   },
   endpoints: (builder) => ({

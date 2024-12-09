@@ -4,7 +4,6 @@ import { productApi } from "./services/ProductApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { cartSlice } from "./slices/CartSlice";
 
-// TODO - Check middleware
 export const store = configureStore({
   reducer: {
     [cartApi.reducerPath]: cartApi.reducer,
@@ -15,5 +14,4 @@ export const store = configureStore({
     getDefaultMiddleware().concat([cartApi.middleware, productApi.middleware]),
 });
 
-// TODO - Check this listener
 setupListeners(store.dispatch);

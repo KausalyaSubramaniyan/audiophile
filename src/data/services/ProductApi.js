@@ -58,11 +58,10 @@ export const productApi = createApi({
   reducerPath: "productApi",
   baseQuery: (args, api, extraOptions) => {
     console.log("Base query of productApi", args, api, extraOptions);
-    // TODO - Check this logic
     return new Promise((resolve) =>
       setTimeout(() => {
         resolve(getMockData(args));
-      }, 1000)
+      }, 250)
     );
   },
   endpoints: (builder) => ({

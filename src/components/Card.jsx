@@ -72,4 +72,3 @@ const styles = {
     fontSize: "26px",
   }),
 };
-// TODO - Change replace 26px with var of body/span font size

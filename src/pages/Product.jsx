@@ -17,7 +17,6 @@ export default function Product({ name }) {
 
   const { isLoading, data: products } = useGetProductsByCategoryQuery(name);
 
-  // TODO - See whether product should be sent instead of individual props
   const getContent = () => {
     if (isLoading) {
       return (
