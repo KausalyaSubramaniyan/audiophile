@@ -8,31 +8,55 @@ import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 import Cart from "./Cart";
 import Overlay from "./Overlay";
 import Nav from "./Nav";
+import ProductCards from "./ProductCards";
 import { useSelector } from "react-redux";
 
 // TODO - Implement icon button
 export default function NavBar({ customStyles = css({}) }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const [isCategoryVisible, setIsCategoryVisible] = useState(false);
   const itemsCount = useSelector((state) => state.cart.items).length;
 
   return (
     <div css={[styles.container, customStyles]}>
-      <div css={styles.hamburgerMenu}>
-        <div css={styles.line}></div>
-        <div css={styles.line}></div>
-        <div css={styles.line}></div>
+      <div
+        css={styles.hamburgerMenu}
+        onClick={() => {
+          setIsCategoryVisible(!isCartVisible);
+        }}
+      >
+        <div
+          css={isCategoryVisible ? [styles.line, styles.line1] : styles.line}
+        ></div>
+        <div
+          css={isCategoryVisible ? [styles.line, styles.line2] : styles.line}
+        ></div>
+        <div
+          css={isCategoryVisible ? [styles.line, styles.line3] : styles.line}
+        ></div>
       </div>
+      <Overlay
+        open={isCategoryVisible}
+        onClick={() => setIsCategoryVisible(!isCategoryVisible)}
+        placement="top-left"
+        customCss={styles.categoryMenuContainer}
+      >
+        <ProductCards />
+      </Overlay>
       <Logo />
       <div css={styles.nav}>
         <Nav />
       </div>
-      <button onClick={() => setIsVisible(!isVisible)} css={styles.cartButton}>
+      <button
+        onClick={() => setIsCartVisible(!isCartVisible)}
+        css={styles.cartButton}
+      >
         {itemsCount > 0 && <div css={styles.badge}>{itemsCount}</div>}
         <CartIcon />
       </button>
       <Overlay
-        open={isVisible}
-        onClick={() => setIsVisible(!isVisible)}
+        open={isCartVisible}
+        onClick={() => setIsCartVisible(!isCartVisible)}
         placement="top-right"
       >
         <Cart />
@@ -87,6 +111,21 @@ const styles = {
     width: "20px",
     backgroundColor: "var(--color-white-1000)",
   }),
+  line1: css({
+    transform: "rotate(45deg)",
+    transformOrigin: "top left",
+    width: "22px",
+    transition: "all 125ms ease-in-out",
+  }),
+  line2: css({
+    width: "0",
+  }),
+  line3: css({
+    transform: "rotate(-45deg)",
+    transformOrigin: "bottom left",
+    width: "22px",
+    transition: "all 125ms ease-in-out",
+  }),
   nav: css({
     width: "40%",
     [mediaQuery["lg"]]: {
@@ -94,6 +133,17 @@ const styles = {
     },
     [mediaQuery["md"]]: {
       display: "none",
+    },
+  }),
+  categoryMenuContainer: css({
+    left: "0",
+    right: "0",
+    borderRadius: "0",
+    padding: "3rem 2rem 5rem 2rem",
+    color: "var(--color-secondary)",
+    [mediaQuery["sm"]]: {
+      padding: "1rem 2rem 2rem 2rem",
+      left: "0",
     },
   }),
 };

@@ -7,6 +7,7 @@ export default function Overlay({
   onClick,
   children,
   placement = "center",
+  customCss = css({}),
 }) {
   const targetRef = useRef();
   const [childDimensions, setChildDimensions] = useState({
@@ -41,6 +42,11 @@ export default function Overlay({
           right: "var(--side-spacing)",
         });
       }
+      case "top-left": {
+        return css({
+          top: "var(--nav-bar-height)",
+        });
+      }
       default:
         return css({});
     }
@@ -50,7 +56,10 @@ export default function Overlay({
     return (
       <>
         <div css={styles.overlay} onClick={onClick}></div>
-        <div ref={targetRef} css={[styles.children, getPlacementStyles()]}>
+        <div
+          ref={targetRef}
+          css={[styles.children, getPlacementStyles(), customCss]}
+        >
           {children}
         </div>
       </>
