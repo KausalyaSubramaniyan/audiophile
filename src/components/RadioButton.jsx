@@ -34,7 +34,7 @@ const styles = {
   container: css({
     display: "flex",
     flexDirection: "column",
-    width: "20.5rem",
+    width: "19rem",
     rowGap: "var(--spacing-1)",
   }),
   input: css([

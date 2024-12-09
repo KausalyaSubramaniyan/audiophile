@@ -7,6 +7,8 @@ import {
   subTitle,
   radius,
   inputStyles,
+  centerAlign,
+  mediaQuery,
 } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import { useState } from "react";
@@ -18,24 +20,24 @@ import { paymentsData } from "../data/mock/mock";
 import { inputCriteria } from "../data/constant";
 import ItemWithQuantity from "../components/ItemWithQuantity";
 import { useSelector } from "react-redux";
+import Spinner from "../components/Spinner";
 
-// TODO - Handle no items to checkout scenario
 export default function Checkout() {
   const [isVisible, setIsVisible] = useState(false);
-  const { items, bill } = useSelector((state) => state.cart);
+  const { items, bill, fetched } = useSelector((state) => state.cart);
 
   // const [payments, setPayments] = useState([]);
   const [inputData, setInputData] = useState({
-    name: { value: "", error: "" },
-    email: { value: "", error: "" },
-    phoneNum: { value: "", error: "" },
-    address: { value: "", error: "" },
-    zipCode: { value: "", error: "" },
-    city: { value: "", error: "" },
-    country: { value: "", error: "" },
-    payment: { value: "eMoney", error: "" },
-    ePin: { value: "", error: "" },
-    eNum: { value: "", error: "" },
+    name: { value: "", error: "", type: "input" },
+    email: { value: "", error: "", type: "input" },
+    phoneNum: { value: "", error: "", type: "input" },
+    address: { value: "", error: "", type: "input" },
+    zipCode: { value: "", error: "", type: "input" },
+    city: { value: "", error: "", type: "input" },
+    country: { value: "", error: "", type: "input" },
+    payment: { value: "eMoney", error: "", type: "radio" },
+    ePin: { value: "", error: "", type: "input" },
+    eNum: { value: "", error: "", type: "input" },
   });
 
   const getError = (ele) => {
@@ -125,7 +127,7 @@ export default function Checkout() {
 
   const getForm = () => {
     return (
-      <div css={styles.checkout}>
+      <div css={styles.form}>
         <h3>CHECKOUT</h3>
         <div>
           <p css={styles.sectionTitle}>BILLING DETAILS</p>
@@ -262,9 +264,15 @@ export default function Checkout() {
   };
 
   const isValid = () => {
-    return Object.keys(inputData).every(
+    const isErrorFree = Object.keys(inputData).every(
       (field) => inputData[field].error === ""
     );
+
+    const isAllDataFilled = Object.keys(inputData).every(
+      (field) =>
+        inputData[field].type === "input" && inputData[field].value !== ""
+    );
+    return isErrorFree && isAllDataFilled;
   };
 
   const getSummary = () => {
@@ -297,26 +305,60 @@ export default function Checkout() {
     );
   };
 
-  return (
-    <>
-      <NavBar />
-      <div css={styles.container}>
-        {getForm()}
-        {getSummary()}
+  if (fetched) {
+    if (items.length > 0) {
+      return (
+        <div css={styles.container}>
+          <NavBar />
+          <div css={styles.checkout}>
+            {getForm()}
+            {getSummary()}
+          </div>
+          <Footer />
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <NavBar />
+          <div css={styles.emptyCart}>
+            <img
+              alt="Empty Cart"
+              src="/images/cart/empty-cart.png"
+              css={styles.emptyCartImg}
+            />
+            <h6>No items to checkout. Your cart is empty</h6>
+            <p css={subTitle}>
+              Looks like you have not added anything to your cart. Go ahead &
+              explore top categories.
+            </p>
+          </div>
+        </>
+      );
+    }
+  } else {
+    return (
+      <div css={styles.spinnerContainer}>
+        <Spinner />
       </div>
-      <Footer />
-    </>
-  );
+    );
+  }
 }
 
 const styles = {
   container: css({
     backgroundColor: "#F2F2F2",
-    padding: "8rem var(--side-spacing)",
-    display: "flex",
-    justifyContent: "space-between",
   }),
   checkout: css({
+    margin: "8rem var(--side-spacing)",
+    display: "flex",
+    justifyContent: "space-between",
+    gap: "1.5rem",
+    [mediaQuery["lg"]]: {
+      flexWrap: "wrap",
+    },
+  }),
+  form: css({
     maxWidth: "57.5%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
@@ -324,16 +366,23 @@ const styles = {
     h3: {
       marginTop: "18px",
     },
+    [mediaQuery["lg"]]: {
+      width: "100%",
+      maxWidth: "100%",
+    },
   }),
   summaryContainer: css({
-    width: "26%",
+    minWidth: "24rem",
+    [mediaQuery["lg"]]: {
+      width: "100%",
+      minWidth: "100%",
+    },
   }),
   summary: css({
     backgroundColor: colors.white,
     padding: "2rem",
     borderRadius: radius.md,
     maxHeight: "35rem",
-    width: "100%",
   }),
   items: css({
     overflowY: "auto",
@@ -343,7 +392,7 @@ const styles = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    rowGap: "1.5rem",
+    gap: "1.5rem",
   }),
   sectionTitle: css([
     subTitle,
@@ -379,5 +428,22 @@ const styles = {
   }),
   grandTotal: css({
     color: "var(--color-primary)",
+  }),
+  spinnerContainer: css([
+    centerAlign,
+    {
+      marginTop: "8rem",
+      width: "100%",
+    },
+  ]),
+  emptyCart: css({
+    padding: "var(--spacing-2-5)",
+    flexDirection: "column",
+    boxSizing: "border-box",
+    textAlign: "center",
+  }),
+  emptyCartImg: css({
+    height: "auto",
+    width: "25%",
   }),
 };
