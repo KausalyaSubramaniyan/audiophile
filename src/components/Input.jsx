@@ -22,9 +22,9 @@ export default function Input({ id, fullWidth, onChange, ...props }) {
         id={id}
         placeholder={props.placeholder}
         value={props.value}
-        css={styles.input}
+        css={props.error ? [styles.input, styles.errorBorder] : styles.input}
         onChange={onChange}
-        {...props}        
+        {...props}
       />
     </div>
   );
@@ -32,7 +32,7 @@ export default function Input({ id, fullWidth, onChange, ...props }) {
 
 export const styles = {
   fixedContainer: css({
-    width: "20.5rem",
+    flex: "1 1 19rem",
   }),
   stretchContainer: css({
     width: "100%",
@@ -63,5 +63,11 @@ export const styles = {
     fontSize: "12px",
     lineHeight: "16px",
     margin: "0",
+  }),
+  errorBorder: css({
+    borderColor: "var(--color-error)",
+    "&:focus": {
+      outlineColor: "var(--color-error)",
+    },
   }),
 };
