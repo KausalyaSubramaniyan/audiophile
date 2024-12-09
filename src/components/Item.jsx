@@ -32,7 +32,7 @@ const itemStyles = {
     img: {
       height: "64px",
       width: "64px",
-      borderRadius: radius.lg,
+      borderRadius: "var(--radius-lg)",
       marginRight: "1rem",
     },
   }),

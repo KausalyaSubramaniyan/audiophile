@@ -56,17 +56,6 @@ export const line = css({
   margin: "0rem var(--side-spacing)",
 });
 
-// TODO - Switch to md and lg
-export const spacing = {
-  sm: "10rem",
-  md: "10.8rem",
-};
-
-export const radius = {
-  md: "8px",
-  lg: "10px",
-};
-
 const breakpoints = [576, 768, 992, 1200];
 const screenSizes = ["sm", "md", "lg", "xl"];
 export const mediaQuery = {};

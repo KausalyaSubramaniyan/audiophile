@@ -10,8 +10,8 @@ import Overlay from "./Overlay";
 import Nav from "./Nav";
 import ProductCards from "./ProductCards";
 import { useSelector } from "react-redux";
+import Button from "./Button";
 
-// TODO - Implement icon button
 export default function NavBar({ customStyles = css({}) }) {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isCategoryVisible, setIsCategoryVisible] = useState(false);
@@ -47,13 +47,14 @@ export default function NavBar({ customStyles = css({}) }) {
       <div css={styles.nav}>
         <Nav />
       </div>
-      <button
+      <Button
         onClick={() => setIsCartVisible(!isCartVisible)}
         css={styles.cartButton}
+        variant="ghost"
       >
         {itemsCount > 0 && <div css={styles.badge}>{itemsCount}</div>}
         <CartIcon />
-      </button>
+      </Button>
       <Overlay
         open={isCartVisible}
         onClick={() => setIsCartVisible(!isCartVisible)}

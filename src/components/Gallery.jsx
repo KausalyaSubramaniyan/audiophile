@@ -20,7 +20,7 @@ const galleryStyles = {
     gridTemplateAreas: `"first third third"
                         "second third third"`,
     img: {
-      borderRadius: radius.md,
+      borderRadius: "var(--radius-md)",
       height: "100%",
       width: "100%",
     },

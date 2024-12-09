@@ -42,6 +42,7 @@
   --font-size-h1: var(--font-size-56);
   --font-size-h2: var(--font-size-40);
   --font-size-h3: var(--font-size-32);
+  --font-size-h4: var(--font-size-28);
   --font-size-h5: var(--font-size-24);
   --font-size-h6: var(--font-size-18);
 
@@ -139,7 +140,7 @@ h3 {
 h4 {
   font-family: Manrope;
   font-weight: 700;
-  font-size: 28px;
+  font-size: var(--font-size-h4);
   line-height: 38px;
   letter-spacing: 2px;
   margin-top: 0;

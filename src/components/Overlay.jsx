@@ -84,7 +84,7 @@ const styles = {
     backgroundColor: colors.white,
     zIndex: "2",
     opacity: "100%",
-    borderRadius: radius.md,
+    borderRadius: "var(--radius-md)",
     [mediaQuery["sm"]]: {
       left: "var(--side-spacing)",
     },

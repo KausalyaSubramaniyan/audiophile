@@ -362,7 +362,7 @@ const styles = {
     maxWidth: "57.5%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
-    borderRadius: radius.md,
+    borderRadius: "var(--radius-md)",
     h3: {
       marginTop: "18px",
     },
@@ -381,7 +381,7 @@ const styles = {
   summary: css({
     backgroundColor: colors.white,
     padding: "2rem",
-    borderRadius: radius.md,
+    borderRadius: "var(--radius-md)",
     maxHeight: "35rem",
   }),
   items: css({

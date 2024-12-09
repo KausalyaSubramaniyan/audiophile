@@ -65,7 +65,6 @@ function EarphoneHighlight() {
   );
 }
 
-// TODO - See if sidebysidelayout can be used for earphone
 export default function Highlights() {
   return (
     <>
@@ -84,7 +83,7 @@ const styles = {
           background: "var(--color-primary)",
           height: "35rem",
           display: "flex",
-          borderRadius: radius.md,
+          borderRadius: "var(--radius-md)",
           backgroundImage: "url(/images/home/desktop/pattern-circles.svg)",
           backgroundPosition: "-90% 10%",
           backgroundRepeat: "no-repeat",
