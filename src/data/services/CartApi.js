@@ -102,32 +102,32 @@ const removeAllItems = () => {
 
 const getMockData = ({ method, url, body }) => {
   switch (`${method} ${url}`) {
-    case `GET /cart`:
+    case `GET /cart/items`:
       return {
         data: getCart(),
         error: null,
         meta: {},
       };
-    case `POST /cart`:
+    case `POST /cart/items`:
       return {
         data: saveItem(body),
         error: null,
         meta: {},
       };
-    case `PUT /cart/${body?.id}`:
+    case `PUT /cart/items/${body?.id}`:
       return {
         data: updateQuantity(body),
         error: null,
         meta: {},
       };
-    case `DELETE /cart/${body?.id}`: {
+    case `DELETE /cart/items/${body?.id}`: {
       return {
         data: deleteItem(body),
         error: null,
         meta: {},
       };
     }
-    case `DELETE /cart/all`:
+    case `DELETE /cart/items/all`:
       return {
         data: removeAllItems(),
         error: null,
@@ -142,7 +142,6 @@ const getMockData = ({ method, url, body }) => {
   }
 };
 
-// TODO - Change url to /cart/item
 export const cartApi = createApi({
   reducerPath: "cartApi",
   baseQuery: (args, api, extraOptions) => {
@@ -155,34 +154,34 @@ export const cartApi = createApi({
   endpoints: (builder) => ({
     getCart: builder.query({
       query: () => ({
-        url: "/cart",
+        url: "/cart/items",
         method: "GET",
       }),
     }),
     addItem: builder.mutation({
       query: (data) => ({
-        url: "/cart",
+        url: "/cart/items",
         method: "POST",
         body: data,
       }),
     }),
     updateQuantity: builder.mutation({
       query: (data) => ({
-        url: `/cart/${data.id}`,
+        url: `/cart/items/${data.id}`,
         method: "PUT",
         body: data,
       }),
     }),
     removeItem: builder.mutation({
       query: (data) => ({
-        url: `/cart/${data.id}`,
+        url: `/cart/items/${data.id}`,
         method: "DELETE",
         body: data,
       }),
     }),
     removeAllItems: builder.mutation({
       query: () => ({
-        url: "/cart/all",
+        url: "/cart/items/all",
         method: "DELETE",
       }),
     }),
