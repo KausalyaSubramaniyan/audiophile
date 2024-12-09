@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { mediaQuery, radius } from "../styles/CommonStyles";
+import { mediaQuery } from "../styles/CommonStyles";
 
 export default function Gallery({ imgs }) {
   return (

@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, mediaQuery, radius } from "../styles/CommonStyles";
+import { colors, mediaQuery } from "../styles/CommonStyles";
 import Button from "./Button";
 import Spacer from "./Spacer";
 import Picture from "./Picture";
@@ -116,6 +116,9 @@ const styles = {
           [mediaQuery["lg"]]: {
             width: "50%",
             alignItems: "center",
+          },
+          [mediaQuery["sm"]]: {
+            width: "70%",
           },
         }),
         img: css({

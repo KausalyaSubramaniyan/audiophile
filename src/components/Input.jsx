@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { inputStyles, radius } from "../styles/CommonStyles";
+import { inputStyles } from "../styles/CommonStyles";
 
 export default function Input({ id, fullWidth, onChange, ...props }) {
   return (

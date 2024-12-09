@@ -5,7 +5,6 @@ import NavBar from "../components/NavBar";
 import {
   colors,
   subTitle,
-  radius,
   inputStyles,
   centerAlign,
   mediaQuery,

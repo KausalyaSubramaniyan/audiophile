@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { radius, subTitle } from "../styles/CommonStyles";
+import { subTitle } from "../styles/CommonStyles";
 
 export default function Item({ name, amount, currSymbol, imgUrl, child }) {
   return (

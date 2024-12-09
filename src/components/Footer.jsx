@@ -1,6 +1,5 @@
 import { css } from "@emotion/react";
-import { Link } from "react-router-dom";
-import { colors, mediaQuery, spacing, subTitle } from "../styles/CommonStyles";
+import { colors, mediaQuery } from "../styles/CommonStyles";
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import FacebookLogo from "../../public/images/shared/desktop/icon-facebook.svg";
 import TwitterLogo from "../../public/images/shared/desktop/icon-twitter.svg";
