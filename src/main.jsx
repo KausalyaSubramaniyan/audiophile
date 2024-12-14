@@ -13,7 +13,7 @@ import Init from "./components/Init.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/audiophile">
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Init />}>
             <Route index element={<Home />} />
