@@ -110,7 +110,7 @@ export default function Cart() {
 
 const styles = {
   container: css({
-    width: "22rem",
+    width: "20rem",
     padding: "2rem",
     maxHeight: "29rem",
     color: "var(--color-secondary)",
