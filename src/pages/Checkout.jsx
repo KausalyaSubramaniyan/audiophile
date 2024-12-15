@@ -358,7 +358,7 @@ const styles = {
     },
   }),
   form: css({
-    maxWidth: "57.5%",
+    maxWidth: "60.5%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
     borderRadius: "var(--radius-md)",
@@ -371,7 +371,7 @@ const styles = {
     },
   }),
   summaryContainer: css({
-    minWidth: "24rem",
+    minWidth: "21rem",
     [mediaQuery["lg"]]: {
       width: "100%",
       minWidth: "100%",
