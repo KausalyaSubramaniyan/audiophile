@@ -2,9 +2,9 @@
   {
     "id": 7,
     "imgUrls": {
-      "mobile": "/images/product-zx9-speaker/mobile/image-product.jpg",
-      "tablet": "/images/product-zx9-speaker/tablet/image-product.jpg",
-      "desktop": "/images/product-zx9-speaker/desktop/image-product.jpg"
+      "mobile": "/images/product-zx9-speaker/mobile/image-category-page-preview.jpg",
+      "tablet": "/images/product-zx9-speaker/tablet/image-category-page-preview.jpg",
+      "desktop": "/images/product-zx9-speaker/desktop/image-category-page-preview.jpg"
     },
     "tag": "NEW PRODUCT",
     "title": "ZX9 SPEAKER",
@@ -13,9 +13,9 @@
   {
     "id": 8,
     "imgUrls": {
-      "mobile": "/images/product-zx7-speaker/mobile/image-product.jpg",
-      "tablet": "/images/product-zx7-speaker/tablet/image-product.jpg",
-      "desktop": "/images/product-zx7-speaker/desktop/image-product.jpg"
+      "mobile": "/images/product-zx7-speaker/mobile/image-category-page-preview.jpg",
+      "tablet": "/images/product-zx7-speaker/tablet/image-category-page-preview.jpg",
+      "desktop": "/images/product-zx7-speaker/desktop/image-category-page-preview.jpg"
     },
     "tag": "",
     "title": "ZX7 SPEAKER",
