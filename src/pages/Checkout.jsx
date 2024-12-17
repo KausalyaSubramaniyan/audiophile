@@ -71,7 +71,7 @@ export default function Checkout() {
     }
   };
 
-  function handleOnChange(event, t) {
+  function handleOnChange(event) {
     const error = getError(event.target);
     const data = {
       ...inputData,
@@ -139,7 +139,7 @@ export default function Checkout() {
               value={inputData.name.value}
               error={inputData.name.error}
               onChange={(event) => {
-                handleOnChange(event, this);
+                handleOnChange(event);
               }}
             />
             <Input
@@ -269,7 +269,8 @@ export default function Checkout() {
 
     const isAllDataFilled = Object.keys(inputData).every(
       (field) =>
-        inputData[field].type === "input" && inputData[field].value !== ""
+        (inputData[field].type === "input" && inputData[field].value !== "") ||
+      inputData[field].type !== "input"
     );
     return isErrorFree && isAllDataFilled;
   };
