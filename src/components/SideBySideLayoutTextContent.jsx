@@ -6,9 +6,13 @@ export default function SideBySideLayoutTextContent({
   description,
   title,
   children,
+  isVerticalTab = false,
 }) {
+  const containerCss = isVerticalTab
+    ? styles.verticalTabContainer
+    : styles.defaultContainer;
   return (
-    <div css={styles.container}>
+    <div css={containerCss}>
       <p css={styles.tag}>{tag}</p>
       {title}
       <p css={styles.description}>{description}</p>
@@ -17,16 +21,27 @@ export default function SideBySideLayoutTextContent({
   );
 }
 
+const containerStyles = {
+  width: "90%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "flex-start",
+};
+
 const styles = {
-  container: css({
-    width: "90%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-start",
+  defaultContainer: css({
+    ...containerStyles,
     [mediaQuery["md"]]: {
       alignItems: "center",
+      justifyContent: "flex-start",
+    },
+  }),
+  verticalTabContainer: css({
+    ...containerStyles,
+    [mediaQuery["md"]]: {
+      alignItems: "flex-start",
       justifyContent: "flex-start",
     },
   }),

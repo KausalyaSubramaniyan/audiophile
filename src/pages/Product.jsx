@@ -71,9 +71,6 @@ const styles = {
   layoutContainer: css({
     marginTop: "10rem",
     height: "38rem",
-    [mediaQuery["lg"]]: {
-      height: "45rem",
-    },
   }),
   title: css({
     [mediaQuery["lg"]]: {

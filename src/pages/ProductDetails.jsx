@@ -124,7 +124,11 @@ export default function ProductDetails() {
     return (
       <div>
         <Spacer value="5rem" />
-        <Button variant="ghost" onClick={() => goBack()}>
+        <Button
+          variant="ghost"
+          onClick={() => goBack()}
+          css={styles.backButton}
+        >
           Go Back
         </Button>
         <Spacer value="3rem" />
@@ -132,11 +136,13 @@ export default function ProductDetails() {
           <>
             <SideBySideLayout
               isImgLeft={true}
+              isVerticalTab={true}
               content={
                 <SideBySideLayoutTextContent
                   title={<h2>{product.title}</h2>}
                   tag={product.tag}
                   description={product.description}
+                  isVerticalTab={true}
                   children={
                     <div css={styles.children}>
                       <Spacer value="2rem" />
@@ -217,10 +223,6 @@ const styles = {
     display: "flex",
     columnGap: "1rem",
     height: "3.25rem",
-    [mediaQuery["md"]]: {
-      display: "flex",
-      justifyContent: "center",
-    },
   }),
   about: css({
     display: "flex",
@@ -262,5 +264,12 @@ const styles = {
   textHighlight: css({
     color: colors.orange,
     marginRight: "2rem",
+  }),
+  backButton: css({
+    opacity: "50%",
+    "&:hover": {
+      opacity: "100%",
+      color: "var(--color-primary)",
+    },
   }),
 };
