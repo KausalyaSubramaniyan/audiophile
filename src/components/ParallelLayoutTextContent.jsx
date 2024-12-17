@@ -1,14 +1,14 @@
 import { css } from "@emotion/react";
 import { mediaQuery, overline } from "../styles/CommonStyles";
 
-export default function SideBySideLayoutTextContent({
+export default function ParallelLayoutTextContent({
   tag,
   description,
   title,
   children,
-  isVerticalTab = false,
+  isTabletVertical = false,
 }) {
-  const containerCss = isVerticalTab
+  const containerCss = isTabletVertical
     ? styles.verticalTabContainer
     : styles.defaultContainer;
   return (

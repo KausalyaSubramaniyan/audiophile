@@ -2,18 +2,18 @@ import { css } from "@emotion/react";
 import { mediaQuery } from "../styles/CommonStyles";
 import Picture from "./Picture";
 
-export default function SideBySideLayout({
+export default function ParallelLayout({
   isImgLeft,
   content,
   imgUrls,
-  isVerticalTab = false,
+  isTabletVertical = false,
 }) {
   let imgContainerCss = "";
   let leftImgContainerCss = "";
   let rightImgContainerCss = "";
   let contentContainerCss = "";
 
-  if (isVerticalTab) {
+  if (isTabletVertical) {
     imgContainerCss = styles.verticalTabImgContainer;
     leftImgContainerCss = styles.verticalTabLeftImgContainer;
     rightImgContainerCss = styles.verticalTabRightImgContainer;

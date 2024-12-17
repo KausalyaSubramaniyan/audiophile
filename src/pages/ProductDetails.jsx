@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
-import SideBySideLayout from "../components/SideBySideLayout";
-import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
+import ParallelLayout from "../components/ParallelLayout";
+import ParallelLayoutTextContent from "../components/ParallelLayoutTextContent";
 import { centerAlign, colors, mediaQuery } from "../styles/CommonStyles";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
@@ -134,15 +134,15 @@ export default function ProductDetails() {
         <Spacer value="3rem" />
         {product && Object.keys(product).length > 0 && (
           <>
-            <SideBySideLayout
+            <ParallelLayout
               isImgLeft={true}
-              isVerticalTab={true}
+              isTabletVertical={true}
               content={
-                <SideBySideLayoutTextContent
+                <ParallelLayoutTextContent
                   title={<h2>{product.title}</h2>}
                   tag={product.tag}
                   description={product.description}
-                  isVerticalTab={true}
+                  isTabletVertical={true}
                   children={
                     <div css={styles.children}>
                       <Spacer value="2rem" />
@@ -166,7 +166,7 @@ export default function ProductDetails() {
                 />
               }
               imgUrls={product.imgUrls}
-            ></SideBySideLayout>
+            ></ParallelLayout>
             <Spacer value="7rem" />
             <div css={styles.about}>
               {getFeatures()}

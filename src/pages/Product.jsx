@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProductCards from "../components/ProductCards";
 import ProductHeroSection from "../components/ProductHeroSection";
-import SideBySideLayout from "../components/SideBySideLayout";
-import SideBySideLayoutTextContent from "../components/SideBySideLayoutTextContent";
+import ParallelLayout from "../components/ParallelLayout";
+import ParallelLayoutTextContent from "../components/ParallelLayoutTextContent";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
 import Spinner from "../components/Spinner";
@@ -27,10 +27,10 @@ export default function Product({ name }) {
     }
     return products.map((product) => (
       <div css={styles.layoutContainer} key={product.id}>
-        <SideBySideLayout
+        <ParallelLayout
           isImgLeft={product.id % 2 === 1 ? false : true}
           content={
-            <SideBySideLayoutTextContent
+            <ParallelLayoutTextContent
               title={<h2 css={styles.title}>{product.title}</h2>}
               tag={product.tag}
               description={product.description}
