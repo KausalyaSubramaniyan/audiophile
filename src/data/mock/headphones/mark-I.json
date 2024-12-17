@@ -26,6 +26,7 @@
     {
       "id": 4,
       "title": "XX99 Mark II",
+      "category": "headphones",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-xx99-mark-two-headphones.jpg",
         "tablet": "/images/shared/tablet/image-xx99-mark-two-headphones.jpg",
@@ -35,6 +36,7 @@
     {
       "id": 6,
       "title": "XX59",
+      "category": "headphones",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-xx59-headphones.jpg",
         "tablet": "/images/shared/tablet/image-xx59-headphones.jpg",
@@ -44,6 +46,7 @@
     {
       "id": 7,
       "title": "ZX9 SPEAKER",
+      "category": "speakers",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-zx9-speaker.jpg",
         "tablet": "/images/shared/tablet/image-zx9-speaker.jpg",

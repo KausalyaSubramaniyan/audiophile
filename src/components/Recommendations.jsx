@@ -1,9 +1,11 @@
 import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { mediaQuery } from "../styles/CommonStyles";
 import Picture from "./Picture";
 
 function RecommendationCard({ product }) {
+  const navigate = useNavigate();
   return (
     <div css={styles.card}>
       <Picture
@@ -16,7 +18,12 @@ function RecommendationCard({ product }) {
         }}
       />
       <h5>{product.title}</h5>
-      <Button css={styles.button}>SEE PRODUCT</Button>
+      <Button
+        css={styles.button}
+        onClick={() => navigate(`/products/${product.category}/${product.id}`)}
+      >
+        SEE PRODUCT
+      </Button>
     </div>
   );
 }
@@ -53,7 +60,7 @@ const styles = {
   }),
   button: css({
     [mediaQuery["md"]]: {
-      fontSize: "13px"
+      fontSize: "13px",
     },
   }),
   cardContainer: css({

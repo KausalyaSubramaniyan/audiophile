@@ -30,6 +30,7 @@
     {
       "id": 8,
       "title": "ZX7 SPEAKER",
+      "category": "speakers",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-zx7-speaker.jpg",
         "tablet": "/images/shared/tablet/image-zx7-speaker.jpg",
@@ -39,6 +40,7 @@
     {
       "id": 5,
       "title": "XX99 Mark I",
+      "category": "headphones",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-xx99-mark-one-headphones.jpg",
         "tablet": "/images/shared/tablet/image-xx99-mark-one-headphones.jpg",
@@ -48,6 +50,7 @@
     {
       "id": 6,
       "title": "XX59",
+      "category": "headphones",
       "imgUrls": {
         "mobile": "/images/shared/mobile/image-xx59-headphones.jpg",
         "tablet": "/images/shared/tablet/image-xx59-headphones.jpg",
