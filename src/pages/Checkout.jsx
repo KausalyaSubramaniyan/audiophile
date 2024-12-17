@@ -69,6 +69,8 @@ export default function Checkout() {
         return `Not a valid value`;
       }
     }
+
+    return "";
   };
 
   function handleOnChange(event) {
@@ -78,6 +80,7 @@ export default function Checkout() {
       [event.target.name]: {
         value: event.target.value,
         error,
+        type: inputData[event.target.name]["type"]
       },
     };
     setInputData(data);
@@ -270,7 +273,7 @@ export default function Checkout() {
     const isAllDataFilled = Object.keys(inputData).every(
       (field) =>
         (inputData[field].type === "input" && inputData[field].value !== "") ||
-      inputData[field].type !== "input"
+        inputData[field].type !== "input"
     );
     return isErrorFree && isAllDataFilled;
   };
@@ -290,6 +293,7 @@ export default function Checkout() {
             onClick={() => {
               setIsVisible(isValid());
             }}
+            disabled={!isValid()}
           >
             CONTINUE & PAY
           </Button>

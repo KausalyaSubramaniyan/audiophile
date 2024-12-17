@@ -16,7 +16,7 @@ export default function Button({
     let styles = {
       border: "none",
       "&:hover": {
-        cursor: "pointer",
+        cursor: props.disabled ? "not-allowed" : "pointer",
       },
       color: "var(--color-white-1000)",
       padding: "1rem 0rem",
@@ -70,6 +70,10 @@ export default function Button({
         };
       default:
         break;
+    }
+
+    if(props.disabled) {
+      styles = {...styles, opacity: "50%"}
     }
 
     return props.css ? [css(styles), props.css] : css(styles);
