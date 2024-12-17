@@ -80,7 +80,7 @@ export default function Checkout() {
       [event.target.name]: {
         value: event.target.value,
         error,
-        type: inputData[event.target.name]["type"]
+        type: inputData[event.target.name]["type"],
       },
     };
     setInputData(data);
@@ -111,7 +111,7 @@ export default function Checkout() {
         />
       </>
     ) : (
-      <div css={styles.deliveryText}>
+      <div css={[styles.deliveryText, styles.fullWidthElement]}>
         <img
           src="/images/checkout/icon-cash-on-delivery.svg"
           alt="Cash on Delivery"
@@ -170,16 +170,17 @@ export default function Checkout() {
         <div>
           <p css={styles.sectionTitle}>SHIPPING INFO</p>
           <div css={styles.section}>
-            <Input
-              id="address"
-              name="address"
-              label="Address"
-              placeholder="1137 Williams Avenue"
-              value={inputData.address.value}
-              error={inputData.address.error}
-              onChange={(event) => handleOnChange(event)}
-              fullWidth
-            />
+            <div css={styles.fullWidthElement}>
+              <Input
+                id="address"
+                name="address"
+                label="Address"
+                placeholder="1137 Williams Avenue"
+                value={inputData.address.value}
+                error={inputData.address.error}
+                onChange={(event) => handleOnChange(event)}
+              />
+            </div>
             <Input
               id="zip-code"
               name="zipCode"
@@ -312,9 +313,9 @@ export default function Checkout() {
   if (fetched) {
     if (items.length > 0) {
       return (
-        <div css={styles.container}>
+        <div css={styles.layout}>
           <NavBar />
-          <div css={styles.checkout}>
+          <div css={styles.container}>
             {getForm()}
             {getSummary()}
           </div>
@@ -350,10 +351,10 @@ export default function Checkout() {
 }
 
 const styles = {
-  container: css({
+  layout: css({
     backgroundColor: "#F2F2F2",
   }),
-  checkout: css({
+  container: css({
     margin: "8rem var(--side-spacing)",
     display: "flex",
     justifyContent: "space-between",
@@ -363,7 +364,7 @@ const styles = {
     },
   }),
   form: css({
-    maxWidth: "60.5%",
+    width: "100%",
     padding: "2rem 3rem 3rem 3rem",
     backgroundColor: colors.white,
     borderRadius: "var(--radius-md)",
@@ -393,10 +394,15 @@ const styles = {
     maxHeight: "16rem",
   }),
   section: css({
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
     gap: "1.5rem",
+    [mediaQuery["sm"]]: {
+      gridTemplateColumns: "1fr",
+    },
+  }),
+  fullWidthElement: css({
+    gridColumn: "1/-1",
   }),
   sectionTitle: css([
     subTitle,

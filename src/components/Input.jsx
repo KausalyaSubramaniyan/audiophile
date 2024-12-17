@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import { inputStyles } from "../styles/CommonStyles";
 
-export default function Input({ id, fullWidth, onChange, ...props }) {
+export default function Input({ id, onChange, ...props }) {
   return (
-    <div css={fullWidth ? styles.stretchContainer : styles.fixedContainer}>
+    <div css={props.css ?? css({})}>
       <div css={styles.info}>
         <label
           htmlFor={id}
@@ -31,12 +31,6 @@ export default function Input({ id, fullWidth, onChange, ...props }) {
 }
 
 export const styles = {
-  fixedContainer: css({
-    flex: "1 1 19rem",
-  }),
-  stretchContainer: css({
-    width: "100%",
-  }),
   input: css([
     inputStyles.input,
     {
