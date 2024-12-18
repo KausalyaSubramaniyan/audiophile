@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 
 import { mediaQuery, subTitle } from "../styles/CommonStyles";
 import Item from "./Item";
-import Button from "./Button";
+import Button from "./core/Button";
 import Counter from "./Counter";
-import Spacer from "./Spacer";
+import Spacer from "./core/Spacer";
 import {
   useGetCartQuery,
   useRemoveAllItemsMutation,

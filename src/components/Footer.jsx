@@ -4,7 +4,7 @@ import Logo from "../../public/images/shared/desktop/logo.svg";
 import FacebookLogo from "../../public/images/shared/desktop/icon-facebook.svg";
 import TwitterLogo from "../../public/images/shared/desktop/icon-twitter.svg";
 import InstagramLogo from "../../public/images/shared/desktop/icon-instagram.svg";
-import Spacer from "./Spacer";
+import Spacer from "./core/Spacer";
 import Nav from "./Nav";
 
 function Icons({ styles }) {

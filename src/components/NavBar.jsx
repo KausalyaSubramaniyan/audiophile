@@ -6,11 +6,11 @@ import { colors, mediaQuery } from "../styles/CommonStyles";
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
 import Cart from "./Cart";
-import Overlay from "./Overlay";
+import Overlay from "./core/Overlay";
 import Nav from "./Nav";
 import ProductCards from "./ProductCards";
 import { useSelector } from "react-redux";
-import Button from "./Button";
+import Button from "./core/Button";
 
 export default function NavBar({ customStyles = css({}) }) {
   const [isCartVisible, setIsCartVisible] = useState(false);

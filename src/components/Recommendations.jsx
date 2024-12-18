@@ -1,8 +1,8 @@
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Button";
+import Button from "./core/Button";
 import { mediaQuery } from "../styles/CommonStyles";
-import Picture from "./Picture";
+import Picture from "./core/Picture";
 
 function RecommendationCard({ product }) {
   const navigate = useNavigate();

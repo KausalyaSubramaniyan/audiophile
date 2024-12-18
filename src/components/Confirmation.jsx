@@ -2,10 +2,10 @@ import { css } from "@emotion/react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { subTitle } from "../styles/CommonStyles";
-import Button from "./Button";
+import Button from "./core/Button";
 import Item from "./Item";
-import Spacer from "./Spacer";
-import Divider from "./Divider";
+import Spacer from "./core/Spacer";
+import Divider from "./core/Divider";
 import ItemWithQuantity from "./ItemWithQuantity";
 
 export default function Confirmation({ items, bill }) {

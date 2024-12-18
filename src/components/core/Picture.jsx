@@ -1,4 +1,4 @@
-import { mediaQueryCondition } from "../styles/CommonStyles";
+import { mediaQueryCondition } from "../../styles/CommonStyles";
 
 export default function Picture({ containerCss, imgCss, imgUrls }) {
   return (

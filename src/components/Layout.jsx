@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { colors } from "../styles/CommonStyles";
 import BestGear from "./BestGear";
 import Footer from "./Footer";
-import Spacer from "./Spacer";
+import Spacer from "./core/Spacer";
 
 export default function Layout({ heroSection, content }) {
   return (

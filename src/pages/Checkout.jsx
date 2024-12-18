@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
-import Button from "../components/Button";
-import Input from "../components/Input";
+import Button from "../components/core/Button";
+import Input from "../components/core/Input";
 import NavBar from "../components/NavBar";
 import {
   colors,
@@ -11,15 +11,15 @@ import {
 } from "../styles/CommonStyles";
 import Footer from "../components/Footer";
 import { useState } from "react";
-import Overlay from "../components/Overlay";
+import Overlay from "../components/core/Overlay";
 import Confirmation from "../components/Confirmation";
-import Spacer from "../components/Spacer";
-import RadioButton from "../components/RadioButton";
+import Spacer from "../components/core/Spacer";
+import RadioButton from "../components/core/RadioButton";
 import { paymentsData } from "../data/mock/mock";
 import { inputCriteria } from "../data/constant";
 import ItemWithQuantity from "../components/ItemWithQuantity";
 import { useSelector } from "react-redux";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/core/Spinner";
 
 export default function Checkout() {
   const [isVisible, setIsVisible] = useState(false);

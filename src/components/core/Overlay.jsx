@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { colors, mediaQuery } from "../../styles/CommonStyles";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export default function Overlay({

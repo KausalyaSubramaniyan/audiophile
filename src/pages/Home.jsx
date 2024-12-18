@@ -2,7 +2,7 @@ import HomeHeroSection from "../components/HomeHeroSection";
 import Layout from "../components/Layout";
 import ProductCards from "../components/ProductCards";
 import Highlights from "../components/HighLights";
-import Spacer from "../components/Spacer";
+import Spacer from "../components/core/Spacer";
 
 export default function Home() {
   const getContent = () => {

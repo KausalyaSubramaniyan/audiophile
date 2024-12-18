@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { line } from "../styles/CommonStyles";
+import { line } from "../../styles/CommonStyles";
 
 export default function Divider({ customCss }) {
   return (

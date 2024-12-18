@@ -8,8 +8,8 @@ import {
 } from "../styles/CommonStyles";
 
 import NavBar from "./NavBar";
-import Button from "./Button";
-import Divider from "./Divider";
+import Button from "./core/Button";
+import Divider from "./core/Divider";
 
 export default function HomeHeroSection() {
   return (

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { mediaQuery } from "../styles/CommonStyles";
-import Picture from "./Picture";
+import Picture from "./core/Picture";
 
 export default function ParallelLayout({
   isImgLeft,

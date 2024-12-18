@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import Card from "./Card";
-import Spinner from "./Spinner";
+import Spinner from "./core/Spinner";
 import { centerAlign, mediaQuery } from "../styles/CommonStyles";
 import { useGetAllProductsQuery } from "../data/services/ProductApi";
 

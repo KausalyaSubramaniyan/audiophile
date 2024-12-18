@@ -11,9 +11,9 @@ import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import Gallery from "../components/Gallery";
 import Counter from "../components/Counter";
-import Button from "../components/Button";
-import Spacer from "../components/Spacer";
-import Spinner from "../components/Spinner";
+import Button from "../components/core/Button";
+import Spacer from "../components/core/Spacer";
+import Spinner from "../components/core/Spinner";
 import {
   useAddItemMutation,
   useGetCartQuery,
