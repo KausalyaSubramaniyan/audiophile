@@ -44,7 +44,7 @@ const styles = {
     },
   }),
   heroContainer: css({
-    color: colors.white,
+    color: "var(--color-white-1000)",
     height: "41rem",
     display: "flex",
     margin: "0rem var(--side-spacing)",

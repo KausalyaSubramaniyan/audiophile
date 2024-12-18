@@ -366,7 +366,7 @@ const styles = {
   form: css({
     width: "100%",
     padding: "2rem 3rem 3rem 3rem",
-    backgroundColor: colors.white,
+    backgroundColor: "var(--color-white-1000)",
     borderRadius: "var(--radius-md)",
     h3: {
       marginTop: "18px",
@@ -384,7 +384,7 @@ const styles = {
     },
   }),
   summary: css({
-    backgroundColor: colors.white,
+    backgroundColor: "var(--color-white-1000)",
     padding: "2rem",
     borderRadius: "var(--radius-md)",
     maxHeight: "35rem",

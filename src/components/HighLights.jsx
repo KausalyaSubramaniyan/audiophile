@@ -108,7 +108,7 @@ const styles = {
         }),
         textContainer: css({
           width: "40%",
-          color: colors.white,
+          color: "var(--color-white-1000)",
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",

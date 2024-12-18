@@ -44,7 +44,7 @@ const styles = {
     subTitle,
     {
       opacity: "100%",
-      color: colors.white,
+      color: "var(--color-white-1000)",
       textDecoration: "none",
       "&:hover": {
         color: "var(--color-primary)",

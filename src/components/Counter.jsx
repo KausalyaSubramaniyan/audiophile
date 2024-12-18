@@ -26,13 +26,13 @@ const styles = {
     display: "flex",
     width: "100%",
     height: "100%",
-    background: colors.grey,
+    background: "var(--color-grey-200)",
     justifyContent: "space-around",
     alignItems: "center",
   }),
   button: css({
     border: "none",
-    color: colors.black,
+    color: "var(--color-secondary)",
     opacity: "25%",
     "&:hover": {
       cursor: "pointer",
@@ -43,7 +43,7 @@ const styles = {
   buttonOnCountZero: css({
     "&:hover": {
       cursor: "auto",
-      color: colors.black,
+      color: "var(--color-secondary)",
       opacity: "25%",
     },
   }),

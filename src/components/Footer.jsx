@@ -54,9 +54,9 @@ export default function Footer() {
 
 const styles = {
   container: css({
-    backgroundColor: colors.lightBlack,
+    backgroundColor: "var(--color-black-900)",
     padding: "3rem 0rem 2.5rem 0rem",
-    color: colors.white,
+    color: "var(--color-white-1000)",
     position: "relative",
   }),
   icons: css({

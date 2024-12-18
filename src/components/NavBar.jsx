@@ -68,7 +68,7 @@ export default function NavBar({ customStyles = css({}) }) {
 
 const styles = {
   container: css({
-    color: colors.white,
+    color: "var(--color-white-1000)",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",

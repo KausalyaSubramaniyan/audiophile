@@ -200,13 +200,13 @@ const styles = {
     display: "flex",
     width: "140px",
     height: "50px",
-    background: colors.grey,
+    background: "var(--color-grey-200)",
     justifyContent: "space-around",
     alignItems: "center",
     marginRight: "1rem",
     button: {
       border: "none",
-      color: colors.black,
+      color: "var(--color-secondary)",
       opacity: "25%",
       "&:hover": {
         cursor: "pointer",
@@ -262,7 +262,7 @@ const styles = {
     },
   }),
   textHighlight: css({
-    color: colors.orange,
+    color: "var(--color-primary)",
     marginRight: "2rem",
   }),
   backButton: css({
