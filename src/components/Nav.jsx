@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
-import { colors, subTitle } from "../styles/CommonStyles";
+import { subTitle } from "../styles/CommonStyles";
 
 export default function Nav() {
   return (

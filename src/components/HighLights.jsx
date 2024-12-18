@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { mediaQuery } from "../styles/CommonStyles";
 import Button from "./core/Button";
 import Spacer from "./core/Spacer";
 import Picture from "./core/Picture";

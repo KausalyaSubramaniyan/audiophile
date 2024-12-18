@@ -3,7 +3,6 @@ import Button from "../components/core/Button";
 import Input from "../components/core/Input";
 import NavBar from "../components/NavBar";
 import {
-  colors,
   subTitle,
   inputStyles,
   centerAlign,

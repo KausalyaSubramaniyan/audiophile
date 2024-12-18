@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { colors, mediaQuery } from "../../styles/CommonStyles";
+import { mediaQuery } from "../../styles/CommonStyles";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export default function Overlay({
@@ -27,7 +27,7 @@ export default function Overlay({
   const getPlacementStyles = () => {
     switch (placement) {
       case "center":
-        return css({
+        return css({ 
           top: `calc(50% - ${childDimensions.height}px / 2)`,
           left: `calc(50% - ${childDimensions.width}px / 2)`,
         });

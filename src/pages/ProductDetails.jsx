@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import NavBar from "../components/NavBar";
 import ParallelLayout from "../components/ParallelLayout";
 import ParallelLayoutTextContent from "../components/ParallelLayoutTextContent";
-import { centerAlign, colors, mediaQuery } from "../styles/CommonStyles";
+import { centerAlign, mediaQuery } from "../styles/CommonStyles";
 import Recommendations from "../components/Recommendations";
 import ProductCards from "../components/ProductCards";
 import Gallery from "../components/Gallery";

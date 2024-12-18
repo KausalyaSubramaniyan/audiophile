@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-import { colors, mediaQuery } from "../styles/CommonStyles";
+import { mediaQuery } from "../styles/CommonStyles";
 
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";

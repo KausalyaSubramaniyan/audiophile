@@ -1,5 +1,4 @@
 import { css } from "@emotion/react";
-import { colors } from "../styles/CommonStyles";
 
 export default function Counter({ count, increment, decrement }) {
   return (

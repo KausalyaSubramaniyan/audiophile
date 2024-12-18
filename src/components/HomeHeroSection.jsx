@@ -1,8 +1,6 @@
 import { css } from "@emotion/react";
 import {
   centerAlign,
-  colors,
-  line,
   mediaQuery,
   overline,
 } from "../styles/CommonStyles";
