@@ -1,4 +1,6 @@
 import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
+
 import {
   centerAlign,
   mediaQuery,
@@ -10,6 +12,8 @@ import Button from "./core/Button";
 import Divider from "./core/Divider";
 
 export default function HomeHeroSection() {
+  const navigate = useNavigate();
+
   return (
     <div css={styles.container}>
       <NavBar customStyles={styles.navbar} />
@@ -22,7 +26,7 @@ export default function HomeHeroSection() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button>SEE PRODUCT</Button>
+          <Button onClick={() => navigate("/products/headphones/4")}>SEE PRODUCT</Button>
         </div>
       </div>
     </div>

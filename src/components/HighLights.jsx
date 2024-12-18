@@ -1,10 +1,12 @@
 import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 import { mediaQuery } from "../styles/CommonStyles";
 import Button from "./core/Button";
 import Spacer from "./core/Spacer";
 import Picture from "./core/Picture";
 
 function SpeakerHighlight() {
+  const navigate = useNavigate();
   return (
     <>
       <div css={styles.highlights.speaker.zx9.container}>
@@ -26,14 +28,23 @@ function SpeakerHighlight() {
               Upgrade to premium speakers that are phenomenally built to deliver
               truly remarkable sound.
             </p>
-            <Button color="secondary">SEE PRODUCT</Button>
+            <Button
+              color="secondary"
+              onClick={() => navigate("/products/speakers/7")}
+            >
+              SEE PRODUCT
+            </Button>
           </div>
         </div>
       </div>
       <Spacer value="3rem" />
       <div css={styles.highlights.speaker.zx7.container}>
         <h4>ZX7 SPEAKER</h4>
-        <Button color="secondary" variant="outlined">
+        <Button
+          color="secondary"
+          variant="outlined"
+          onClick={() => navigate("/products/speakers/8")}
+        >
           SEE PRODUCT
         </Button>
       </div>
@@ -42,6 +53,7 @@ function SpeakerHighlight() {
 }
 
 function EarphoneHighlight() {
+  const navigate = useNavigate();
   return (
     <div css={styles.highlights.earphone.container}>
       <Picture
@@ -56,7 +68,11 @@ function EarphoneHighlight() {
       <div css={styles.highlights.earphone.textContainer}>
         <div css={styles.highlights.earphone.text}>
           <h4>YX1 EARPHONES</h4>
-          <Button color="secondary" variant="outlined">
+          <Button
+            color="secondary"
+            variant="outlined"
+            onClick={() => navigate("/products/earphones/9")}
+          >
             SEE PRODUCT
           </Button>
         </div>
