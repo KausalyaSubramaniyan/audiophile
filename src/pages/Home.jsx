@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import ProductCards from "../components/ProductCards";
 import Highlights from "../components/HighLights";
 import Spacer from "../components/core/Spacer";
+import { css } from "@emotion/react";
 
 export default function Home() {
   const getContent = () => {
@@ -17,7 +18,17 @@ export default function Home() {
   };
   return (
     <>
-      <Layout heroSection={<HomeHeroSection />} content={getContent()} />
+      <Layout
+        heroSection={<HomeHeroSection />}
+        content={getContent()}
+        navStyles={styles.nav}
+      />
     </>
   );
 }
+
+const styles = {
+  nav: css({
+    backgroundColor: "var(--color-black-800)",
+  }),
+};

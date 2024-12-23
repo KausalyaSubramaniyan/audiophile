@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
-import NavBar from "../components/NavBar";
 import ParallelLayout from "../components/ParallelLayout";
 import ParallelLayoutTextContent from "../components/ParallelLayoutTextContent";
 import { centerAlign, mediaQuery } from "../styles/CommonStyles";
@@ -190,7 +189,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <Layout heroSection={<NavBar />} content={getContent()} />
+      <Layout content={getContent()} />
     </>
   );
 }

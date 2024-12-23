@@ -18,7 +18,7 @@ export default function NavBar({ customStyles = css({}) }) {
   const itemsCount = useSelector((state) => state.cart.items).length;
 
   return (
-    <div css={[styles.container, customStyles]}>
+    <header css={[styles.container, customStyles]}>
       <div
         css={styles.hamburgerMenu}
         onClick={() => {
@@ -62,7 +62,7 @@ export default function NavBar({ customStyles = css({}) }) {
       >
         <Cart />
       </Overlay>
-    </div>
+    </header>
   );
 }
 

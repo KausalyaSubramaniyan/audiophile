@@ -7,7 +7,6 @@ import {
   overline,
 } from "../styles/CommonStyles";
 
-import NavBar from "./NavBar";
 import Button from "./core/Button";
 import Divider from "./core/Divider";
 
@@ -16,7 +15,6 @@ export default function HomeHeroSection() {
 
   return (
     <div css={styles.container}>
-      <NavBar customStyles={styles.navbar} />
       <Divider />
       <div css={styles.heroContainer}>
         <div css={styles.text}>

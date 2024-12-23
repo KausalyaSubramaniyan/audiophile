@@ -4,28 +4,30 @@ import { subTitle } from "../styles/CommonStyles";
 
 export default function Nav() {
   return (
-    <ul css={styles.nav}>
-      <ol>
-        <Link to={`/`} css={styles.link}>
-          HOME
-        </Link>
-      </ol>
-      <ol>
-        <Link to={`/products/headphones`} css={styles.link}>
-          HEADPHONES
-        </Link>
-      </ol>
-      <ol>
-        <Link to={`/products/speakers`} css={styles.link}>
-          SPEAKERS
-        </Link>
-      </ol>
-      <ol>
-        <Link to={`/products/earphones`} css={styles.link}>
-          EARPHONES
-        </Link>
-      </ol>
-    </ul>
+    <nav>
+      <ul css={styles.nav}>
+        <ol>
+          <Link to={`/`} css={styles.link}>
+            HOME
+          </Link>
+        </ol>
+        <ol>
+          <Link to={`/products/headphones`} css={styles.link}>
+            HEADPHONES
+          </Link>
+        </ol>
+        <ol>
+          <Link to={`/products/speakers`} css={styles.link}>
+            SPEAKERS
+          </Link>
+        </ol>
+        <ol>
+          <Link to={`/products/earphones`} css={styles.link}>
+            EARPHONES
+          </Link>
+        </ol>
+      </ul>
+    </nav>
   );
 }
 

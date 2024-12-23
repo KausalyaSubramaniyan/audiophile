@@ -1,15 +1,12 @@
 import { css } from "@emotion/react";
 
-import NavBar from "./NavBar";
 import { line } from "../styles/CommonStyles";
+import Divider from "./core/Divider";
 
 export default function ProductHeroSection({ product }) {
   return (
     <>
-      <NavBar />
-      <div css={styles.lineContainer}>
-        <div css={line}></div>
-      </div>
+      <Divider customCss={styles.lineContainer}/>
       <h2 css={styles.title}>{product}</h2>
     </>
   );
@@ -25,6 +22,6 @@ const styles = {
     color: "var(--color-white-1000)",
   }),
   lineContainer: css({
-    background: "var(--color-black-900)",
+    backgroundColor: "var(--color-black-900)",
   }),
 };

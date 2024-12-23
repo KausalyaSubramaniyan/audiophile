@@ -25,7 +25,7 @@ function Icons({ styles }) {
 
 export default function Footer() {
   return (
-    <div css={styles.container}>
+    <footer css={styles.container}>
       <div css={styles.line} />
       <div css={styles.row1}>
         <Logo />
@@ -48,7 +48,7 @@ export default function Footer() {
         <p css={styles.text}>Copyright 2021. All Rights Reserved</p>
         <Icons styles={[styles.icons, styles.iconsBottom]} />
       </div>
-    </div>
+    </footer>
   );
 }
 

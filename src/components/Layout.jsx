@@ -2,17 +2,21 @@ import { css } from "@emotion/react";
 import BestGear from "./BestGear";
 import Footer from "./Footer";
 import Spacer from "./core/Spacer";
+import NavBar from "./NavBar";
 
-export default function Layout({ heroSection, content }) {
+export default function Layout({ heroSection = <></>, content, navStyles }) {
   return (
     <>
-      {heroSection}
-      <div css={styles.layout}>
-        {content}
-        <Spacer value="10rem" />
-        <BestGear />
-      </div>
-      <Spacer value="13rem" />
+      <NavBar customStyles={navStyles} />
+      <main>
+        {heroSection}
+        <div css={styles.layout}>
+          {content}
+          <Spacer value="10rem" />
+          <BestGear />
+        </div>
+        <Spacer value="13rem" />
+      </main>
       <Footer />
     </>
   );
