@@ -2,9 +2,9 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { subTitle } from "../styles/CommonStyles";
 
-export default function Nav() {
+export default function Nav({ label }) {
   return (
-    <nav>
+    <nav aria-label={label}>
       <ul css={styles.nav}>
         <ol>
           <Link to={`/`} css={styles.link}>

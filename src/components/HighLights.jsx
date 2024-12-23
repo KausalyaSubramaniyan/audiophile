@@ -19,6 +19,7 @@ function SpeakerHighlight() {
               tablet: "/images/home/tablet/image-speaker-zx9.png",
               desktop: "/images/home/desktop/image-speaker-zx9.png",
             }}
+            alt="ZX9 Speaker"
           />
         </div>
         <div css={styles.highlights.speaker.zx9.textContainer}>
@@ -64,6 +65,7 @@ function EarphoneHighlight() {
           tablet: "/images/home/tablet/image-earphones-yx1.jpg",
           desktop: "/images/home/desktop/image-earphones-yx1.jpg",
         }}
+        alt="YX1 Earphones"
       />
       <div css={styles.highlights.earphone.textContainer}>
         <div css={styles.highlights.earphone.text}>

@@ -1,6 +1,6 @@
 import { mediaQueryCondition } from "../../styles/CommonStyles";
 
-export default function Picture({ containerCss, imgCss, imgUrls }) {
+export default function Picture({ containerCss, imgCss, imgUrls, alt }) {
   return (
     <picture css={containerCss}>
       <source
@@ -13,7 +13,7 @@ export default function Picture({ containerCss, imgCss, imgUrls }) {
         media={mediaQueryCondition["md"]}
         css={imgCss}
       />
-      <img src={imgUrls["desktop"]} css={imgCss} />
+      <img src={imgUrls["desktop"]} css={imgCss} alt={alt}/>
     </picture>
   );
 }

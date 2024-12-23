@@ -44,6 +44,13 @@ export const line = css({
   margin: "0rem var(--side-spacing)",
 });
 
+export const visuallyHidden = css({
+  clipPath: "inset(50%)",
+  overflow: "hidden",
+  position: "absolute",
+  whiteSpace: "nowrap",
+});
+
 const breakpoints = [576, 768, 992, 1200];
 const screenSizes = ["sm", "md", "lg", "xl"];
 export const mediaQuery = {};
@@ -55,5 +62,7 @@ breakpoints.map((breakpoint, index) => {
 });
 
 breakpoints.map((breakpoint, index) => {
-  mediaQuery[screenSizes[index]] = `@media ${mediaQueryCondition[screenSizes[index]]}`;
+  mediaQuery[screenSizes[index]] = `@media ${
+    mediaQueryCondition[screenSizes[index]]
+  }`;
 });

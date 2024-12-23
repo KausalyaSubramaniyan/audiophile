@@ -6,6 +6,7 @@ export default function ParallelLayout({
   isImgLeft,
   content,
   imgUrls,
+  alt,
   isTabletVertical = false,
 }) {
   let imgContainerCss = "";
@@ -35,6 +36,7 @@ export default function ParallelLayout({
           tablet: imgUrls["tablet"],
           desktop: imgUrls["desktop"],
         }}
+        alt={alt}
       />
     );
   };

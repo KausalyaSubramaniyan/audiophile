@@ -59,6 +59,9 @@ export default function Button({
             backgroundColor: colorProp,
             color: "var(--color-white-1000)",
           },
+          "&:focus": {
+            outlineOffset: "2px"
+          }
         };
         break;
       case "ghost":

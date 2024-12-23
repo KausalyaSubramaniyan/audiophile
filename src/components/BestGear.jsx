@@ -25,6 +25,7 @@ export default function BestGear() {
           tablet: "/images/shared/tablet/image-best-gear.jpg",
           desktop: "/images/shared/desktop/image-best-gear.jpg",
         }}
+        alt="Best Gear"
       />
     </div>
   );

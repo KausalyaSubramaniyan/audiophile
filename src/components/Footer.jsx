@@ -11,13 +11,13 @@ function Icons({ styles }) {
   return (
     <ul css={styles}>
       <ol>
-        <FacebookLogo />
+        <FacebookLogo aria-label="Facebook" />
       </ol>
       <ol>
-        <TwitterLogo />
+        <TwitterLogo aria-label="Instagram" />
       </ol>
       <ol>
-        <InstagramLogo />
+        <InstagramLogo aria-label="Instagram" />
       </ol>
     </ul>
   );
@@ -28,9 +28,9 @@ export default function Footer() {
     <footer css={styles.container}>
       <div css={styles.line} />
       <div css={styles.row1}>
-        <Logo />
+        <Logo aria-label="logo" />
         <div css={styles.navContainer}>
-          <Nav />
+          <Nav label="Main Navigation in Footer" />
         </div>
       </div>
       <Spacer value="1rem" />

@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
 
-import { mediaQuery } from "../styles/CommonStyles";
+import { mediaQuery, visuallyHidden } from "../styles/CommonStyles";
 
 import Logo from "../../public/images/shared/desktop/logo.svg";
 import CartIcon from "../../public/images/shared/desktop/icon-cart.svg";
@@ -43,15 +43,17 @@ export default function NavBar({ customStyles = css({}) }) {
       >
         <ProductCards />
       </Overlay>
-      <Logo />
+      <Logo aria-label="logo" />
       <div css={styles.nav}>
-        <Nav />
+        <Nav label="Main Navigation in Header" />
       </div>
       <Button
         onClick={() => setIsCartVisible(!isCartVisible)}
         css={styles.cartButton}
         variant="ghost"
+        aria-labelledby="cart-label"
       >
+        <span id="cart-label" css={visuallyHidden}>Cart</span>
         {itemsCount > 0 && <div css={styles.badge}>{itemsCount}</div>}
         <CartIcon />
       </Button>
