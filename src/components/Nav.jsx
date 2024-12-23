@@ -6,26 +6,26 @@ export default function Nav({ label }) {
   return (
     <nav aria-label={label}>
       <ul css={styles.nav}>
-        <ol>
+        <li>
           <Link to={`/`} css={styles.link}>
             HOME
           </Link>
-        </ol>
-        <ol>
+        </li>
+        <li>
           <Link to={`/products/headphones`} css={styles.link}>
             HEADPHONES
           </Link>
-        </ol>
-        <ol>
+        </li>
+        <li>
           <Link to={`/products/speakers`} css={styles.link}>
             SPEAKERS
           </Link>
-        </ol>
-        <ol>
+        </li>
+        <li>
           <Link to={`/products/earphones`} css={styles.link}>
             EARPHONES
           </Link>
-        </ol>
+        </li>
       </ul>
     </nav>
   );
@@ -38,7 +38,8 @@ const styles = {
     justifyContent: "space-between",
     padding: "0",
     width: "100%",
-    ol: {
+    listStyleType: "none",
+    li: {
       padding: "0",
     },
   }),
