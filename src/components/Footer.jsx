@@ -10,15 +10,15 @@ import Nav from "./Nav";
 function Icons({ styles }) {
   return (
     <ul css={styles}>
-      <ol>
+      <li>
         <FacebookLogo aria-label="Facebook" />
-      </ol>
-      <ol>
+      </li>
+      <li>
         <TwitterLogo aria-label="Instagram" />
-      </ol>
-      <ol>
+      </li>
+      <li>
         <InstagramLogo aria-label="Instagram" />
-      </ol>
+      </li>
     </ul>
   );
 }
@@ -62,7 +62,8 @@ const styles = {
   icons: css({
     margin: "0",
     width: "10%",
-    ol: {
+    listStyleType: "none",
+    li: {
       padding: "0px",
       "&:hover": {
         svg: {
