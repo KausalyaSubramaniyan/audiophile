@@ -55,7 +55,7 @@ export default function NavBar({ customStyles = css({}) }) {
       >
         <span id="cart-label" css={visuallyHidden}>Cart</span>
         {itemsCount > 0 && <div css={styles.badge}>{itemsCount}</div>}
-        <CartIcon />
+        <CartIcon aria-label="Cart Icon"/>
       </Button>
       <Overlay
         open={isCartVisible}

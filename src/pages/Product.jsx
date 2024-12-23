@@ -29,6 +29,7 @@ export default function Product({ name }) {
       <div css={styles.layoutContainer} key={product.id}>
         <ParallelLayout
           isImgLeft={product.id % 2 === 1 ? false : true}
+          alt={product.title}
           content={
             <ParallelLayoutTextContent
               title={<h2 css={styles.title}>{product.title}</h2>}

@@ -16,6 +16,7 @@ function RecommendationCard({ product }) {
           tablet: product.imgUrls["tablet"],
           desktop: product.imgUrls["desktop"],
         }}
+        alt={product.title}
       />
       <h5>{product.title}</h5>
       <Button

@@ -135,6 +135,7 @@ export default function ProductDetails() {
           <>
             <ParallelLayout
               isImgLeft={true}
+              alt={product.title}
               isTabletVertical={true}
               content={
                 <ParallelLayoutTextContent
