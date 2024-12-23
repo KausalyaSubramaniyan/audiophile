@@ -8,7 +8,6 @@ import {
   centerAlign,
   mediaQuery,
 } from "../styles/CommonStyles";
-import Footer from "../components/Footer";
 import { useState } from "react";
 import Overlay from "../components/core/Overlay";
 import Confirmation from "../components/Confirmation";
@@ -19,6 +18,7 @@ import { inputCriteria } from "../data/constant";
 import ItemWithQuantity from "../components/ItemWithQuantity";
 import { useSelector } from "react-redux";
 import Spinner from "../components/core/Spinner";
+import Layout from "../components/Layout";
 
 export default function Checkout() {
   const [isVisible, setIsVisible] = useState(false);
@@ -312,14 +312,16 @@ export default function Checkout() {
   if (fetched) {
     if (items.length > 0) {
       return (
-        <div css={styles.layout}>
-          <NavBar />
-          <div css={styles.container}>
-            {getForm()}
-            {getSummary()}
-          </div>
-          <Footer />
-        </div>
+        <Layout
+          content={
+            <div css={styles.container}>
+              {getForm()}
+              {getSummary()}
+            </div>
+          }
+          isCheckoutPage={true}
+          customCss={styles.layout}
+        />
       );
     } else {
       return (
@@ -354,7 +356,7 @@ const styles = {
     backgroundColor: "#F2F2F2",
   }),
   container: css({
-    margin: "8rem var(--side-spacing)",
+    padding: "8rem var(--side-spacing)",
     display: "flex",
     justifyContent: "space-between",
     gap: "1.5rem",

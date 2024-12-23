@@ -4,18 +4,24 @@ import Footer from "./Footer";
 import Spacer from "./core/Spacer";
 import NavBar from "./NavBar";
 
-export default function Layout({ heroSection = <></>, content, navStyles }) {
+export default function Layout({
+  content,
+  navStyles,
+  customCss,
+  heroSection = <></>,
+  isCheckoutPage = false,
+}) {
   return (
     <>
       <NavBar customStyles={navStyles} />
       <main>
         {heroSection}
-        <div css={styles.layout}>
+        <div css={customCss ?? styles.layout}>
           {content}
-          <Spacer value="10rem" />
-          <BestGear />
+          {!isCheckoutPage && <Spacer value="10rem" />}
+          {!isCheckoutPage && <BestGear />}
         </div>
-        <Spacer value="13rem" />
+        {!isCheckoutPage && <Spacer value="13rem" />}
       </main>
       <Footer />
     </>
