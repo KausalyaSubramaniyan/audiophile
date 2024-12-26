@@ -1,6 +1,6 @@
 # Frontend Mentor - Audiophile e-commerce website solution
 
-This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). 
 
 ## Table of contents
 
@@ -31,7 +31,7 @@ Users can:
   - VAT is calculated as 20% of the product total, excluding shipping
 - See an order confirmation modal after checking out with an order summary
 - **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` is used)
-- **Bonus**: ${\textsf{\color{lightgreen} Can view the number of items added to the cart}}$
+- **Bonus**: ${\textsf{\color{green} Can view the number of items added to the cart}}$
 
 
 
@@ -66,16 +66,21 @@ Home             |  Product
 
 - Redux toolkit & RTK Query
 
-  Learnt redux toolkit & RTK Query for global state management and data fetching. These libraries help maintain clean code without boilerplate, all while effectively performing their functions.
+  Used redux toolkit & RTK Query for global state management and data fetching. These libraries help maintain clean code without boilerplate, all while effectively performing their functions.
+
+- Accessibility
+
+  Ensured the application is keyboard accessible and easily navigable for screen readers
 
 ### Continued development
 
 While the current application addresses the key critical functionalities, I will be focusing on the following backlogs in the future:
 * Unit & Integration testcases
 * Implementing dark theme
-* Focus on Accessibility
 * Development of backend application
 
 ## Author
 
-- Kausalya Subramaniyan
+- Design - Front end mentor
+
+- Development - Kausalya Subramaniyan
