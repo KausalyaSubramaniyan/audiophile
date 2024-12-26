@@ -61,7 +61,7 @@ breakpoints.map((breakpoint, index) => {
   mediaQueryCondition[screenSizes[index]] = `(max-width: ${breakpoint}px)`;
 });
 
-breakpoints.map((breakpoint, index) => {
+breakpoints.map((_, index) => {
   mediaQuery[screenSizes[index]] = `@media ${
     mediaQueryCondition[screenSizes[index]]
   }`;

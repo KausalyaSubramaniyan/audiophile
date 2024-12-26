@@ -1,5 +1,6 @@
 :root {
   --color-black-800: #191919;
+  --color-black-850: #141414;
   --color-black-900: #0e0e0e;
   --color-black-1000: #000000;
   --color-white-1000: #ffffff;
@@ -164,6 +165,12 @@ h6 {
   letter-spacing: 1.3px;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (min-width: 1441px) {
+  :root {
+    --side-spacing: calc((100vw - 70rem) / 2);
+  }
 }
 
 @media screen and (max-width: 1200px) {
