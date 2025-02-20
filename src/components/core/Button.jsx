@@ -1,5 +1,83 @@
 import { css } from "@emotion/react";
 
+const getBaseStyles = (props) => {
+  return {
+    base: {
+      border: "none",
+      color: "var(--color-white-1000)",
+      padding: "1rem 0rem",
+      whiteSpace: "nowrap",
+    },
+    hover: {
+      cursor: props.disabled ? "not-allowed" : "pointer",
+    },
+  };
+};
+
+const getSizeStyles = (size) => {
+  switch (size) {
+    case "small":
+      return { base: { padding: "0.5rem 1rem" } };
+    case "medium":
+      return { base: { padding: "0.8rem 2.2rem" } };
+    case "large":
+      return { base: { padding: "1.5rem 2rem" } };
+    case "stretch":
+      return { base: { width: "100%" } };
+    default:
+      return {};
+  }
+};
+
+const getVariantStyles = (variant, colorProp, color) => {
+  switch (variant) {
+    case "contained":
+      return {
+        base: {
+          backgroundColor: colorProp,
+        },
+        hover: {
+          backgroundColor: `var(--color-${color}-hover)`,
+        },
+      };
+    case "outlined":
+      return {
+        base: {
+          border: `2px solid ${colorProp}`,
+          color: colorProp,
+        },
+        hover: {
+          backgroundColor: colorProp,
+          color: "var(--color-white-1000)",
+        },
+        focus: {
+          outlineOffset: "2px",
+        },
+      };
+    case "ghost":
+      return {
+        base: {
+          backgroundColor: "transparent",
+          color: "var(--color-secondary)",
+          padding: "0",
+        },
+      };
+    default:
+      return {};
+  }
+};
+
+const getDisabledStateStyles = (isDisabled) => {
+  if (isDisabled) {
+    return {
+      base: {
+        opacity: "50%",
+      },
+    };
+  }
+  return {};
+};
+
 export default function Button({
   variant = "contained",
   color = "primary",
@@ -12,78 +90,40 @@ export default function Button({
     ? `var(${color})`
     : `var(--color-${color})`;
 
-  const getStyles = () => {
-    let styles = {
-      border: "none",
-      "&:hover": {
-        cursor: props.disabled ? "not-allowed" : "pointer",
-      },
-      color: "var(--color-white-1000)",
-      padding: "1rem 0rem",
-      whiteSpace: "nowrap",
-    };
+  const baseStyles = getBaseStyles(props);
+  const sizeStyles = getSizeStyles(size);
+  const variantStyles = getVariantStyles(variant, colorProp, color);
+  const disabledStateStyles = getDisabledStateStyles(props.disabled);
 
-    switch (size) {
-      case "small":
-        styles = { ...styles, padding: "0.5rem 1rem" };
-        break;
-      case "medium":
-        styles = { ...styles, padding: "0.8rem 2.2rem" };
-        break;
-      case "large":
-        styles = { ...styles, padding: "1.5rem 2rem" };
-        break;
-      case "stretch":
-        styles = { ...styles, width: "100%" };
-        break;
-    }
+  let combinedStyles = [
+    baseStyles,
+    sizeStyles,
+    variantStyles,
+    disabledStateStyles,
+  ].reduce(
+    (prev, curr) => {
+      const mergedStyles = {
+        base: { ...prev.base, ...curr.base },
+        hover: { ...prev.hover, ...curr.hover },
+        focus: { ...prev.focus, ...curr.focus },
+      };
+      return mergedStyles;
+    },
+    { base: {} }
+  );
 
-    switch (variant) {
-      case "contained":
-        styles = {
-          ...styles,
-          backgroundColor: colorProp,
-          "&:hover": {
-            ...styles["&:hover"],
-            backgroundColor: `var(--color-${color}-hover)`,
-          },
-        };
-        break;
-      case "outlined":
-        styles = {
-          ...styles,
-          border: `2px solid ${colorProp}`,
-          color: colorProp,
-          "&:hover": {
-            ...styles["&:hover"],
-            backgroundColor: colorProp,
-            color: "var(--color-white-1000)",
-          },
-          "&:focus": {
-            outlineOffset: "2px"
-          }
-        };
-        break;
-      case "ghost":
-        styles = {
-          ...styles,
-          backgroundColor: "transparent",
-          color: "var(--color-secondary)",
-          padding: "0",
-        };
-      default:
-        break;
-    }
-
-    if(props.disabled) {
-      styles = {...styles, opacity: "50%"}
-    }
-
-    return props.css ? [css(styles), props.css] : css(styles);
+  combinedStyles = {
+    ...combinedStyles.base,
+    "&:hover": { ...combinedStyles.hover },
+    "&:focus": { ...combinedStyles.focus },
   };
 
+  const finalCss = props.css
+    ? [css(combinedStyles), props.css]
+    : css(combinedStyles);
+
   return (
-    <button onClick={onClick} {...props} css={getStyles()}>
+    <button onClick={onClick} {...props} css={finalCss}>
       {children}
     </button>
   );
